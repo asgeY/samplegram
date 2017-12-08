@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class feedVC: UIViewController,UITableViewDataSource {
+class feedVC: UIViewController,UITableViewDataSource,UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     {didSet{self.tableView.dataSource = self}}
@@ -37,6 +37,11 @@ class feedVC: UIViewController,UITableViewDataSource {
         //set navigation attributes
           setNavAttributes()
         
+        //set table view cell attributes
+setTableCellAttributes()
+        
+        //add refresher
+addRefresher()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +60,7 @@ extension feedVC{
         self.navigationItem.title = "FEED"
     }
     
+    //set table view cell attributes
     fileprivate func setTableCellAttributes(){
       
         // automatic row height - dynamic cell
@@ -65,18 +71,148 @@ extension feedVC{
     //add refresher
     fileprivate func addRefresher(){
         
+        // pull to refresh
+        refresher.addTarget(self, action: #selector(feedVC.loadPosts), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refresher)
+    }
+    
+    // pagination
+   fileprivate func loadMore() {
+        
+        // if posts on the server are more than shown
+        if page <= uuidArray.count {
+            
+            // start animating indicator
+            indicator.startAnimating()
+            
+            // increase page size to load +10 posts
+            page = page + 10
+            
+   // STEP 1. Find posts realted to people who we are following
+let followQuery = PFQuery(className: "follow")
+    followQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
+    followQuery.findObjectsInBackground (block: { (objects, error) in
+        if error == nil {
+                    
+            // clean up
+self.followArray.removeAll(keepingCapacity: false)
+                    
+// find related objects
+for object in objects! {
+    self.followArray.append(object.object(forKey: "following") as! String)
+    }
+                    
+// append current user to see own posts in feed
+self.followArray.append(PFUser.current()!.username!)
+                    
+// STEP 2. Find posts made by people appended to followArray
+    let query = PFQuery(className: "posts")
+    query.whereKey("username", containedIn: self.followArray)
+query.limit = self.page
+query.addDescendingOrder("createdAt")
+  query.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+                            
+        // clean up
+    self.usernameArray.removeAll(keepingCapacity: false)
+self.avaArray.removeAll(keepingCapacity: false)
+self.dateArray.removeAll(keepingCapacity: false)
+    self.picArray.removeAll(keepingCapacity: false)
+self.titleArray.removeAll(keepingCapacity: false)
+    self.uuidArray.removeAll(keepingCapacity: false)
+                            
+// find related objects
+    for object in objects! {
+self.usernameArray.append(object.object(forKey: "username") as! String)
+self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+self.dateArray.append(object.createdAt)
+self.picArray.append(object.object(forKey: "pic") as! PFFile)
+self.titleArray.append(object.object(forKey: "title") as! String)
+self.uuidArray.append(object.object(forKey: "uuid") as! String)
+}
+                            
+// reload tableView & stop animating indicator
+    self.tableView.reloadData()
+    self.indicator.stopAnimating()
+                            
+} else {print(error!.localizedDescription)}})
+} else {print(error!.localizedDescription)}
+            })
+        }
+    }
+}
+
+//custom functions selector
+extension feedVC{
+    
+     // refreshign function after like to update degit
+   @objc fileprivate func refresh() {
+        tableView.reloadData()
+    }
+
+    // load posts
+   @objc fileprivate func loadPosts() {
+        
+        // STEP 1. Find posts realted to people who we are following
+        let followQuery = PFQuery(className: "follow")
+        followQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
+        followQuery.findObjectsInBackground (block: { (objects, error) in
+            if error == nil {
+                
+        // clean up
+self.followArray.removeAll(keepingCapacity: false)
+                
+                // find related objects
+for object in objects! {
+    
+self.followArray.append(object.object(forKey: "following") as! String)
+}
+                
+// append current user to see own posts in feed
+self.followArray.append(PFUser.current()!.username!)
+                
+   // STEP 2. Find posts made by people appended to followArray
+    let query = PFQuery(className: "posts")
+query.whereKey("username", containedIn: self.followArray)
+query.limit = self.page
+query.addDescendingOrder("createdAt")
+query.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+                        
+        // clean up
+    self.usernameArray.removeAll(keepingCapacity: false)
+    self.avaArray.removeAll(keepingCapacity: false)
+    self.dateArray.removeAll(keepingCapacity: false)
+    self.picArray.removeAll(keepingCapacity: false)
+    self.titleArray.removeAll(keepingCapacity: false)
+    self.uuidArray.removeAll(keepingCapacity: false)
+                        
+    // find related objects
+for object in objects! {
+    
+self.usernameArray.append(object.object(forKey: "username") as! String)
+self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+self.dateArray.append(object.createdAt)
+self.picArray.append(object.object(forKey: "pic") as! PFFile)
+self.titleArray.append(object.object(forKey: "title") as! String)
+self.uuidArray.append(object.object(forKey: "uuid") as! String)
+}
+                        
+    // reload tableView & end spinning of refresher
+        self.tableView.reloadData()
+        self.refresher.endRefreshing()
+} else {print(error!.localizedDescription)}
+})
+} else {print(error!.localizedDescription)}
+        })
     }
 }
 
 //UITableViewDataSource
 extension feedVC{
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return uuidArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,4 +221,13 @@ extension feedVC{
     }
 }
 
-
+//UIScrollViewDelegate
+extension feedVC{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height * 2 {
+            loadMore()
+        }
+    }
+}
