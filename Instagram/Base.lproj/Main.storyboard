@@ -2156,7 +2156,7 @@
                                                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="likeBtn_click:" destination="iC5-qw-89k" eventType="touchUpInside" id="CJ9-eX-xeX"/>
+                                                        <action selector="usernameBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="GbL-r2-alR"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-4h-OE2">
@@ -2166,6 +2166,9 @@
                                                         <constraint firstAttribute="width" constant="35" id="zRC-2f-3hy"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="comment"/>
+                                                    <connections>
+                                                        <action selector="commentBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="JaA-Sf-rmn"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-kl-3Rq">
                                                     <rect key="frame" x="325" y="456" width="35" height="35"/>
@@ -2174,6 +2177,9 @@
                                                         <constraint firstAttribute="height" constant="35" id="vjs-N8-9dp"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="more"/>
+                                                    <connections>
+                                                        <action selector="moreBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="r8D-TQ-b5q"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-9W-ZSp">
                                                     <rect key="frame" x="59" y="463" width="21" height="21"/>
