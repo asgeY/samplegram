@@ -58,9 +58,9 @@ extension guestVC{
     fileprivate func topSetting(){
         
         //top title
-        navigationItem.title = guestName.last
+  navigationItem.title = guestName.last?.uppercased()
         
-        navigationItem.hidesBackButton = true
+  navigationItem.hidesBackButton = true
         
         //new back button
         let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(back(sender:)))
@@ -241,7 +241,14 @@ extension guestVC{
         
            //shown wrong user
         if objects!.isEmpty{
-            print("wrong user")
+            
+             // call alert
+let alert = UIAlertController(title: "\(guestName.last!.uppercased())", message: "is not existing", preferredStyle: UIAlertControllerStyle.alert)
+let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_)  in
+_ = self.navigationController?.popViewController(animated: true)
+})
+alert.addAction(ok)
+self.present(alert, animated: true, completion: nil)
         }
         
         // find related to user infomation

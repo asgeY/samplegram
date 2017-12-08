@@ -495,7 +495,7 @@ tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
         deleteAction.image = #imageLiteral(resourceName: "delete")
-deleteAction.backgroundColor = .red
+deleteAction.backgroundColor = .purple
         
          // post whether belongs to user
         if (leadingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username) || (commentowner.last == PFUser.current()?.username){
@@ -545,8 +545,8 @@ self.alert("Complain has been made successfully", message: "Thank You! We will c
         // buttons background
        mentionAction.image = #imageLiteral(resourceName: "address")
         complainAction.image = #imageLiteral(resourceName: "complain")
-        mentionAction.backgroundColor = .green
-        complainAction.backgroundColor = .purple
+        mentionAction.backgroundColor = .red
+        complainAction.backgroundColor = .green
         
         // comment belogs to user
         if trailingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username {

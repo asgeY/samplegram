@@ -20,13 +20,16 @@
 		A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114421FD100EA00DCAC4C /* tabbarVC.swift */; };
 		A51114461FD1863600DCAC4C /* commentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114451FD1863600DCAC4C /* commentVC.swift */; };
 		A51114481FD1864E00DCAC4C /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114471FD1864E00DCAC4C /* commentCell.swift */; };
+		A515014B1FD85E6A00062052 /* feedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515014A1FD85E6A00062052 /* feedVC.swift */; };
 		A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */; };
 		A51826881FA091AA005B50D0 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826871FA091AA005B50D0 /* HexColor.swift */; };
 		A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268B1FA0D4B8005B50D0 /* homeVC.swift */; };
 		A518268E1FA0D517005B50D0 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268D1FA0D517005B50D0 /* headerView.swift */; };
 		A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268F1FA0D8B2005B50D0 /* pictureCell.swift */; };
-		A526D5801FC7DCFA00B41468 /* navVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D57F1FC7DCFA00B41468 /* navVC.swift */; };
+		A526D5801FC7DCFA00B41468 /* homeNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D57F1FC7DCFA00B41468 /* homeNav.swift */; };
 		A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D5821FC7DD7A00B41468 /* editVC.swift */; };
+		A52DA23A1FD9850400ADD815 /* editNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DA2391FD9850400ADD815 /* editNav.swift */; };
+		A52DA23C1FD9871B00ADD815 /* feedNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DA23B1FD9871B00ADD815 /* feedNav.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
@@ -57,7 +60,7 @@
 		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 		A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F01FD53EE500246E71 /* commentsNav.swift */; };
-		A5F313F31FD548C100246E71 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */; };
+		A5F313F31FD548C100246E71 /* UINavigationBar_Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */; };
 		A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F41FD55D0200246E71 /* GrowingTextView.swift */; };
 		A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F313FB1FD6D1E700246E71 /* KILabel.m */; };
 		A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F314041FD716E100246E71 /* hashtagsVC.swift */; };
@@ -81,13 +84,16 @@
 		A51114421FD100EA00DCAC4C /* tabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabbarVC.swift; sourceTree = "<group>"; };
 		A51114451FD1863600DCAC4C /* commentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentVC.swift; sourceTree = "<group>"; };
 		A51114471FD1864E00DCAC4C /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
+		A515014A1FD85E6A00062052 /* feedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedVC.swift; sourceTree = "<group>"; };
 		A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_Attributes.swift; sourceTree = "<group>"; };
 		A51826871FA091AA005B50D0 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		A518268B1FA0D4B8005B50D0 /* homeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
 		A518268D1FA0D517005B50D0 /* headerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		A518268F1FA0D8B2005B50D0 /* pictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pictureCell.swift; sourceTree = "<group>"; };
-		A526D57F1FC7DCFA00B41468 /* navVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navVC.swift; sourceTree = "<group>"; };
+		A526D57F1FC7DCFA00B41468 /* homeNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeNav.swift; sourceTree = "<group>"; };
 		A526D5821FC7DD7A00B41468 /* editVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editVC.swift; sourceTree = "<group>"; };
+		A52DA2391FD9850400ADD815 /* editNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editNav.swift; sourceTree = "<group>"; };
+		A52DA23B1FD9871B00ADD815 /* feedNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedNav.swift; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
@@ -120,7 +126,7 @@
 		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		A5F313F01FD53EE500246E71 /* commentsNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsNav.swift; sourceTree = "<group>"; };
-		A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Attribute.swift; sourceTree = "<group>"; };
 		A5F313F41FD55D0200246E71 /* GrowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		A5F313F61FD6CEB500246E71 /* Instagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Instagram-Bridging-Header.h"; path = "Instagram/Instagram-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		A5F313FA1FD6D1E700246E71 /* KILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KILabel.h; sourceTree = "<group>"; };
@@ -182,6 +188,14 @@
 			name = "Comment Page";
 			sourceTree = "<group>";
 		};
+		A51501491FD85E4E00062052 /* Feed Page Part */ = {
+			isa = PBXGroup;
+			children = (
+				A515014A1FD85E6A00062052 /* feedVC.swift */,
+			);
+			name = "Feed Page Part";
+			sourceTree = "<group>";
+		};
 		A526D5811FC7DD1E00B41468 /* Profile Part */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,8 +218,10 @@
 				A51114321FD043E500DCAC4C /* newAlertAnimation.swift */,
 				A51114341FD0442E00DCAC4C /* newAlertVC.swift */,
 				A51114361FD0445100DCAC4C /* newAlertTextField.swift */,
-				A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */,
+				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
 				A5F313F41FD55D0200246E71 /* GrowingTextView.swift */,
+				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
+				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -278,14 +294,13 @@
 				A54A35981FC27255002DD885 /* Themes.xcassets */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
-				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
-				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
 				A5F313F61FD6CEB500246E71 /* Instagram-Bridging-Header.h */,
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
 				A51114411FD1008A00DCAC4C /* Tab Bar Part */,
 				A5FD76381FCED44D007355BF /* Collection Header Part */,
+				A51501491FD85E4E00062052 /* Feed Page Part */,
 				A5F314031FD7164300246E71 /* Hashtag Page Part */,
-				A5FD76321FCECC87007355BF /* Tab Bar Item Navigation Part */,
+				A5FD76321FCECC87007355BF /* Navigation Part */,
 				A51114441FD185EE00DCAC4C /* Comment Page */,
 				A511143C1FD0DE2F00DCAC4C /* Post Page Part */,
 				A5FD76291FCBEA2F007355BF /* Upload Part */,
@@ -343,13 +358,15 @@
 			name = "Upload Part";
 			sourceTree = "<group>";
 		};
-		A5FD76321FCECC87007355BF /* Tab Bar Item Navigation Part */ = {
+		A5FD76321FCECC87007355BF /* Navigation Part */ = {
 			isa = PBXGroup;
 			children = (
-				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
+				A526D57F1FC7DCFA00B41468 /* homeNav.swift */,
 				A5F313F01FD53EE500246E71 /* commentsNav.swift */,
+				A52DA2391FD9850400ADD815 /* editNav.swift */,
+				A52DA23B1FD9871B00ADD815 /* feedNav.swift */,
 			);
-			name = "Tab Bar Item Navigation Part";
+			name = "Navigation Part";
 			sourceTree = "<group>";
 		};
 		A5FD76381FCED44D007355BF /* Collection Header Part */ = {
@@ -505,11 +522,13 @@
 				A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */,
 				A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */,
 				A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */,
+				A52DA23C1FD9871B00ADD815 /* feedNav.swift in Sources */,
 				A51114401FD0DE8800DCAC4C /* postCell.swift in Sources */,
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
 				A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */,
+				A515014B1FD85E6A00062052 /* feedVC.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
-				A526D5801FC7DCFA00B41468 /* navVC.swift in Sources */,
+				A526D5801FC7DCFA00B41468 /* homeNav.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
 				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
@@ -517,7 +536,7 @@
 				A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */,
 				A51114351FD0442F00DCAC4C /* newAlertVC.swift in Sources */,
 				A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */,
-				A5F313F31FD548C100246E71 /* UINavigation+Extension.swift in Sources */,
+				A5F313F31FD548C100246E71 /* UINavigationBar_Attribute.swift in Sources */,
 				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
@@ -530,6 +549,7 @@
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
 				A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */,
 				A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */,
+				A52DA23A1FD9850400ADD815 /* editNav.swift in Sources */,
 				A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,

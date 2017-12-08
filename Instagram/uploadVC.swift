@@ -130,8 +130,8 @@ deleteObservers()
         // send notification wiht name "uploaded"
     NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
                 
-    // switch to another ViewController at 0 index of tabbar
-    self.tabBarController!.selectedIndex = 1
+    // switch to another ViewController at 2 index of tabbar
+    self.tabBarController!.selectedIndex = 2
                 
         // reset everything
     self.viewDidLoad()
