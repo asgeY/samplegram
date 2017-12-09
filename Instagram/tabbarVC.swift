@@ -36,6 +36,9 @@ extension tabbarVC{
         
         // disable translucent
         self.tabBar.isTranslucent = false
+        
+        // color of background
+        self.tabBar.barTintColor = UIColor(red: 37.0 / 255.0, green: 39.0 / 255.0, blue: 42.0 / 255.0, alpha: 1)
     }
     
     
