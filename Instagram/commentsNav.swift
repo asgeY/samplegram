@@ -26,14 +26,15 @@ class commentsNav: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-}
+}//commentsNav class over line
 
+//custom functions
 extension commentsNav{
     
     //set navigation bar attributes
     fileprivate func setNavBarAtrributes(){
     
         // color of background of nav controller
-    self.navigationBar.setGradientBackground(colors: [UIColor(hex: "833AB4"),UIColor(hex: "FD1D1D"),UIColor(hex: "FCB045")])
+    self.navigationBar.setGradientBackground(colors: [UIColor(hex: "FC466B"),UIColor(hex: "3F5EFB")])
     }
 }

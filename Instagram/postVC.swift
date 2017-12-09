@@ -11,13 +11,10 @@ import Parse
 
 var postuuid = [String]()
 
-class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class postVC: UIViewController,UITableViewDataSource {
 
     @IBOutlet weak var customTableView: UITableView!
-    {didSet
-    {self.customTableView.delegate = self
-     self.customTableView.dataSource = self}
-    }
+    {didSet{self.customTableView.dataSource = self}}
     
     // arrays to hold information from server
     var avaArray = [PFFile]()
@@ -69,7 +66,7 @@ class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = customTableView.cellForRow(at: i) as! postCell
         
         // DELET ACTION
-        let delete = UIAlertAction(title: "Delete", style: .default) { (_) -> Void in
+        let delete = UIAlertAction(title: "Delete", style: .default) { (_) in
             
             // STEP 1. Delete row from tableView
             self.usernameArray.remove(at: i.row)
@@ -126,7 +123,6 @@ hashtagQuery.findObjectsInBackground(block: { (objects, error) in
       })
     }
         
-        
         // COMPLAIN ACTION
 let complain = UIAlertAction(title: "Complain", style: .default) { (_) in
             
@@ -138,8 +134,7 @@ let complain = UIAlertAction(title: "Complain", style: .default) { (_) in
             complainObj.saveInBackground(block: { (success, error) in
                 if success {
                     self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
-                } else {
-                    self.alert("ERROR", message: error!.localizedDescription)
+} else {self.alert("ERROR", message: error!.localizedDescription)
                 }
             })
         }
@@ -383,10 +378,5 @@ extension postVC{
     }
 }
 
-//UITableViewDelegate
-extension postVC{
-    
-    
-    
-}
+
 

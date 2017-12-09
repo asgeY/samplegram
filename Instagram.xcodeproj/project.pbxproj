@@ -30,6 +30,8 @@
 		A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D5821FC7DD7A00B41468 /* editVC.swift */; };
 		A52DA23A1FD9850400ADD815 /* editNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DA2391FD9850400ADD815 /* editNav.swift */; };
 		A52DA23C1FD9871B00ADD815 /* feedNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DA23B1FD9871B00ADD815 /* feedNav.swift */; };
+		A53818F71FDBB10300A9EFBB /* uploadNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53818F61FDBB10200A9EFBB /* uploadNav.swift */; };
+		A53818F91FDBB2A400A9EFBB /* usersNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53818F81FDBB2A400A9EFBB /* usersNav.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
@@ -95,6 +97,8 @@
 		A526D5821FC7DD7A00B41468 /* editVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editVC.swift; sourceTree = "<group>"; };
 		A52DA2391FD9850400ADD815 /* editNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editNav.swift; sourceTree = "<group>"; };
 		A52DA23B1FD9871B00ADD815 /* feedNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedNav.swift; sourceTree = "<group>"; };
+		A53818F61FDBB10200A9EFBB /* uploadNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadNav.swift; sourceTree = "<group>"; };
+		A53818F81FDBB2A400A9EFBB /* usersNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersNav.swift; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 				A5F313F01FD53EE500246E71 /* commentsNav.swift */,
 				A52DA2391FD9850400ADD815 /* editNav.swift */,
 				A52DA23B1FD9871B00ADD815 /* feedNav.swift */,
+				A53818F61FDBB10200A9EFBB /* uploadNav.swift */,
+				A53818F81FDBB2A400A9EFBB /* usersNav.swift */,
 			);
 			name = "Navigation Part";
 			sourceTree = "<group>";
@@ -553,6 +559,8 @@
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */,
+				A53818F91FDBB2A400A9EFBB /* usersNav.swift in Sources */,
+				A53818F71FDBB10300A9EFBB /* uploadNav.swift in Sources */,
 				A51114461FD1863600DCAC4C /* commentVC.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,

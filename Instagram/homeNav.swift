@@ -25,7 +25,7 @@ class homeNav: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
-}// navVC class over line
+}// homeNav class over line
 
 //custom functions
 extension homeNav{
@@ -34,10 +34,7 @@ extension homeNav{
     fileprivate func setNavBarAtrributes(){
         
        // color of background of nav controller
-        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "CC95C0"), UIColor(hex: "DBD4B4"), UIColor(hex: "7AA1D2")])
-        
-        // color of buttons in nav controller
-        self.navigationBar.tintColor = UIColor.white
+        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "833AB4"), UIColor(hex: "FD1D1D"), UIColor(hex: "FCB045")])
         
         // disable translucent
         self.navigationBar.isTranslucent = false

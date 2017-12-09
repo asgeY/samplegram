@@ -98,11 +98,7 @@ let cell = tableView.cellForRow(at: i) as! postCell
 // send related data to global variables
 commentuuid.append(cell.uuidLbl.text!)
 commentowner.append(cell.usernameBtn.titleLabel!.text!)
-        
-     // go to comments. present vc
-let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
-self.navigationController?.show(comment, sender: nil)
-    }
+}
     
     // clicked more button
     @IBAction func moreBtn_clicks(_ sender: AnyObject) {
@@ -114,7 +110,7 @@ self.navigationController?.show(comment, sender: nil)
         let cell = tableView.cellForRow(at: i) as! postCell
         
         // DELET ACTION
-    let delete = UIAlertAction(title: "Delete", style: .default) { (UIAlertAction) -> Void in
+    let delete = UIAlertAction(title: "Delete", style: .default) { (UIAlertAction) in
             
     // STEP 1. Delete row from tableView
     self.usernameArray.remove(at: i.row)
@@ -147,7 +143,7 @@ _ = self.navigationController?.popViewController(animated: true)
             // STEP 2. Delete likes of post from server
             let likeQuery = PFQuery(className: "likes")
             likeQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
-            likeQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+            likeQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
                         object.deleteEventually()
@@ -158,7 +154,7 @@ _ = self.navigationController?.popViewController(animated: true)
             // STEP 3. Delete comments of post from server
             let commentQuery = PFQuery(className: "comments")
             commentQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
-            commentQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+            commentQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
                         object.deleteEventually()
@@ -169,7 +165,7 @@ _ = self.navigationController?.popViewController(animated: true)
             // STEP 4. Delete hashtags of post from server
             let hashtagQuery = PFQuery(className: "hashtags")
             hashtagQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
-            hashtagQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+            hashtagQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
                         object.deleteEventually()
@@ -179,14 +175,14 @@ _ = self.navigationController?.popViewController(animated: true)
         }
         
         // COMPLAIN ACTION
-        let complain = UIAlertAction(title: "Complain", style: .default) { (UIAlertAction) -> Void in
+        let complain = UIAlertAction(title: "Complain", style: .default) { (UIAlertAction)  in
             
             // send complain to server
             let complainObj = PFObject(className: "complain")
             complainObj["by"] = PFUser.current()?.username
             complainObj["to"] = cell.uuidLbl.text
             complainObj["owner"] = cell.usernameBtn.titleLabel?.text
-            complainObj.saveInBackground(block: { (success, error) -> Void in
+            complainObj.saveInBackground(block: { (success, error) in
                 if success {
                     self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
                 } else {

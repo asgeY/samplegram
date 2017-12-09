@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="90.886699507389167"/>
+            <point key="canvasLocation" x="190" y="91"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="z3Z-dr-vfc">
@@ -560,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbT-iI-lVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712.79999999999995" y="90.886699507389167"/>
+            <point key="canvasLocation" x="1180" y="91"/>
         </scene>
         <!--Reset PasswordVC-->
         <scene sceneID="V10-e7-Dvs">
@@ -730,7 +730,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo8-B0-XdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cLT-kU-wtJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1434.375" y="90"/>
+            <point key="canvasLocation" x="190" y="883"/>
         </scene>
         <!--TabbarVC-->
         <scene sceneID="PSJ-tX-Agf">
@@ -952,7 +952,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-dJ-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="1348"/>
+            <point key="canvasLocation" x="2174" y="1678"/>
         </scene>
         <!--EditVC-->
         <scene sceneID="xJf-Or-vEs">
@@ -1179,7 +1179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blt-3V-Lie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6297" y="1348"/>
+            <point key="canvasLocation" x="4330" y="1677"/>
         </scene>
         <!--FollowersVC-->
         <scene sceneID="xFx-iX-qjP">
@@ -1266,7 +1266,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMT-g3-qVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286" y="2055"/>
+            <point key="canvasLocation" x="190" y="1677"/>
         </scene>
         <!--HashtagsVC-->
         <scene sceneID="2nm-e8-vMh">
@@ -1314,7 +1314,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wxp-Qc-9j5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6297" y="2055"/>
+            <point key="canvasLocation" x="1180" y="1677"/>
         </scene>
         <!--Upload-->
         <scene sceneID="4eg-mm-FnA">
@@ -1445,7 +1445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uw8-Ab-7Cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="91"/>
+            <point key="canvasLocation" x="4329" y="91"/>
         </scene>
         <!--home-->
         <scene sceneID="jPN-fg-0e3">
@@ -1456,6 +1456,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4sb-ga-6EK">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1464,7 +1467,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsl-tx-ac9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="1348"/>
+            <point key="canvasLocation" x="2174" y="882"/>
         </scene>
         <!--COMMENTS-->
         <scene sceneID="9Fs-q2-3e6">
@@ -1641,7 +1644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j89-oU-0ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="2033"/>
+            <point key="canvasLocation" x="5470" y="-610"/>
         </scene>
         <!--PostVC-->
         <scene sceneID="v7z-DB-nhB">
@@ -1815,7 +1818,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewc-cc-xpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="2033"/>
+            <point key="canvasLocation" x="5470" y="-2084"/>
         </scene>
         <!--GuestVC-->
         <scene sceneID="HBA-oJ-WYL">
@@ -2013,7 +2016,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-wt-n09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="2033"/>
+            <point key="canvasLocation" x="1180" y="882"/>
         </scene>
         <!--Edit Nav-->
         <scene sceneID="RPQ-Ln-Qpx">
@@ -2023,6 +2026,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UUW-ml-Dza">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2031,17 +2037,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zR9-RB-h0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286" y="1348"/>
+            <point key="canvasLocation" x="3230" y="1677"/>
         </scene>
         <!--upload-->
         <scene sceneID="N5f-W8-fx0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="idH-zD-E3L" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="idH-zD-E3L" customClass="uploadNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="upload" image="upload" id="UsA-pY-QuM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9U3-Ro-l4j">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2050,7 +2059,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8H-Ri-hmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3098" y="91"/>
+            <point key="canvasLocation" x="3230" y="91"/>
         </scene>
         <!--Comments Nav-->
         <scene sceneID="gPP-z5-iOG">
@@ -2074,7 +2083,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pE-i1-RMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2174" y="2033"/>
+            <point key="canvasLocation" x="5470" y="-1306"/>
         </scene>
         <!--FeedVC-->
         <scene sceneID="oaO-ev-Ioh">
@@ -2111,7 +2120,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="626" id="iC5-qw-89k" customClass="postCell" customModule="Instagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Cell" rowHeight="626" id="iC5-qw-89k" customClass="postCell" customModule="Instagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="626"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iC5-qw-89k" id="oSd-J7-XC9">
@@ -2146,6 +2155,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="17K-cP-79g"/>
                                                     </constraints>
                                                     <state key="normal" title="usernameBtn"/>
+                                                    <connections>
+                                                        <action selector="usernameBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="99a-az-E2Q"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gek-ij-ijZ">
                                                     <rect key="frame" x="15" y="456" width="35" height="35"/>
@@ -2157,7 +2169,7 @@
                                                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="usernameBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="GbL-r2-alR"/>
+                                                        <action selector="likeBtn_click:" destination="iC5-qw-89k" eventType="touchUpInside" id="kLw-2w-gCo"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-4h-OE2">
@@ -2169,6 +2181,7 @@
                                                     <state key="normal" backgroundImage="comment"/>
                                                     <connections>
                                                         <action selector="commentBtn_clicks:" destination="kib-tM-dfV" eventType="touchUpInside" id="JaA-Sf-rmn"/>
+                                                        <segue destination="dXv-mP-2Mp" kind="presentation" id="1bI-cr-ZhO"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-kl-3Rq">
@@ -2268,7 +2281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Twq-pE-z8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4199" y="-1213"/>
+            <point key="canvasLocation" x="4329" y="-1306"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Oyd-wF-x7Y">
@@ -2279,6 +2292,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZwN-BO-69K">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2287,7 +2303,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lIr-yl-dkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="-1213"/>
+            <point key="canvasLocation" x="3230" y="-1306"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="ECY-I4-Zku">
@@ -2375,17 +2391,20 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Evh-p6-hcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="-556"/>
+            <point key="canvasLocation" x="4329" y="-610"/>
         </scene>
         <!--users-->
         <scene sceneID="sha-VY-QYH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIf-Dm-gYM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIf-Dm-gYM" customClass="usersNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="users" image="users" id="caf-Yx-k63"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eUB-Xy-4ev">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2394,7 +2413,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl6-wG-cfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="-556"/>
+            <point key="canvasLocation" x="3230" y="-609"/>
         </scene>
     </scenes>
     <resources>
@@ -2419,4 +2438,7 @@
             <color red="0.017000000923871994" green="0.19799999892711639" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="smk-6g-Dv1"/>
+    </inferredMetricsTieBreakers>
 </document>
