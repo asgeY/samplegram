@@ -39,6 +39,7 @@
 		A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */; };
 		A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */; };
 		A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */; };
+		A587E2D41FDB017000E8E57A /* usersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E2D31FDB017000E8E57A /* usersVC.swift */; };
 		A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6B91FC5381E0083AAEC /* followersVC.swift */; };
 		A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6BB1FC538670083AAEC /* followersCell.swift */; };
 		A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C177A41F680C1C008D93AC /* AppDelegate.swift */; };
@@ -103,6 +104,7 @@
 		A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZingScriptRustSBDemo-Base.otf"; sourceTree = "<group>"; };
 		A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crabmeal.otf; sourceTree = "<group>"; };
 		A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SG_Alternative_High-Alt.otf"; sourceTree = "<group>"; };
+		A587E2D31FDB017000E8E57A /* usersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersVC.swift; sourceTree = "<group>"; };
 		A588A6B91FC5381E0083AAEC /* followersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersVC.swift; sourceTree = "<group>"; };
 		A588A6BB1FC538670083AAEC /* followersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersCell.swift; sourceTree = "<group>"; };
 		A5C177A11F680C1C008D93AC /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,14 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
+		A587E2D21FDB013200E8E57A /* Users Page */ = {
+			isa = PBXGroup;
+			children = (
+				A587E2D31FDB017000E8E57A /* usersVC.swift */,
+			);
+			name = "Users Page";
+			sourceTree = "<group>";
+		};
 		A588A6BD1FC58F8E0083AAEC /* Login Part */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +306,7 @@
 				A5C177B01F680C1D008D93AC /* Info.plist */,
 				A5F313F61FD6CEB500246E71 /* Instagram-Bridging-Header.h */,
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
+				A587E2D21FDB013200E8E57A /* Users Page */,
 				A51114411FD1008A00DCAC4C /* Tab Bar Part */,
 				A5FD76381FCED44D007355BF /* Collection Header Part */,
 				A51501491FD85E4E00062052 /* Feed Page Part */,
@@ -547,6 +558,7 @@
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
+				A587E2D41FDB017000E8E57A /* usersVC.swift in Sources */,
 				A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */,
 				A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */,
 				A52DA23A1FD9850400ADD815 /* editNav.swift in Sources */,
