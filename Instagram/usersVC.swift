@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class usersVC: UITableViewController,UISearchBarDelegate {
+class usersVC: UITableViewController,UISearchBarDelegate{
 
     // declare search bar
 var searchBar = UISearchBar()
@@ -72,6 +72,51 @@ self.avaArray.append(object.value(forKey: "ava") as! PFFile)
            self.tableView.reloadData()
 } else {print(error!.localizedDescription)}
         })
+    }
+}
+
+//UITableViewDataSource
+extension usersVC{
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return usernameArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! followersCell
+        
+        cell.followBtn.isHidden = true
+        
+        // connect cell's objects with received infromation from server
+        cell.username.text = usernameArray[indexPath.row]
+        avaArray[indexPath.row].getDataInBackground { (data, error) in
+            if error == nil {
+                cell.avaImg.image = UIImage(data: data!)
+            }
+        }
+        
+        return cell
+    }
+    
+}
+
+//UITableViewDelegate
+extension usersVC{
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // calling cell again to call cell data
+        let cell = tableView.cellForRow(at: indexPath) as! followersCell
+        
+        // if user tapped on his name go home, else go guest
+        if cell.username.text! == PFUser.current()?.username {
+let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+self.navigationController?.show(home, sender: nil)
+        } else {guestName.append(cell.username.text!)
+        let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+self.navigationController?.show(guest, sender: nil)
+        }
     }
 }
 

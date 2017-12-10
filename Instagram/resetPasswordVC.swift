@@ -10,6 +10,8 @@ import UIKit
 import Parse
 
 class resetPasswordVC: UIViewController,UITextFieldDelegate {
+ 
+    @IBOutlet weak var gradientImg: UIImageViewX!
     
 //Textfield
     @IBOutlet weak var emailTxt: UITextField!{didSet{emailTxt.delegate = self}}
@@ -24,21 +26,26 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
     
     var currentTextField: UITextField?
     
+    fileprivate var currentColorArrayIndex = -1
+    
+    fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
- 
-        
 //initalize button
         initInputFirst()
  
   //initalize reset btn
  initResetBtn()
+  
+        //set image color set
+        setColorArr()
+        
+        //recursively run animatedBackground()
+        animatedBackground()
     }
 
-    
-    
     //when users open this VC, the keyboard will appear at once
     override func viewWillAppear(_ animated: Bool) {
         
@@ -122,7 +129,28 @@ extension resetPasswordVC {
        
         self.resetBtn.applyGradient(colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
         
-        self.cancelBtn.applyGradient(colours: [UIColor(hex: "004FF9"), UIColor(hex: "833AB4")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+        self.cancelBtn.applyGradient(colours: [UIColor(hex: "C02425"), UIColor(hex: "F0CB35")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+    }
+    
+    //set image color set
+    fileprivate func setColorArr(){
+       
+        colorArray.append((color1: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.01960784314, green: 0.4588235294, blue: 0.9019607843, alpha: 1), color2: #colorLiteral(red: 0.007843137255, green: 0.1058823529, blue: 0.4745098039, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.168627451, green: 0.1960784314, blue: 0.6980392157, alpha: 1), color2: #colorLiteral(red: 0.3607843137, green: 0.1450980392, blue: 0.5529411765, alpha: 1)))
+    }
+    
+    //recursively run animatedBackground()
+    fileprivate func animatedBackground(){
+        
+        currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
+        UIView.transition(with: gradientImg, duration: 2, options: [.transitionCrossDissolve], animations: {
+            self.gradientImg.firstColor = self.colorArray[self.currentColorArrayIndex].color1
+            self.gradientImg.secondColor = self.colorArray[self.currentColorArrayIndex].color2
+        }) { (success) in
+            self.animatedBackground()
+        }
     }
 }
 

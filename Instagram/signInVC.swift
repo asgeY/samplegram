@@ -11,6 +11,8 @@ import Parse
 
 class signInVC: UIViewController,UITextFieldDelegate{
     
+    @IBOutlet weak var gradientBackground: UIImageViewX!
+    
     //TextFields
     @IBOutlet weak var usernameTxt: UITextField!
     {didSet{usernameTxt.delegate = self}}
@@ -28,8 +30,11 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var signInBtnHeight: NSLayoutConstraint!
     
-    
     @IBOutlet weak var assisView: UIView!
+    
+   fileprivate var currentColorArrayIndex = -1
+    
+   fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +44,13 @@ class signInVC: UIViewController,UITextFieldDelegate{
         
    //check text fields is or not written all
             setupAddTargetIsNotEmptyTextFields()
+      
+      //set image color set
+        setColorArr()
+      
+        //recursively run animatedBackground()
+        animatedBackground()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -50,6 +60,10 @@ class signInVC: UIViewController,UITextFieldDelegate{
         createObserver()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         
@@ -63,7 +77,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
     //clicked sign in button
     @IBAction func signInBtn_click(_ sender: Any) {
 
-        
         //login funcitons
         PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user:PFUser?, error:Error?) in
             
@@ -86,7 +99,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
             }
         }
     }
-  
     @IBAction func setUnwind(sender: UIStoryboardSegue){
     }
     
@@ -113,6 +125,25 @@ extension signInVC{
         
         signInBtn.applyGradient(colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0))
     }
+    
+    fileprivate func setColorArr(){
+        colorArray.append((color1: #colorLiteral(red: 0.2274509804, green: 0.1098039216, blue: 0.4431372549, alpha: 1), color2: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1), color2: #colorLiteral(red: 1, green: 0.8470588235, blue: 0.6078431373, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1), color2: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.8980392157, green: 0.1764705882, blue: 0.1529411765, alpha: 1), color2: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)))
+        colorArray.append((color1: #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1), color2: #colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1)))
+    }
+    
+  fileprivate func animatedBackground(){
+        
+        currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
+        UIView.transition(with: gradientBackground, duration: 2, options: [.transitionCrossDissolve], animations: {
+            self.gradientBackground.firstColor = self.colorArray[self.currentColorArrayIndex].color1
+            self.gradientBackground.secondColor = self.colorArray[self.currentColorArrayIndex].color2
+        }) { (success) in
+            self.animatedBackground()
+        }
+    }
 }
 
 //custom functions selectors
@@ -128,7 +159,6 @@ extension signInVC{
         }else{
  NotificationCenter.default.post(name: NSNotification.Name.init("NotHidden"), object: nil)
         }
-        
     }
 }
 
@@ -183,14 +213,13 @@ extension signInVC{
         if self.view.frame.origin.y >= 0{
             
             //Checking if the textfield is really hidden behind the keyboard
-            if editingTextField > keyboardY - 60{
-                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
-                    {[unowned self] in
-                        self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+    if editingTextField > keyboardY - 60{
+UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
+{[unowned self] in
+self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
                     }, completion: nil)
             }
         }
-        
     }
     
     @objc fileprivate func keyboardWillHide(argu: Notification){
@@ -219,3 +248,5 @@ extension signInVC{
     }
     
 }
+
+

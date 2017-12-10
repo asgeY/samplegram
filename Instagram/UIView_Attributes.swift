@@ -17,7 +17,7 @@ class UIView_Attributes: UIView {
         let cgContext = UIGraphicsGetCurrentContext()
         
         //set line width, let it euqal to line view height
-        cgContext?.setLineWidth(1.0)
+        cgContext?.setLineWidth(2.0)
         
         //set dash line color
         cgContext?.setStrokeColor(UIColor.red.cgColor)
@@ -45,7 +45,7 @@ extension UIView{
     func applyGradient(colours: [UIColor], locations: [NSNumber]? = nil, stP:CGPoint, edP:CGPoint){
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
-        gradient.colors = colours.map { $0.cgColor }
+        gradient.colors = colours.map{ $0.cgColor }
         gradient.locations = locations
         gradient.startPoint = stP
         gradient.endPoint = edP

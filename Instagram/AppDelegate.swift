@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        
         Parse.initialize(with: parseConfig)
       
         //call login() function to see tab bar if user has logined before
