@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class usersVC: UITableViewController,UISearchBarDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class usersVC: UITableViewController,UISearchBarDelegate{
 
     // declare search bar
 var searchBar = UISearchBar()
@@ -61,7 +61,7 @@ extension usersVC{
         
         let usersQuery = PFQuery(className: "_User")
         usersQuery.addDescendingOrder("createdAt")
-        usersQuery.limit = 20
+        usersQuery.limit = 6
         usersQuery.findObjectsInBackground (block: { (objects, error) in
             if error == nil {
                 
@@ -82,32 +82,6 @@ self.avaArray.append(object.value(forKey: "ava") as! PFFile)
         })
     }
     
-// COLLECTION VIEW CODE
-    fileprivate func collectionViewLaunch(){
-        
-        // layout of collectionView
-        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        
-        // item size
-        layout.itemSize = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
-        
-        // direction of scrolling
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        
-        // define frame of collectionView
-let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.tabBarController!.tabBar.frame.size.height - self.navigationController!.navigationBar.frame.size.height - 20)
-        
-        // declare collectionView
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .white
-        self.view.addSubview(collectionView)
-        
-        // define cell for collectionView
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-    }
 }
 
 //UITableViewDataSource
@@ -130,6 +104,13 @@ extension usersVC{
                 cell.avaImg.image = UIImage(data: data!)
             }
         }
+        
+        //hide follow button for current user
+        if cell.username.text == PFUser.current()?.username{
+            cell.gradientColor1 = UIColor.white.cgColor
+            cell.gradientColor2 = UIColor.white.cgColor
+        }
+        cell.setImgLayer()
         
         return cell
     }
@@ -232,57 +213,3 @@ self.avaArray.removeAll(keepingCapacity: false)
     }
 }
 
-//UICollectionViewDataSource
-extension usersVC{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return picArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // define cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        
-        // create picture imageView in cell to show loaded pictures
-        let picImg = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
-        cell.addSubview(picImg)
-        
-        // get loaded images from array
-        picArray[indexPath.row].getDataInBackground { (data, error) -> Void in
-            if error == nil {
-                picImg.image = UIImage(data: data!)
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-        
-        return cell
-    }
-}
-
-//UICollectionViewDelegate
-extension usersVC{
-    
-    // cell line spasing
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    // cell inter spasing
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    // cell's selected
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // take relevant unique id of post to load post in postVC
-        postuuid.append(uuidArray[indexPath.row])
-        
-        // present postVC programmaticaly
-        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
-        self.navigationController?.pushViewController(post, animated: true)
-    }
-    
-}
