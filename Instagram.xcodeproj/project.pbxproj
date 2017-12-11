@@ -33,6 +33,9 @@
 		A53818F71FDBB10300A9EFBB /* uploadNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53818F61FDBB10200A9EFBB /* uploadNav.swift */; };
 		A53818F91FDBB2A400A9EFBB /* usersNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53818F81FDBB2A400A9EFBB /* usersNav.swift */; };
 		A53819011FDD278800A9EFBB /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53819001FDD278800A9EFBB /* UIImageViewX.swift */; };
+		A53819061FDEF4CB00A9EFBB /* newsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53819051FDEF4CB00A9EFBB /* newsVC.swift */; };
+		A53819081FDEF4FD00A9EFBB /* newsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53819071FDEF4FD00A9EFBB /* newsCell.swift */; };
+		A538190A1FDEF76000A9EFBB /* newsNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53819091FDEF76000A9EFBB /* newsNav.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
@@ -101,6 +104,9 @@
 		A53818F61FDBB10200A9EFBB /* uploadNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadNav.swift; sourceTree = "<group>"; };
 		A53818F81FDBB2A400A9EFBB /* usersNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersNav.swift; sourceTree = "<group>"; };
 		A53819001FDD278800A9EFBB /* UIImageViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
+		A53819051FDEF4CB00A9EFBB /* newsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsVC.swift; sourceTree = "<group>"; };
+		A53819071FDEF4FD00A9EFBB /* newsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsCell.swift; sourceTree = "<group>"; };
+		A53819091FDEF76000A9EFBB /* newsNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsNav.swift; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
@@ -212,6 +218,15 @@
 			name = "Profile Part";
 			sourceTree = "<group>";
 		};
+		A53819041FDEF49700A9EFBB /* News Page Part */ = {
+			isa = PBXGroup;
+			children = (
+				A53819051FDEF4CB00A9EFBB /* newsVC.swift */,
+				A53819071FDEF4FD00A9EFBB /* newsCell.swift */,
+			);
+			name = "News Page Part";
+			sourceTree = "<group>";
+		};
 		A549C1541F6AC77F00207D42 /* User Defined Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,16 +330,17 @@
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
 				A51114411FD1008A00DCAC4C /* Tab Bar Part */,
 				A5FD76321FCECC87007355BF /* Navigation Part */,
-				A5FD76381FCED44D007355BF /* Collection Header Part */,
 				A51501491FD85E4E00062052 /* Feed Page Part */,
+				A587E2D21FDB013200E8E57A /* Users Page */,
+				A5FD76291FCBEA2F007355BF /* Upload Part */,
+				A53819041FDEF49700A9EFBB /* News Page Part */,
+				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
+				A5FD76381FCED44D007355BF /* Collection Header Part */,
 				A5F314031FD7164300246E71 /* Hashtag Page Part */,
 				A51114441FD185EE00DCAC4C /* Comment Page */,
-				A587E2D21FDB013200E8E57A /* Users Page */,
-				A511143C1FD0DE2F00DCAC4C /* Post Page Part */,
-				A5FD76291FCBEA2F007355BF /* Upload Part */,
-				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
-				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
 				A5EEB2851FC5E2B8002CB038 /* Guest Page Part */,
+				A511143C1FD0DE2F00DCAC4C /* Post Page Part */,
+				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
 				A526D5811FC7DD1E00B41468 /* Profile Part */,
 				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
 				A54A359A1FC2A5F0002DD885 /* Font */,
@@ -380,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				A526D57F1FC7DCFA00B41468 /* homeNav.swift */,
+				A53819091FDEF76000A9EFBB /* newsNav.swift */,
 				A5F313F01FD53EE500246E71 /* commentsNav.swift */,
 				A52DA2391FD9850400ADD815 /* editNav.swift */,
 				A52DA23B1FD9871B00ADD815 /* feedNav.swift */,
@@ -542,6 +559,7 @@
 				A511143E1FD0DE5500DCAC4C /* postVC.swift in Sources */,
 				A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */,
 				A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */,
+				A53819081FDEF4FD00A9EFBB /* newsCell.swift in Sources */,
 				A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */,
 				A52DA23C1FD9871B00ADD815 /* feedNav.swift in Sources */,
 				A51114401FD0DE8800DCAC4C /* postCell.swift in Sources */,
@@ -567,6 +585,7 @@
 				A53818F71FDBB10300A9EFBB /* uploadNav.swift in Sources */,
 				A51114461FD1863600DCAC4C /* commentVC.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
+				A538190A1FDEF76000A9EFBB /* newsNav.swift in Sources */,
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
@@ -577,6 +596,7 @@
 				A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,
+				A53819061FDEF4CB00A9EFBB /* newsVC.swift in Sources */,
 				A51114481FD1864E00DCAC4C /* commentCell.swift in Sources */,
 				A51114311FD043C100DCAC4C /* newAlertAction.swift in Sources */,
 			);
