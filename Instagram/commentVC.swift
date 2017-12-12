@@ -140,6 +140,47 @@ if success {print("hashtag \(word) is created")
     })
     }
 }
+        
+        // STEP 4. Send notification as @mention
+        var mentionCreated = Bool()
+        
+        for var word in words {
+            
+            // check @mentions for user
+            if word.hasPrefix("@") {
+                
+                // cut symbols
+                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                word = word.trimmingCharacters(in: CharacterSet.symbols)
+                
+                let newsObj = PFObject(className: "news")
+                newsObj["by"] = PFUser.current()?.username
+                newsObj["ava"] = PFUser.current()?.object(forKey: "ava") as! PFFile
+                newsObj["to"] = word
+                newsObj["owner"] = commentowner.last
+                newsObj["uuid"] = commentuuid.last
+                newsObj["type"] = "mention"
+                newsObj["checked"] = "no"
+                newsObj.saveEventually()
+                mentionCreated = true
+            }
+        }
+        
+        // STEP 5. Send notification as comment
+        if commentowner.last != PFUser.current()?.username && mentionCreated == false {
+            let newsObj = PFObject(className: "news")
+            newsObj["by"] = PFUser.current()?.username
+            newsObj["ava"] = PFUser.current()?.object(forKey: "ava") as! PFFile
+            newsObj["to"] = commentowner.last
+            newsObj["owner"] = commentowner.last
+            newsObj["uuid"] = commentuuid.last
+            newsObj["type"] = "comment"
+            newsObj["checked"] = "no"
+            newsObj.saveEventually()
+        }
+        
+        // scroll to bottom
+        self.tableView.scrollToRow(at: IndexPath(item: commentArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
 }
   
     @IBAction func BACK(_ sender: Any) {
