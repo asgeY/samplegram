@@ -36,7 +36,26 @@ class newsVC: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
+    
+    @IBAction func usernameBtn_click(_ sender: Any) {
+        
+// call index of button
+let i = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        
+// call cell to call further cell data
+let cell = tableView.cellForRow(at: i) as! newsCell
+        
+// if user tapped on himself go home, else go guest
+if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+self.navigationController?.show(home, sender: nil)
+} else {
+
+guestName.append(cell.usernameBtn.titleLabel!.text!)
+let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+self.navigationController?.show(guest, sender: nil)
+        }
+    }
 }// newsVC class over line
 
 //custom functions
@@ -161,5 +180,61 @@ cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
         
         return cell
     }
+}
 
+//UITableViewDelegate
+extension newsVC{
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // call cell for calling cell data
+        let cell = tableView.cellForRow(at: indexPath) as! newsCell
+        
+        // going to @menionted comments
+        if cell.infoLbl.text == "has mentioned you." {
+            
+            // send related data to gloval variable
+            commentuuid.append(uuidArray[indexPath.row])
+            commentowner.append(ownerArray[indexPath.row])
+            
+            // go comments
+            let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
+    self.navigationController?.show(comment, sender: nil)
+        }
+                
+    // going to own comments
+if cell.infoLbl.text == "has commented your post." {
+            
+// send related data to gloval variable
+commentuuid.append(uuidArray[indexPath.row])
+commentowner.append(ownerArray[indexPath.row])
+            
+// go comments
+let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
+            
+self.navigationController?.show(comment, sender: nil)
+        }
+        
+// going to user followed current user
+if cell.infoLbl.text == "now following you." {
+            
+// take guestname
+guestName.append(cell.usernameBtn.titleLabel!.text!)
+            
+    // go guest
+let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+self.navigationController?.show(guest, sender: nil)
+    }
+        
+        // going to liked post
+        if cell.infoLbl.text == "likes your post." {
+            
+      // take post uuid
+    postuuid.append(uuidArray[indexPath.row])
+            
+    // go post
+let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
+self.navigationController?.show(post, sender: nil)
+        }
+}
 }

@@ -34,7 +34,7 @@ extension newsNav{
     fileprivate func setNavBarAtrributes(){
         
         // color of background of nav controller
-        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "BBD2C5"), UIColor(hex: "BBD2C5"), UIColor(hex: "292E49")])
+        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "E52D27"), UIColor(hex: "B31217")])
         
         // disable translucent
         self.navigationBar.isTranslucent = false
