@@ -14,6 +14,9 @@ var icons = UIScrollView()
 var corner = UIImageView()
 var dot = UIView()
 
+// custom tabbar button
+let tabBarPostButton = UIButton()
+
 class tabbarVC: UITabBarController {
 
     override func viewDidLoad() {
@@ -30,7 +33,13 @@ createCornerIcon()
         
         // create dot
 createDotIcon()
-    }
+        
+        // call function of all type of notifications
+        query(["like"], image: UIImage(named: "likeIcon.png")!)
+        query(["follow"], image: UIImage(named: "followIcon.png")!)
+        query(["mention", "comment"], image: UIImage(named: "commentIcon.png")!)
+        
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,4 +93,45 @@ extension tabbarVC{
         self.view.addSubview(dot)
     }
     
+    // multiple query
+    fileprivate func query (_ type:[String], image:UIImage) {
+        
+        let query = PFQuery(className: "news")
+        query.whereKey("to", equalTo: PFUser.current()!.username!)
+        //query.whereKey("checked", equalTo: "no")
+        query.whereKey("type", containedIn: type)
+        query.countObjectsInBackground (block: { (count, error) in
+            if error == nil {
+                if count > 0 {
+        self.placeIcon(image, text: "\(count)")
+                }
+        } else {print(error!.localizedDescription)}
+        })
+    }
+    
+    // multiple icons
+   fileprivate func placeIcon (_ image:UIImage, text:String) {
+        
+        // create separate icon
+        let view = UIImageView(frame: CGRect(x: icons.contentSize.width, y: 0, width: 50, height: 35))
+        view.image = image
+        icons.addSubview(view)
+        
+        // create label
+        let label = UILabel(frame: CGRect(x: view.frame.size.width / 2, y: 0, width: view.frame.size.width / 2, height: view.frame.size.height))
+        label.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+        label.text = text
+        label.textAlignment = .center
+        label.textColor = .white
+        view.addSubview(label)
+        
+        // update icons view frame
+        icons.frame.size.width = icons.frame.size.width + view.frame.size.width - 4
+        icons.contentSize.width = icons.contentSize.width + view.frame.size.width - 4
+        icons.center.x = self.view.frame.size.width / 5 * 4 - (self.view.frame.size.width / 5) / 4
+        
+        // unhide elements
+        corner.isHidden = false
+        dot.isHidden = false
+    }
 }
