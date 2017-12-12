@@ -98,7 +98,7 @@ self.typeArray.append(object.object(forKey: "type") as! String)
 self.dateArray.append(object.createdAt)
 self.uuidArray.append(object.object(forKey: "uuid") as! String)
 self.ownerArray.append(object.object(forKey: "owner") as! String)
-                    
+            
         // save notifications as checked
         object["checked"] = "yes"
         object.saveEventually()

@@ -39,6 +39,8 @@ createDotIcon()
         query(["follow"], image: UIImage(named: "followIcon.png")!)
         query(["mention", "comment"], image: UIImage(named: "commentIcon.png")!)
         
+// hide icons objects
+setHideItemAnimation()
 }
 
     override func didReceiveMemoryWarning() {
@@ -133,5 +135,15 @@ extension tabbarVC{
         // unhide elements
         corner.isHidden = false
         dot.isHidden = false
+    }
+    
+    fileprivate func setHideItemAnimation(){
+        
+        // hide icons objects
+        UIView.animate(withDuration: 1, delay: 8, options: [], animations: {
+            icons.alpha = 0
+            corner.alpha = 0
+            dot.alpha = 0
+        }, completion: nil)
     }
 }
