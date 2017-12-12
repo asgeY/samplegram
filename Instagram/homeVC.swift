@@ -150,7 +150,7 @@ fileprivate func createObserver(){
         //find objects related to my request
         query.findObjectsInBackground { (objects, error) in
             
-            if error == nil{
+ if error == nil{
     //clean up
 self.uuidArray.removeAll(keepingCapacity: false)
 self.picArray.removeAll(keepingCapacity: false)

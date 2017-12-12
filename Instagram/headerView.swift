@@ -41,8 +41,7 @@ class headerView: UICollectionReusableView {
     
   // clicked follow button from GuestVC
     @IBAction func followBtn_clicked(_ sender: Any) {
-    
-    
+        
     let title = button.title(for: .normal)
     
     //to follow
@@ -51,9 +50,8 @@ if title == "FOLLOW" {
     object["follower"] = PFUser.current()?.username
     object["following"] = (guestName.last)!
     object.saveInBackground(block: { (success, error) in
-        
         if success {
-            
+
             self.button.setTitle("FOLLOWING", for: .normal)
             self.button.backgroundColor = .green
             
@@ -67,10 +65,7 @@ if title == "FOLLOW" {
             newsObj["type"] = "follow"
             newsObj["checked"] = "no"
             newsObj.saveEventually()
-        } else {
-            print(error!.localizedDescription)
-        }
-
+} else {print(error!.localizedDescription)}
     })
 }else{
     
@@ -92,7 +87,7 @@ if title == "FOLLOW" {
 let newsQuery = PFQuery(className: "news")
 newsQuery.whereKey("by", equalTo: (PFUser.current()!.username)!)
 newsQuery.whereKey("to", equalTo: (guestName.last)!)
-                        newsQuery.whereKey("type", equalTo: "follow")
+newsQuery.whereKey("type", equalTo: "follow")
     
 newsQuery.findObjectsInBackground(block: { (objects, error)  in
 
