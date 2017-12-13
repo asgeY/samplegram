@@ -14,9 +14,6 @@ var icons = UIScrollView()
 var corner = UIImageView()
 var dot = UIView()
 
-// custom tabbar button
-let tabBarPostButton = UIButton()
-
 class tabbarVC: UITabBarController {
 
     override func viewDidLoad() {
@@ -70,7 +67,8 @@ extension tabbarVC{
     fileprivate func createIcons(){
         
         // create total icons
-        icons.frame = CGRect(x: self.view.frame.size.width / 5 * 3 + 10, y: self.view.frame.size.height - self.tabBar.frame.size.height * 2 - 3, width: 50, height: 35)
+        icons.frame = CGRect(x: self.view.frame.size.width / 5 * 3 + 10, y: self.view.frame.size.height - self.tabBar.frame.size.height * 2 - 7, width: 50, height: 35)
+        icons.layer.cornerRadius = 5
         self.view.addSubview(icons)
     }
     
@@ -147,3 +145,5 @@ extension tabbarVC{
         }, completion: nil)
     }
 }
+
+

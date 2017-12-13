@@ -355,7 +355,7 @@ query.findObjectsInBackground(block: { (objects, error) in
     self.picArray.removeAll(keepingCapacity: false)
     self.titleArray.removeAll(keepingCapacity: false)
     self.uuidArray.removeAll(keepingCapacity: false)
-                        
+            
     // find related objects
 for object in objects! {
     
