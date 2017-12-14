@@ -978,7 +978,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
-                        <barButtonItem key="rightBarButtonItem" image="gear" id="xYr-id-TOv">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="xYr-id-TOv">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="logout:" destination="BEf-b8-oXe" id="zrE-Me-wWx"/>
@@ -1549,11 +1549,11 @@
             </objects>
             <point key="canvasLocation" x="4329" y="91"/>
         </scene>
-        <!--home-->
+        <!--Home-->
         <scene sceneID="jPN-fg-0e3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dY1-NC-p1n" customClass="homeNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="home" image="home" id="vV9-gu-Ec8"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Home" image="home" id="vV9-gu-Ec8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4sb-ga-6EK">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2141,11 +2141,11 @@
             </objects>
             <point key="canvasLocation" x="3230" y="1677"/>
         </scene>
-        <!--upload-->
+        <!--Upload-->
         <scene sceneID="N5f-W8-fx0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="idH-zD-E3L" customClass="uploadNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="upload" image="upload" id="UsA-pY-QuM"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Upload" image="upload" id="UsA-pY-QuM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9U3-Ro-l4j">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2495,11 +2495,11 @@
             </objects>
             <point key="canvasLocation" x="4329" y="-610"/>
         </scene>
-        <!--users-->
+        <!--Users-->
         <scene sceneID="sha-VY-QYH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIf-Dm-gYM" customClass="usersNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="users" image="users" id="caf-Yx-k63"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Users" image="users" id="caf-Yx-k63"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eUB-Xy-4ev">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2517,11 +2517,11 @@
             </objects>
             <point key="canvasLocation" x="3230" y="-609"/>
         </scene>
-        <!--notifications-->
+        <!--Notifications-->
         <scene sceneID="uAH-DZ-t18">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BoS-Ba-Siy" customClass="newsNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="notifications" image="news" id="k8U-ik-VFG"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Notifications" image="news" id="k8U-ik-VFG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="alE-7n-Jm9">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2541,11 +2541,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Settings" width="30" height="30"/>
         <image name="back" width="26" height="26"/>
         <image name="comment" width="270" height="270"/>
         <image name="down" width="50" height="50"/>
         <image name="feed" width="25" height="25"/>
-        <image name="gear" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="logo.svg" width="2000" height="714"/>
         <image name="more" width="270" height="270"/>

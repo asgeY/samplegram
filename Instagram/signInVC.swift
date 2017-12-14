@@ -127,12 +127,8 @@ extension signInVC{
     }
     
     fileprivate func setColorArr(){
-        colorArray.append((color1: #colorLiteral(red: 0.2274509804, green: 0.1098039216, blue: 0.4431372549, alpha: 1), color2: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1), color2: #colorLiteral(red: 1, green: 0.8470588235, blue: 0.6078431373, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1), color2: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.8980392157, green: 0.1764705882, blue: 0.1529411765, alpha: 1), color2: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1), color2: #colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1)))
-    }
+colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2274509804, green: 0.1098039216, blue: 0.4431372549, alpha: 1), color2: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1)),(color1: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1), color2: #colorLiteral(red: 1, green: 0.8470588235, blue: 0.6078431373, alpha: 1)),(color1: #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1), color2: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)),(color1: #colorLiteral(red: 0.8980392157, green: 0.1764705882, blue: 0.1529411765, alpha: 1), color2: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)),(color1: #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1), color2: #colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))])
+}
     
   fileprivate func animatedBackground(){
         

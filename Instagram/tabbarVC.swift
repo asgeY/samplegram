@@ -16,12 +16,20 @@ var dot = UIView()
 
 class tabbarVC: UITabBarController {
 
-    override func viewDidLoad() {
+    var storedImageViewArr:[UIImageView?] = []
+    
+var times0 = 1; var times1 = 0
+var times2 = 0; var times3 = 0; var times4 = 0
+    
+override func viewDidLoad() {
         super.viewDidLoad()
+
+  // create image views
+ createImageView()
         
         //set tab bar layer
 setTabBarLayer()
-        
+   
         // creare total icons
 createIcons()
         
@@ -50,6 +58,15 @@ setHideItemAnimation()
 //custom functions
 extension tabbarVC{
     
+    fileprivate func createImageView(){
+        storedImageViewArr = [0,1,2,3,4].map{ (offset) -> UIImageView in
+let tempImageView = self.tabBar.subviews[offset].subviews.first as! UIImageView
+tempImageView.contentMode = .center
+return tempImageView
+        }
+        
+    }
+    
     //set tab bar layer
     fileprivate func setTabBarLayer(){
         
@@ -69,7 +86,7 @@ extension tabbarVC{
         // create total icons
         icons.frame = CGRect(x: self.view.frame.size.width / 5 * 3 + 10, y: self.view.frame.size.height - self.tabBar.frame.size.height * 2 - 7, width: 50, height: 35)
         icons.layer.cornerRadius = 5
-        self.view.addSubview(icons)
+    self.view.addSubview(icons)
     }
     
     // create corner
@@ -79,7 +96,7 @@ extension tabbarVC{
         corner.center.x = icons.center.x
         corner.image = UIImage(named: "corner.png")
         corner.isHidden = true
-        self.view.addSubview(corner)
+   self.view.addSubview(corner)
     }
     
     // create dot
@@ -90,7 +107,7 @@ extension tabbarVC{
         dot.backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 29/255, alpha: 1)
         dot.layer.cornerRadius = dot.frame.size.width / 2
         dot.isHidden = true
-        self.view.addSubview(dot)
+      self.view.addSubview(dot)
     }
     
     // multiple query
@@ -134,11 +151,12 @@ extension tabbarVC{
         corner.isHidden = false
         dot.isHidden = false
     }
+  
     
     fileprivate func setHideItemAnimation(){
         
         // hide icons objects
-        UIView.animate(withDuration: 1, delay: 8, options: [], animations: {
+        UIView.animate(withDuration: 1, delay: 4, options: [], animations: {
             icons.alpha = 0
             corner.alpha = 0
             dot.alpha = 0
@@ -146,4 +164,58 @@ extension tabbarVC{
     }
 }
 
-
+extension tabbarVC{
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        if item.tag == 0,times0 == 0{
+            
+let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+bounceAnimation.duration = TimeInterval(0.5)
+bounceAnimation.calculationMode = kCAAnimationCubic
+    self.storedImageViewArr[0]?.layer.add(bounceAnimation, forKey: nil)
+times0 += 1;times1 = 0;times2 = 0;times3 = 0;times4 = 0
+}
+        
+        if item.tag == 1,times1 == 0{
+            
+            let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.duration = TimeInterval(0.5)
+            bounceAnimation.calculationMode = kCAAnimationCubic
+            self.storedImageViewArr[1]?.layer.add(bounceAnimation, forKey: nil)
+times0 = 0;times1 += 1;times2 = 0;times3 = 0;times4 = 0
+}
+        
+        if item.tag == 2,times2 == 0{
+            
+            let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.duration = TimeInterval(0.5)
+            bounceAnimation.calculationMode = kCAAnimationCubic
+            self.storedImageViewArr[2]?.layer.add(bounceAnimation, forKey: nil)
+times0 = 0;times1 = 0;times2 += 1;times3 = 0;times4 = 0
+}
+        
+        if item.tag == 3,times3 == 0{
+            
+            let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.duration = TimeInterval(0.5)
+            bounceAnimation.calculationMode = kCAAnimationCubic
+            self.storedImageViewArr[3]?.layer.add(bounceAnimation, forKey: nil)
+times0 = 0;times1 = 0;times2 = 0;times3 += 1;times4 = 0
+}
+        
+        if item.tag == 4,times4 == 0{
+            
+            let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.duration = TimeInterval(0.5)
+            bounceAnimation.calculationMode = kCAAnimationCubic
+            self.storedImageViewArr[4]?.layer.add(bounceAnimation, forKey: nil)
+times0 = 0;times1 = 0;times2 = 0;times3 = 0;times4 += 1
+        }
+    }
+}

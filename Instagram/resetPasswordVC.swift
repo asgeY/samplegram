@@ -58,10 +58,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         setUpObservers()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        super.viewWillDisappear(true)
-        
+    deinit {
         //deallocate observers
         deallocateObservers()
     }
@@ -134,12 +131,8 @@ extension resetPasswordVC {
     
     //set image color set
     fileprivate func setColorArr(){
-       
-        colorArray.append((color1: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.01960784314, green: 0.4588235294, blue: 0.9019607843, alpha: 1), color2: #colorLiteral(red: 0.007843137255, green: 0.1058823529, blue: 0.4745098039, alpha: 1)))
-        colorArray.append((color1: #colorLiteral(red: 0.168627451, green: 0.1960784314, blue: 0.6980392157, alpha: 1), color2: #colorLiteral(red: 0.3607843137, green: 0.1450980392, blue: 0.5529411765, alpha: 1)))
-    }
+     colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)),(color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)),(color1: #colorLiteral(red: 0.01960784314, green: 0.4588235294, blue: 0.9019607843, alpha: 1), color2: #colorLiteral(red: 0.007843137255, green: 0.1058823529, blue: 0.4745098039, alpha: 1)),(color1: #colorLiteral(red: 0.168627451, green: 0.1960784314, blue: 0.6980392157, alpha: 1), color2: #colorLiteral(red: 0.3607843137, green: 0.1450980392, blue: 0.5529411765, alpha: 1))])
+}
     
     //recursively run animatedBackground()
     fileprivate func animatedBackground(){
