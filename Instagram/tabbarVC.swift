@@ -164,6 +164,7 @@ return tempImageView
     }
 }
 
+//UITabBarControllerDelegate
 extension tabbarVC{
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -171,7 +172,7 @@ extension tabbarVC{
         if item.tag == 0,times0 == 0{
             
 let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
 bounceAnimation.duration = TimeInterval(0.5)
 bounceAnimation.calculationMode = kCAAnimationCubic
     self.storedImageViewArr[0]?.layer.add(bounceAnimation, forKey: nil)
@@ -181,7 +182,7 @@ times0 += 1;times1 = 0;times2 = 0;times3 = 0;times4 = 0
         if item.tag == 1,times1 == 0{
             
             let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
             bounceAnimation.duration = TimeInterval(0.5)
             bounceAnimation.calculationMode = kCAAnimationCubic
             self.storedImageViewArr[1]?.layer.add(bounceAnimation, forKey: nil)
@@ -191,7 +192,7 @@ times0 = 0;times1 += 1;times2 = 0;times3 = 0;times4 = 0
         if item.tag == 2,times2 == 0{
             
             let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
             bounceAnimation.duration = TimeInterval(0.5)
             bounceAnimation.calculationMode = kCAAnimationCubic
             self.storedImageViewArr[2]?.layer.add(bounceAnimation, forKey: nil)
@@ -201,7 +202,7 @@ times0 = 0;times1 = 0;times2 += 1;times3 = 0;times4 = 0
         if item.tag == 3,times3 == 0{
             
             let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
             bounceAnimation.duration = TimeInterval(0.5)
             bounceAnimation.calculationMode = kCAAnimationCubic
             self.storedImageViewArr[3]?.layer.add(bounceAnimation, forKey: nil)
@@ -209,12 +210,13 @@ times0 = 0;times1 = 0;times2 = 0;times3 += 1;times4 = 0
 }
         
         if item.tag == 4,times4 == 0{
-            
+           
             let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-            bounceAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+            bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
             bounceAnimation.duration = TimeInterval(0.5)
             bounceAnimation.calculationMode = kCAAnimationCubic
             self.storedImageViewArr[4]?.layer.add(bounceAnimation, forKey: nil)
+       
 times0 = 0;times1 = 0;times2 = 0;times3 = 0;times4 += 1
         }
     }
