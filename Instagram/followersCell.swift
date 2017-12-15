@@ -24,8 +24,8 @@ class followersCell: UITableViewCell {
     let gradient = CAGradientLayer()
     
     
-    var gradientColor1 = UIColor.init(hex: "833AB4").cgColor
-    var gradientColor2 = UIColor.init(hex: "FCB045").cgColor
+    var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
+    var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
  
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -93,15 +93,16 @@ extension followersCell{
 func setImgLayer(){
         
  avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
- avaImg.layer.borderWidth = 1
- avaImg.layer.borderColor = UIColor.black.cgColor
+ avaImg.layer.borderWidth = 0
  avaImg.clipsToBounds = true
       
 gradient.frame =  CGRect(origin: CGPoint.init(x: 0, y: 0), size: self.imageInset.frame.size)
+gradient.locations = [0.2,0.7]
 gradient.colors = [gradientColor1, gradientColor2]
-        
+
+    
 shape.lineWidth = 3
-    shape.path = UIBezierPath(arcCenter: self.avaImg.center, radius: self.imageInset.bounds.size.width / 2 - 1, startAngle: CGFloat(-80 * Double.pi / 180), endAngle: CGFloat(440 * Double.pi / 180), clockwise: true).cgPath
+    shape.path = UIBezierPath(arcCenter: self.avaImg.center, radius: self.imageInset.bounds.size.width / 2 - 1, startAngle: 0, endAngle: CGFloat(360 * Double.pi / 180), clockwise: true).cgPath
         
       shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor

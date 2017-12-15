@@ -1746,7 +1746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j89-oU-0ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="91"/>
+            <point key="canvasLocation" x="5526" y="887"/>
         </scene>
         <!--PostVC-->
         <scene sceneID="v7z-DB-nhB">
@@ -1920,7 +1920,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewc-cc-xpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="-1306"/>
+            <point key="canvasLocation" x="6196" y="-610"/>
         </scene>
         <!--GuestVC-->
         <scene sceneID="HBA-oJ-WYL">
@@ -2166,7 +2166,7 @@
         <!--Comments Nav-->
         <scene sceneID="gPP-z5-iOG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dXv-mP-2Mp" customClass="commentsNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="commentsNav" automaticallyAdjustsScrollViewInsets="NO" id="dXv-mP-2Mp" customClass="commentsNav" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Eb-BN-aGf">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2185,7 +2185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pE-i1-RMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="-610"/>
+            <point key="canvasLocation" x="5527" y="91"/>
         </scene>
         <!--FeedVC-->
         <scene sceneID="oaO-ev-Ioh">
@@ -2383,7 +2383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Twq-pE-z8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4329" y="-1306"/>
+            <point key="canvasLocation" x="5470" y="-1306"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Oyd-wF-x7Y">
@@ -2564,6 +2564,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1bI-cr-ZhO"/>
+        <segue reference="smk-6g-Dv1"/>
     </inferredMetricsTieBreakers>
 </document>

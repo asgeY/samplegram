@@ -198,7 +198,7 @@ extension newsVC{
             commentowner.append(ownerArray[indexPath.row])
             
             // go comments
-            let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
+            let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentsNav") as! commentsNav
     self.navigationController?.show(comment, sender: nil)
         }
                 
@@ -210,10 +210,11 @@ commentuuid.append(uuidArray[indexPath.row])
 commentowner.append(ownerArray[indexPath.row])
             
 // go comments
-let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
+let comment = self.storyboard?.instantiateViewController(withIdentifier: "commentsNav") as! commentsNav
             
 self.navigationController?.show(comment, sender: nil)
-        }
+
+}
         
 // going to user followed current user
 if cell.infoLbl.text == "now following you." {
