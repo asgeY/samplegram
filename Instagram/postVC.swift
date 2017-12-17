@@ -17,12 +17,12 @@ class postVC: UIViewController,UITableViewDataSource {
     {didSet{self.customTableView.dataSource = self}}
     
     // arrays to hold information from server
-    var avaArray = [PFFile]()
-    var usernameArray = [String]()
-    var dateArray = [Date?]()
-    var picArray = [PFFile]()
-    var uuidArray = [String]()
-    var titleArray = [String]()
+    fileprivate var avaArray = [PFFile]()
+    fileprivate var usernameArray = [String]()
+    fileprivate var dateArray = [Date?]()
+    fileprivate var picArray = [PFFile]()
+    fileprivate var uuidArray = [String]()
+    fileprivate var titleArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

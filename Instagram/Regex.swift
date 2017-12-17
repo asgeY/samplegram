@@ -10,6 +10,7 @@ import Foundation
 
 enum Validate {
 
+case username(_: String)
 case email(_: String)
 case URL(_ :String)
 
@@ -18,6 +19,10 @@ case URL(_ :String)
         var currObject:String!
         
         switch self {
+            
+        case let .username(str):
+            predicateStr = "[A-Z0-9a-z._%+-]"
+            currObject = str
         case let .email(str):
             predicateStr = "[A-Z0-9a-z._%+-]{4}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2}"
             currObject = str

@@ -227,27 +227,91 @@
 			name = "News Page Part";
 			sourceTree = "<group>";
 		};
-		A549C1541F6AC77F00207D42 /* User Defined Attributes */ = {
+		A53819151FE40CAB00A9EFBB /* KILabel */ = {
 			isa = PBXGroup;
 			children = (
-				A51826871FA091AA005B50D0 /* HexColor.swift */,
-				A5FD76271FCAB6BD007355BF /* Regex.swift */,
-				A53819001FDD278800A9EFBB /* UIImageViewX.swift */,
-				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
-				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
-				A51114381FD0447100DCAC4C /* UIColor_Extension.swift */,
-				A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */,
-				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
+				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
+				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
+			);
+			name = KILabel;
+			sourceTree = "<group>";
+		};
+		A53819161FE40D5D00A9EFBB /* newAlert */ = {
+			isa = PBXGroup;
+			children = (
 				A51114301FD043C100DCAC4C /* newAlertAction.swift */,
 				A51114321FD043E500DCAC4C /* newAlertAnimation.swift */,
 				A51114341FD0442E00DCAC4C /* newAlertVC.swift */,
 				A51114361FD0445100DCAC4C /* newAlertTextField.swift */,
-				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
-				A5F313F41FD55D0200246E71 /* GrowingTextView.swift */,
-				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
-				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
 			);
-			name = "User Defined Attributes";
+			name = newAlert;
+			sourceTree = "<group>";
+		};
+		A53819171FE40D6D00A9EFBB /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
+				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
+				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
+				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
+			);
+			name = Attributes;
+			sourceTree = "<group>";
+		};
+		A53819181FE40D7F00A9EFBB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A51114381FD0447100DCAC4C /* UIColor_Extension.swift */,
+				A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		A53819191FE40E2F00A9EFBB /* Color Assist */ = {
+			isa = PBXGroup;
+			children = (
+				A51826871FA091AA005B50D0 /* HexColor.swift */,
+			);
+			name = "Color Assist";
+			sourceTree = "<group>";
+		};
+		A538191A1FE40E4900A9EFBB /* Regex Assist */ = {
+			isa = PBXGroup;
+			children = (
+				A5FD76271FCAB6BD007355BF /* Regex.swift */,
+			);
+			name = "Regex Assist";
+			sourceTree = "<group>";
+		};
+		A538191B1FE40E5700A9EFBB /* UIImageView Assist */ = {
+			isa = PBXGroup;
+			children = (
+				A53819001FDD278800A9EFBB /* UIImageViewX.swift */,
+			);
+			name = "UIImageView Assist";
+			sourceTree = "<group>";
+		};
+		A538191C1FE40E6500A9EFBB /* UITextView Assist */ = {
+			isa = PBXGroup;
+			children = (
+				A5F313F41FD55D0200246E71 /* GrowingTextView.swift */,
+			);
+			name = "UITextView Assist";
+			sourceTree = "<group>";
+		};
+		A549C1541F6AC77F00207D42 /* Custom Assist */ = {
+			isa = PBXGroup;
+			children = (
+				A53819171FE40D6D00A9EFBB /* Attributes */,
+				A53819191FE40E2F00A9EFBB /* Color Assist */,
+				A53819181FE40D7F00A9EFBB /* Extensions */,
+				A53819151FE40CAB00A9EFBB /* KILabel */,
+				A53819161FE40D5D00A9EFBB /* newAlert */,
+				A538191A1FE40E4900A9EFBB /* Regex Assist */,
+				A538191B1FE40E5700A9EFBB /* UIImageView Assist */,
+				A538191C1FE40E6500A9EFBB /* UITextView Assist */,
+			);
+			name = "Custom Assist";
 			sourceTree = "<group>";
 		};
 		A54A359A1FC2A5F0002DD885 /* Font */ = {
@@ -342,7 +406,7 @@
 				A511143C1FD0DE2F00DCAC4C /* Post Page Part */,
 				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
 				A526D5811FC7DD1E00B41468 /* Profile Part */,
-				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
+				A549C1541F6AC77F00207D42 /* Custom Assist */,
 				A54A359A1FC2A5F0002DD885 /* Font */,
 			);
 			path = Instagram;

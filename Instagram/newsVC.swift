@@ -12,12 +12,12 @@ import Parse
 class newsVC: UITableViewController {
 
     // arrays to hold data from server
-    var usernameArray = [String]()
-    var avaArray = [PFFile]()
-    var typeArray = [String]()
-    var dateArray = [Date?]()
-    var uuidArray = [String]()
-    var ownerArray = [String]()
+   fileprivate var usernameArray = [String]()
+   fileprivate var avaArray = [PFFile]()
+   fileprivate var typeArray = [String]()
+   fileprivate var dateArray = [Date?]()
+   fileprivate var uuidArray = [String]()
+   fileprivate var ownerArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

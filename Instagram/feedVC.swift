@@ -14,22 +14,20 @@ class feedVC: UIViewController,UITableViewDataSource,UIScrollViewDelegate {
     @IBOutlet weak var tableView: UITableView!
 {didSet{self.tableView.dataSource = self}}
     
-    // UI objects
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-     var refresher = UIRefreshControl()
+    fileprivate var refresher = UIRefreshControl()
     
     // arrays to hold server data
-    var usernameArray = [String]()
-    var avaArray = [PFFile]()
-    var dateArray = [Date?]()
-    var picArray = [PFFile]()
-    var titleArray = [String]()
-    var uuidArray = [String]()
+   fileprivate var usernameArray = [String]()
+   fileprivate var avaArray = [PFFile]()
+   fileprivate var dateArray = [Date?]()
+   fileprivate var picArray = [PFFile]()
+   fileprivate var titleArray = [String]()
+   fileprivate var uuidArray = [String]()
     
-    var followArray = [String]()
+   fileprivate var followArray = [String]()
     
     // page size
-    var page = 10
+   fileprivate var page = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -243,9 +241,6 @@ extension feedVC{
         // if posts on the server are more than shown
         if page <= uuidArray.count {
             
-            // start animating indicator
-            indicator.startAnimating()
-            
             // increase page size to load +10 posts
             page = page + 10
             
@@ -294,7 +289,6 @@ self.uuidArray.append(object.object(forKey: "uuid") as! String)
                             
 // reload tableView & stop animating indicator
     self.tableView.reloadData()
-    self.indicator.stopAnimating()
                             
 } else {print(error!.localizedDescription)}})
 } else {print(error!.localizedDescription)}

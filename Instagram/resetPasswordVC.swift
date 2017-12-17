@@ -24,7 +24,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var distanceOfBtnAndTxtF: NSLayoutConstraint!
     @IBOutlet weak var resetBtnHeight: NSLayoutConstraint!
     
-    var currentTextField: UITextField?
+   fileprivate var currentTextField: UITextField?
     
     fileprivate var currentColorArrayIndex = -1
     

@@ -35,17 +35,17 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
     @IBOutlet weak var genderTxt: UITextField_Attributes!
 
     // pickerView & pickerData
-var genderPicker : UIPickerView!
+fileprivate var genderPicker : UIPickerView!
 {didSet{
     self.genderPicker.dataSource = self
     self.genderPicker.delegate = self
     }
 }
     
-    var genders = [""]
+    fileprivate var genders = [""]
     
     // value to hold keyboard frame size
-    var keyboard:CGRect!
+    fileprivate var keyboard:CGRect!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

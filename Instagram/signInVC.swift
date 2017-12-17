@@ -20,7 +20,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var passwordTxt: UITextField!
 {didSet{passwordTxt.delegate = self}}
     
-    var activeTextField: UITextField?
+   fileprivate var activeTextField: UITextField?
  
     //Buttons
     @IBOutlet weak var signInBtn: UIButton!

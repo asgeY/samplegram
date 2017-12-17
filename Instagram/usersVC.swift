@@ -12,19 +12,19 @@ import Parse
 class usersVC: UITableViewController,UISearchBarDelegate{
 
     // declare search bar
-var searchBar = UISearchBar()
+fileprivate var searchBar = UISearchBar()
     
     // tableView arrays to hold information from server
-    var usernameArray = [String]()
-var avaArray = [PFFile]()
+   fileprivate var usernameArray = [String]()
+fileprivate var avaArray = [PFFile]()
   
     // collectionView UI
-    var collectionView : UICollectionView!
+   fileprivate var collectionView : UICollectionView!
     
     // collectionView arrays to hold infromation from server
-    var picArray = [PFFile]()
-    var uuidArray = [String]()
-    var page = 15
+    fileprivate var picArray = [PFFile]()
+    fileprivate var uuidArray = [String]()
+    fileprivate var page = 15
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,8 +109,7 @@ extension usersVC{
         if cell.username.text == PFUser.current()?.username{
             cell.gradientColor1 = UIColor.white.cgColor
             cell.gradientColor2 = UIColor.white.cgColor
-        }
-        cell.setImgLayer()
+        }else {cell.setImgLayer()}
         
         return cell
     }

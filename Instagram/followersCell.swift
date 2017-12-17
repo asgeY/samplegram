@@ -19,13 +19,13 @@ class followersCell: UITableViewCell {
   
     @IBOutlet weak var imageInset: UIView!
     
-    let shape = CAShapeLayer()
+    fileprivate let shape = CAShapeLayer()
     
-    let gradient = CAGradientLayer()
+    fileprivate let gradient = CAGradientLayer()
     
     
-    var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
-    var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
+    fileprivate var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
+    fileprivate var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
  
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -97,7 +97,8 @@ func setImgLayer(){
  avaImg.clipsToBounds = true
       
 gradient.frame =  CGRect(origin: CGPoint.init(x: 0, y: 0), size: self.imageInset.frame.size)
-gradient.locations = [0.2,0.7]
+gradient.startPoint = CGPoint.init(x: 0.8, y: 0.1)
+gradient.endPoint = CGPoint.init(x: 0.1, y: 0.8)
 gradient.colors = [gradientColor1, gradientColor2]
 
     

@@ -15,11 +15,11 @@ var varUser = ""
 class followersVC: UITableViewController {
 
    //arrays to hold data received from servers
-    var usernameArray = [String]()
-    var avaArray = [PFFile]()
+    fileprivate var usernameArray = [String]()
+    fileprivate var avaArray = [PFFile]()
   
  //arrays for showing who do we follow or who following us
-  var followArray = [String]()
+  fileprivate var followArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

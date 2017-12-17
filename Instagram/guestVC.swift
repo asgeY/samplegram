@@ -15,12 +15,12 @@ var guestName = [String]()
 class guestVC: UICollectionViewController {
 
     //UI objects
-    var refresher:UIRefreshControl!
-    var page = 10
+    fileprivate var refresher:UIRefreshControl!
+    fileprivate var page = 10
     
     //arrays to hold data from server
-    var uuidArray = [String]()
-    var picArray = [PFFile]()
+    fileprivate var uuidArray = [String]()
+    fileprivate var picArray = [PFFile]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,9 +15,21 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
 //Auto layout height
     @IBOutlet weak var scrollArea: NSLayoutConstraint!
+  
+    @IBOutlet weak var usernameCount: UILabel!
+    
+    @IBOutlet weak var usernameLimitCount: UILabel!
+    
+    @IBOutlet weak var fullnameCount: UILabel!
+    
+    @IBOutlet weak var fullnameLimitCount: UILabel!
     
 //ImageView
     @IBOutlet weak var avaImg: UIImageView!
+ 
+    @IBOutlet weak var bioCount: UILabel!
+    
+    @IBOutlet weak var bioLimitCount: UILabel!    
     
 //TextFields
     @IBOutlet weak var emailTxt: UITextField!
@@ -50,9 +62,15 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
     fileprivate var currentColorArrayIndex = -1
     
+    fileprivate var currentTextField:UITextField!
+    
     fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     
-    var picker = UIImagePickerController()
+    fileprivate var tempString = ""
+    
+    fileprivate var tempCount = 0
+    
+   fileprivate var picker = UIImagePickerController()
     {
         didSet{self.picker.delegate = self}
     }
@@ -62,6 +80,9 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
         // Do any additional setup after loading the view.
 
+        //set count label attributes
+        setCountLabelAttributes()
+        
         //buttons add the isEnable target
         initSignUpButton()
         
@@ -83,6 +104,20 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         //recursively run animatedBackground()
         animatedBackground()
 }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       //create observers
+        createObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+       
+      //remove observers
+        removeObservers()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -148,6 +183,22 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 //custom functions
 extension signUpVC {
     
+    fileprivate func setCountLabelAttributes(){
+        
+usernameCount.layer.borderColor = UIColor.white.cgColor
+      usernameCount.layer.borderWidth = 3
+      usernameLimitCount.layer.borderWidth = 3
+usernameLimitCount.layer.borderColor = UIColor.white.cgColor
+      fullnameLimitCount.layer.borderWidth = 3
+    fullnameLimitCount.layer.borderColor = UIColor.white.cgColor
+fullnameCount.layer.borderWidth = 3
+fullnameCount.layer.borderColor = UIColor.white.cgColor
+bioCount.layer.borderWidth = 3
+bioCount.layer.borderColor = UIColor.white.cgColor
+bioLimitCount.layer.borderWidth = 3
+bioLimitCount.layer.borderColor = UIColor.white.cgColor
+}
+    
     fileprivate func setScrollArea(){
         
         //scrollview scroll area
@@ -196,13 +247,28 @@ colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2039215686, green: 
     fileprivate func animatedBackground(){
         
         currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
-        UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
-            self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
-            self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2
+UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
+self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
+self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2
         }) { (success) in
             self.animatedBackground()
         }
     }
+    
+    fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
+        
+    tempCount = (currentTextField.text?.count)!
+if tempCount == 0{
+someoneCount.textColor = UIColor.red
+}else{someoneCount.textColor = someoneLimitCount.textColor}
+if tempCount == Int(someoneLimitCount.text!)!{
+someoneCount.text = someoneLimitCount.text
+tempString = currentTextField.text!
+}else if tempCount > Int(someoneLimitCount.text!)!{
+someoneCount.text = someoneLimitCount.text
+currentTextField.text = tempString
+}else {someoneCount.text = "\(tempCount)"}
+}
 }
 
 //custom functions selectors
@@ -225,8 +291,42 @@ extension signUpVC{
     }
 }
 
+//observers
+extension signUpVC{
+    
+    fileprivate func createObservers(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setCountTip(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+    }
+    
+    fileprivate func removeObservers(){
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+//observers selectors
+extension signUpVC{
+    
+    @objc fileprivate func setCountTip(_ argu:Notification){
+if currentTextField.tag == 10{
+setCountTip(with: usernameCount, someoneLimitCount: usernameLimitCount)
+}
+if currentTextField.tag == 20{
+setCountTip(with: fullnameCount, someoneLimitCount: fullnameLimitCount)
+}
+if currentTextField.tag == 70{
+setCountTip(with: bioCount, someoneLimitCount: bioLimitCount)
+}
+}
+}
+
 //UITextFieldDelegate
 extension signUpVC{
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        currentTextField = textField
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailTxt].map{ $0.resignFirstResponder()}

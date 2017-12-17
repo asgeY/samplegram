@@ -14,13 +14,13 @@ var hashtag = [String]()
 class hashtagsVC: UICollectionViewController{
 
     //UI objects
-    var refresher:UIRefreshControl!
-    var page = 24
+    fileprivate var refresher:UIRefreshControl!
+    fileprivate var page = 24
     
     // arrays to hold data from server
-    var picArray = [PFFile]()
-    var uuidArray = [String]()
-    var filterArray = [String]()
+    fileprivate var picArray = [PFFile]()
+    fileprivate var uuidArray = [String]()
+    fileprivate var filterArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

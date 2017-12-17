@@ -25,21 +25,21 @@ class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UI
  
     @IBOutlet weak var bottomConstaints: NSLayoutConstraint!
     
-    var refresh = UIRefreshControl()
+    fileprivate var refresh = UIRefreshControl()
     
     // values for reseting UI to default
-    var tableViewHeight : CGFloat = 0
-    var commentY : CGFloat = 0
-    var commentHeight : CGFloat = 0
+    fileprivate var tableViewHeight : CGFloat = 0
+    fileprivate var commentY : CGFloat = 0
+    fileprivate var commentHeight : CGFloat = 0
     
     // arrays to hold server data
-    var usernameArray = [String]()
-    var avaArray = [PFFile]()
-    var commentArray = [String]()
-    var dateArray = [Date?]()
+    fileprivate var usernameArray = [String]()
+    fileprivate var avaArray = [PFFile]()
+    fileprivate var commentArray = [String]()
+    fileprivate var dateArray = [Date?]()
     
     // page size
-    var page:Int32 = 15
+    fileprivate var page:Int32 = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()

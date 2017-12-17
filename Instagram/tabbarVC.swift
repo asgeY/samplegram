@@ -16,12 +16,12 @@ var dot = UIView()
 
 class tabbarVC: UITabBarController {
 
-    var storedImageViewArr:[UIImageView?] = []
+   fileprivate var storedImageViewArr:[UIImageView?] = []
     
-var times0 = 1; var times1 = 0
-var times2 = 0; var times3 = 0; var times4 = 0
+private var times0 = 1; private var times1 = 0
+private var times2 = 0; private var times3 = 0; var times4 = 0
  
-    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+   private let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
     
 override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +164,6 @@ return tempImageView
         dot.isHidden = false
     }
   
-    
     fileprivate func setHideItemAnimation(){
         
         // hide icons objects
@@ -173,6 +172,12 @@ return tempImageView
             corner.alpha = 0
             dot.alpha = 0
         }, completion: nil)
+    }
+    
+    fileprivate func setAnimation(at index: Int)
+{
+self.storedImageViewArr[index]?.layer.removeAllAnimations()
+self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
     }
 }
 
@@ -184,27 +189,27 @@ extension tabbarVC{
             
         case 0:
     if times0 == 0
-{self.storedImageViewArr[0]?.layer.add(bounceAnimation, forKey: nil)
+{setAnimation(at: 0)
 times0 += 1;times1 = 0;times2 = 0;times3 = 0;times4 = 0}
             
         case 1:
 if times1 == 0{
-self.storedImageViewArr[1]?.layer.add(bounceAnimation, forKey: nil)
+setAnimation(at: 1)
 times0 = 0;times1 += 1;times2 = 0;times3 = 0;times4 = 0
 }
         case 2:
            if times2 == 0
-{self.storedImageViewArr[2]?.layer.add(bounceAnimation, forKey: nil)
+{setAnimation(at: 2)
 times0 = 0;times1 = 0;times2 += 1;times3 = 0;times4 = 0
 }
         case 3:
 if times3 == 0{
-self.storedImageViewArr[3]?.layer.add(bounceAnimation, forKey: nil)
+setAnimation(at: 3)
 times0 = 0;times1 = 0;times2 = 0;times3 += 1;times4 = 0
 }
         case 4:
 if times4 == 0{
-self.storedImageViewArr[4]?.layer.add(bounceAnimation, forKey: nil)
+setAnimation(at: 4)
 times0 = 0;times1 = 0;times2 = 0;times3 = 0;times4 += 1
 }
         default:

@@ -268,201 +268,106 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalGradient" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ans-bI-xZB">
-                                                <rect key="frame" x="18" y="183" width="339" height="313"/>
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="his-sz-ds2" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="IBa-xA-pd0"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5if-Xg-TIA">
-                                                        <rect key="frame" x="0.0" y="42" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="faU-Pu-4WR"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-S0-cPT" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="45" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="Oyj-vb-hDO"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue" secureTextEntry="YES"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tda-j0-cmV">
-                                                        <rect key="frame" x="0.0" y="87" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="bYU-le-1CG"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OIm-RQ-sRr" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="90" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="tP2-R9-8hG"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue" secureTextEntry="YES"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a4-Ru-8mc">
-                                                        <rect key="frame" x="0.0" y="132" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="eEZ-tP-nre"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tAt-iK-tSp" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="135" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="ijV-de-3qq"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="continue"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqI-EY-NAY">
-                                                        <rect key="frame" x="0.0" y="177" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="ZrT-mF-IUf"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="fullname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tmv-A5-tRX" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="180" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="H3v-CA-dld"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdR-es-esc">
-                                                        <rect key="frame" x="0.0" y="222" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="52l-fV-9ib"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="bio" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8sM-0o-UvK" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="225" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="GSw-ga-KfQ"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIl-fI-Yv9">
-                                                        <rect key="frame" x="0.0" y="267" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="all-qr-clh"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="website" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lej-tB-mnN" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="270" width="339" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="uiv-UI-uYh"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="URL" keyboardAppearance="alert" returnKeyType="continue"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZ0-om-XL3">
-                                                        <rect key="frame" x="0.0" y="312" width="339" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="ETO-YJ-wrI"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="70" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="bio" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8sM-0o-UvK" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="495" width="279" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="GSw-ga-KfQ"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="60" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="website" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lej-tB-mnN" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="440" width="339" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="uiv-UI-uYh"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="fullname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tmv-A5-tRX" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="220" width="279" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="H3v-CA-dld"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tAt-iK-tSp" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="385" width="339" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="ijV-de-3qq"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OIm-RQ-sRr" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="330" width="339" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="tP2-R9-8hG"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue" secureTextEntry="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="eji-CT-g3K">
                                                 <rect key="frame" x="143" y="45" width="90" height="90"/>
                                                 <constraints>
@@ -476,7 +381,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                <rect key="frame" x="18" y="544" width="339" height="55"/>
+                                                <rect key="frame" x="18" y="571" width="339" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="jvb-QH-iBl"/>
                                                 </constraints>
@@ -503,53 +408,250 @@
                                                     <action selector="signUpBtn_click:" destination="h1a-jx-I6M" eventType="touchUpInside" id="bZI-sp-jO6"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="his-sz-ds2" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="165" width="279" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="IBa-xA-pd0"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-S0-cPT" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="275" width="339" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Oyj-vb-hDO"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue" secureTextEntry="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-CB-Y6N" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="656" width="339" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="55" id="0pv-oe-xcc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
+                                                <state key="normal" title="Have an account? Log in">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelBtn_click:" destination="h1a-jx-I6M" eventType="touchUpInside" id="kVW-CC-BgE"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="09p-Oi-kyp">
+                                                <rect key="frame" x="302" y="165" width="55" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDG-fD-6Y7">
+                                                        <rect key="frame" x="0.0" y="7.666666666666659" width="27.666666666666668" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ex4-CG-nPf">
+                                                        <rect key="frame" x="27.666666666666686" y="7.666666666666659" width="27.333333333333329" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="cuw-b1-40d"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UkF-uR-UCu">
+                                                <rect key="frame" x="302" y="220" width="55" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmU-RO-1LV">
+                                                        <rect key="frame" x="0.0" y="7.666666666666659" width="27.666666666666668" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-9H-JfB">
+                                                        <rect key="frame" x="27.666666666666686" y="7.666666666666659" width="27.333333333333329" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="7hb-Oy-ZC6"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dLz-cu-79r">
+                                                <rect key="frame" x="302" y="495" width="55" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBj-Zz-7cP">
+                                                        <rect key="frame" x="0.0" y="7.6666666666666874" width="27.666666666666668" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4py-i4-8k3">
+                                                        <rect key="frame" x="27.666666666666686" y="7.6666666666666874" width="27.333333333333329" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="uwG-f2-RBu"/>
+                                                </constraints>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztf-dO-4mg">
+                                                <rect key="frame" x="18" y="205" width="279" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="KEi-iO-RFW"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtC-sd-dBO">
+                                                <rect key="frame" x="18" y="260" width="279" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="pwF-Pn-S5F"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYY-Ff-RAH">
+                                                <rect key="frame" x="18" y="370" width="339" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="V59-qG-an1"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhH-01-Fuf">
+                                                <rect key="frame" x="18" y="425" width="339" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="ESc-di-LTm"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-n5-2eO">
+                                                <rect key="frame" x="18" y="480" width="339" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="F0b-OD-V5H"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9J-fO-Bcc">
+                                                <rect key="frame" x="18" y="535" width="279" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="fjs-Oa-eqZ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Pj-uA-VrE">
+                                                <rect key="frame" x="18" y="315" width="339" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="Qx2-La-TN0"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="09p-Oi-kyp" firstAttribute="bottom" secondItem="his-sz-ds2" secondAttribute="bottom" id="1b2-za-H7x"/>
+                                            <constraint firstItem="UkF-uR-UCu" firstAttribute="leading" secondItem="Tmv-A5-tRX" secondAttribute="trailing" constant="5" id="21G-eh-382"/>
+                                            <constraint firstItem="OIm-RQ-sRr" firstAttribute="top" secondItem="fwD-S0-cPT" secondAttribute="bottom" constant="15" id="29I-Jk-YnK"/>
+                                            <constraint firstItem="U9J-fO-Bcc" firstAttribute="trailing" secondItem="8sM-0o-UvK" secondAttribute="trailing" id="3Hx-oq-t3o"/>
+                                            <constraint firstItem="fwD-S0-cPT" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="3QZ-Wl-hmh"/>
+                                            <constraint firstItem="NhH-01-Fuf" firstAttribute="leading" secondItem="tAt-iK-tSp" secondAttribute="leading" id="3eA-Mg-uWk"/>
                                             <constraint firstItem="bx3-Z0-lZC" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="3hN-n1-eXf"/>
-                                            <constraint firstItem="bx3-Z0-lZC" firstAttribute="top" secondItem="Ans-bI-xZB" secondAttribute="bottom" constant="48" id="9Y6-ad-HHi"/>
+                                            <constraint firstItem="lej-tB-mnN" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="44n-D5-NTr"/>
+                                            <constraint firstItem="his-sz-ds2" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="69A-2r-Lki"/>
+                                            <constraint firstItem="dLz-cu-79r" firstAttribute="leading" secondItem="8sM-0o-UvK" secondAttribute="trailing" constant="5" id="8hh-Ou-bgq"/>
+                                            <constraint firstItem="iwK-CB-Y6N" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="8yf-ww-Q6c"/>
+                                            <constraint firstItem="tAt-iK-tSp" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="9R3-zZ-nE6"/>
+                                            <constraint firstItem="Tmv-A5-tRX" firstAttribute="top" secondItem="his-sz-ds2" secondAttribute="bottom" constant="15" id="9ie-Rm-VZM"/>
+                                            <constraint firstItem="TtC-sd-dBO" firstAttribute="trailing" secondItem="Tmv-A5-tRX" secondAttribute="trailing" id="A0W-x0-sWS"/>
+                                            <constraint firstItem="qYY-Ff-RAH" firstAttribute="leading" secondItem="OIm-RQ-sRr" secondAttribute="leading" id="A7k-QB-paC"/>
+                                            <constraint firstItem="OIm-RQ-sRr" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="ART-YL-9na"/>
+                                            <constraint firstItem="8sM-0o-UvK" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="CN3-JF-QU7"/>
+                                            <constraint firstItem="fb9-n5-2eO" firstAttribute="trailing" secondItem="lej-tB-mnN" secondAttribute="trailing" id="CVZ-yw-TkB"/>
+                                            <constraint firstItem="U9J-fO-Bcc" firstAttribute="top" secondItem="8sM-0o-UvK" secondAttribute="bottom" id="DII-Ze-9GM"/>
+                                            <constraint firstItem="tAt-iK-tSp" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="DyZ-C0-IH3"/>
+                                            <constraint firstItem="TtC-sd-dBO" firstAttribute="leading" secondItem="Tmv-A5-tRX" secondAttribute="leading" id="EyD-Xc-kJa"/>
+                                            <constraint firstItem="U9J-fO-Bcc" firstAttribute="leading" secondItem="8sM-0o-UvK" secondAttribute="leading" id="Ffl-n7-VK2"/>
+                                            <constraint firstItem="09p-Oi-kyp" firstAttribute="height" secondItem="his-sz-ds2" secondAttribute="height" id="GsL-OH-2QR"/>
+                                            <constraint firstItem="tAt-iK-tSp" firstAttribute="top" secondItem="OIm-RQ-sRr" secondAttribute="bottom" constant="15" id="ICH-Jr-VAa"/>
                                             <constraint firstAttribute="height" constant="700" id="IUD-pY-h9f"/>
+                                            <constraint firstItem="his-sz-ds2" firstAttribute="top" secondItem="eji-CT-g3K" secondAttribute="bottom" constant="30" id="IaK-6k-xcL"/>
                                             <constraint firstItem="bx3-Z0-lZC" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="JOo-Ct-Qwv"/>
-                                            <constraint firstItem="Ans-bI-xZB" firstAttribute="top" secondItem="eji-CT-g3K" secondAttribute="bottom" constant="48" id="RHZ-Zn-A4F"/>
+                                            <constraint firstItem="ztf-dO-4mg" firstAttribute="leading" secondItem="his-sz-ds2" secondAttribute="leading" id="Nvt-Rm-aUw"/>
+                                            <constraint firstItem="iwK-CB-Y6N" firstAttribute="top" secondItem="bx3-Z0-lZC" secondAttribute="bottom" constant="30" id="NyM-Do-rKg"/>
+                                            <constraint firstItem="fwD-S0-cPT" firstAttribute="top" secondItem="Tmv-A5-tRX" secondAttribute="bottom" constant="15" id="O7n-5W-21t"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fwD-S0-cPT" secondAttribute="trailing" id="VF0-nH-p6N"/>
+                                            <constraint firstItem="bx3-Z0-lZC" firstAttribute="top" secondItem="U9J-fO-Bcc" secondAttribute="bottom" constant="34" id="VMj-jU-RNe"/>
                                             <constraint firstItem="eji-CT-g3K" firstAttribute="centerX" secondItem="7M2-hr-x8B" secondAttribute="centerX" id="VZk-mJ-e5W"/>
+                                            <constraint firstItem="Tmv-A5-tRX" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="Wod-Qa-05N"/>
+                                            <constraint firstItem="8sM-0o-UvK" firstAttribute="top" secondItem="lej-tB-mnN" secondAttribute="bottom" constant="15" id="YW3-zv-qsx"/>
+                                            <constraint firstItem="lej-tB-mnN" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="Zje-VI-mHZ"/>
+                                            <constraint firstItem="dLz-cu-79r" firstAttribute="bottom" secondItem="8sM-0o-UvK" secondAttribute="bottom" id="bOC-a1-ZAs"/>
+                                            <constraint firstItem="6Pj-uA-VrE" firstAttribute="top" secondItem="fwD-S0-cPT" secondAttribute="bottom" id="bjV-wG-azK"/>
                                             <constraint firstItem="eji-CT-g3K" firstAttribute="top" secondItem="7M2-hr-x8B" secondAttribute="top" constant="45" id="d5a-F4-9Kj"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Ans-bI-xZB" secondAttribute="trailing" id="gmf-97-Gih"/>
-                                            <constraint firstItem="Ans-bI-xZB" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="lnn-RC-nPw"/>
+                                            <constraint firstItem="UkF-uR-UCu" firstAttribute="height" secondItem="Tmv-A5-tRX" secondAttribute="height" id="dKA-Rw-cPh"/>
+                                            <constraint firstItem="iwK-CB-Y6N" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="eI9-nv-19R"/>
+                                            <constraint firstItem="6Pj-uA-VrE" firstAttribute="leading" secondItem="fwD-S0-cPT" secondAttribute="leading" id="fm9-09-OXl"/>
+                                            <constraint firstItem="UkF-uR-UCu" firstAttribute="bottom" secondItem="Tmv-A5-tRX" secondAttribute="bottom" id="g8C-n7-sCY"/>
+                                            <constraint firstItem="NhH-01-Fuf" firstAttribute="top" secondItem="tAt-iK-tSp" secondAttribute="bottom" id="gJX-ns-xBU"/>
+                                            <constraint firstItem="ztf-dO-4mg" firstAttribute="trailing" secondItem="his-sz-ds2" secondAttribute="trailing" id="iG2-Xd-yYk"/>
+                                            <constraint firstItem="dLz-cu-79r" firstAttribute="height" secondItem="8sM-0o-UvK" secondAttribute="height" id="k3v-D4-KIh"/>
+                                            <constraint firstItem="6Pj-uA-VrE" firstAttribute="trailing" secondItem="fwD-S0-cPT" secondAttribute="trailing" id="l4X-KT-YxH"/>
+                                            <constraint firstItem="fb9-n5-2eO" firstAttribute="leading" secondItem="lej-tB-mnN" secondAttribute="leading" id="lyk-Oe-1lC"/>
+                                            <constraint firstItem="TtC-sd-dBO" firstAttribute="top" secondItem="Tmv-A5-tRX" secondAttribute="bottom" id="mLO-qd-BKw"/>
+                                            <constraint firstItem="OIm-RQ-sRr" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="mY0-Vf-VSg"/>
+                                            <constraint firstItem="NhH-01-Fuf" firstAttribute="trailing" secondItem="tAt-iK-tSp" secondAttribute="trailing" id="n6F-ge-VsE"/>
+                                            <constraint firstItem="qYY-Ff-RAH" firstAttribute="trailing" secondItem="OIm-RQ-sRr" secondAttribute="trailing" id="pPo-Xh-TfE"/>
+                                            <constraint firstItem="lej-tB-mnN" firstAttribute="top" secondItem="tAt-iK-tSp" secondAttribute="bottom" constant="15" id="pXn-Fr-95R"/>
+                                            <constraint firstItem="09p-Oi-kyp" firstAttribute="leading" secondItem="his-sz-ds2" secondAttribute="trailing" constant="5" id="sBd-sq-Iub"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="dLz-cu-79r" secondAttribute="trailing" id="spH-JP-kvw"/>
+                                            <constraint firstItem="ztf-dO-4mg" firstAttribute="top" secondItem="his-sz-ds2" secondAttribute="bottom" id="vK6-8m-P8u"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="09p-Oi-kyp" secondAttribute="trailing" id="vQ2-B9-uBO"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="UkF-uR-UCu" secondAttribute="trailing" id="wb0-1n-GEI"/>
+                                            <constraint firstItem="fb9-n5-2eO" firstAttribute="top" secondItem="lej-tB-mnN" secondAttribute="bottom" id="zey-Cf-a2K"/>
+                                            <constraint firstItem="qYY-Ff-RAH" firstAttribute="top" secondItem="OIm-RQ-sRr" secondAttribute="bottom" id="ztP-nb-4hl"/>
                                         </constraints>
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="18" leading="18" bottom="18" trailing="18"/>
                                     </view>
-                                    <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-CB-Y6N" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="629" width="339" height="55"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="0pv-oe-xcc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
-                                        <state key="normal" title="Have an account? Log in">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="cancelBtn_click:" destination="h1a-jx-I6M" eventType="touchUpInside" id="kVW-CC-BgE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iwK-CB-Y6N" firstAttribute="trailing" secondItem="bPX-mr-KC7" secondAttribute="trailingMargin" constant="-10" id="5Ii-bJ-Tqa"/>
-                                    <constraint firstItem="iwK-CB-Y6N" firstAttribute="leading" secondItem="bPX-mr-KC7" secondAttribute="leadingMargin" constant="10" id="MCU-RE-dAA"/>
                                     <constraint firstAttribute="bottom" secondItem="7M2-hr-x8B" secondAttribute="bottom" id="UsC-ke-Wi2"/>
                                     <constraint firstItem="7M2-hr-x8B" firstAttribute="centerX" secondItem="bPX-mr-KC7" secondAttribute="centerX" id="bQm-xt-Owk"/>
                                     <constraint firstItem="7M2-hr-x8B" firstAttribute="top" secondItem="bPX-mr-KC7" secondAttribute="top" id="dIO-J2-JdZ"/>
-                                    <constraint firstItem="iwK-CB-Y6N" firstAttribute="top" secondItem="bx3-Z0-lZC" secondAttribute="bottom" constant="30" id="nfP-qF-hxL"/>
                                     <constraint firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailing" id="o68-3M-y84"/>
                                     <constraint firstItem="7M2-hr-x8B" firstAttribute="leading" secondItem="bPX-mr-KC7" secondAttribute="leading" id="rbf-1b-c3d"/>
                                 </constraints>
@@ -569,9 +671,13 @@
                     </view>
                     <connections>
                         <outlet property="avaImg" destination="eji-CT-g3K" id="7oy-4c-nhE"/>
+                        <outlet property="bioCount" destination="TBj-Zz-7cP" id="Ovf-lr-cri"/>
+                        <outlet property="bioLimitCount" destination="4py-i4-8k3" id="B3U-Os-b0j"/>
                         <outlet property="bioTxt" destination="8sM-0o-UvK" id="k2m-bL-4UL"/>
                         <outlet property="cancelBtn" destination="iwK-CB-Y6N" id="Ez4-vf-Y7E"/>
                         <outlet property="emailTxt" destination="tAt-iK-tSp" id="d6P-Mm-v8n"/>
+                        <outlet property="fullnameCount" destination="UmU-RO-1LV" id="dBY-KG-jPa"/>
+                        <outlet property="fullnameLimitCount" destination="o1y-9H-JfB" id="q25-c7-pQt"/>
                         <outlet property="fullnameTxt" destination="Tmv-A5-tRX" id="tRt-tt-KPv"/>
                         <outlet property="gradientImgView" destination="y7b-JY-gY6" id="y8M-qw-moA"/>
                         <outlet property="passwordTxt" destination="fwD-S0-cPT" id="VcP-3p-fGG"/>
@@ -579,6 +685,8 @@
                         <outlet property="scrollArea" destination="IUD-pY-h9f" id="BXK-An-QpK"/>
                         <outlet property="scrollView" destination="bPX-mr-KC7" id="yN9-Sh-rHl"/>
                         <outlet property="signUpBtn" destination="bx3-Z0-lZC" id="Vue-WD-2MF"/>
+                        <outlet property="usernameCount" destination="eDG-fD-6Y7" id="7JZ-QD-XP9"/>
+                        <outlet property="usernameLimitCount" destination="ex4-CG-nPf" id="k5M-8B-TD5"/>
                         <outlet property="usernameTxt" destination="his-sz-ds2" id="alA-nj-XgJ"/>
                         <outlet property="webTxt" destination="lej-tB-mnN" id="kHH-ei-94G"/>
                     </connections>
@@ -2202,25 +2310,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-h4-arl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="eis-d0-5By">
-                                    <rect key="frame" x="0.0" y="654" width="375" height="58"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EIr-Q7-hDg">
-                                            <rect key="frame" x="169" y="10.666666666666664" width="37" height="37"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="37" id="WVT-CE-D2K"/>
-                                                <constraint firstAttribute="width" constant="37" id="tKt-wX-5YP"/>
-                                            </constraints>
-                                            <color key="color" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="EIr-Q7-hDg" firstAttribute="centerY" secondItem="eis-d0-5By" secondAttribute="centerY" id="Lu6-GZ-3Qv"/>
-                                        <constraint firstItem="EIr-Q7-hDg" firstAttribute="centerX" secondItem="eis-d0-5By" secondAttribute="centerX" id="sqY-t2-9iU"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Cell" rowHeight="626" id="iC5-qw-89k" customClass="postCell" customModule="Instagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="626"/>
@@ -2377,7 +2466,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="wsT-hn-UhM"/>
                     <connections>
-                        <outlet property="indicator" destination="EIr-Q7-hDg" id="tbx-L1-Icj"/>
                         <outlet property="tableView" destination="1dC-h4-arl" id="pbL-1b-CsF"/>
                     </connections>
                 </viewController>
@@ -2564,6 +2652,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="smk-6g-Dv1"/>
+        <segue reference="1bI-cr-ZhO"/>
     </inferredMetricsTieBreakers>
 </document>
