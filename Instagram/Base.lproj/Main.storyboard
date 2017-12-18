@@ -209,7 +209,7 @@
                             <constraint firstItem="cz6-3g-Mrd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="40:667" id="UfX-40-8Hb"/>
                             <constraint firstItem="Gg5-aP-2fK" firstAttribute="top" secondItem="RF5-XY-Lv1" secondAttribute="bottom" constant="1" id="VhW-Aq-KmE"/>
                             <constraint firstItem="Gg5-aP-2fK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zhy-6u-sWj"/>
-                            <constraint firstItem="RF5-XY-Lv1" firstAttribute="top" secondItem="cz6-3g-Mrd" secondAttribute="bottom" constant="3" id="ac9-3a-I9d"/>
+                            <constraint firstItem="RF5-XY-Lv1" firstAttribute="top" secondItem="cz6-3g-Mrd" secondAttribute="bottom" constant="4" id="ac9-3a-I9d"/>
                             <constraint firstItem="j3b-LJ-BuY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bRq-aM-yGb"/>
                             <constraint firstAttribute="trailing" secondItem="kkk-CL-aJ9" secondAttribute="trailing" id="bXR-GU-MVU"/>
                             <constraint firstItem="eCY-ry-7cF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cMQ-J1-6Mz"/>
@@ -230,7 +230,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="assisView" destination="RF5-XY-Lv1" id="LHl-x8-HEN"/>
                         <outlet property="forgotBtn" destination="t0L-0Q-V6f" id="dzP-2T-TH3"/>
                         <outlet property="gradientBackground" destination="Rwy-VZ-zEd" id="vgb-z6-BuP"/>
                         <outlet property="passwordTxt" destination="cz6-3g-Mrd" id="OZf-lT-jlu"/>
@@ -484,7 +483,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ex4-CG-nPf">
                                                         <rect key="frame" x="27.666666666666686" y="7.666666666666659" width="27.333333333333329" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -504,7 +503,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-9H-JfB">
                                                         <rect key="frame" x="27.666666666666686" y="7.666666666666659" width="27.333333333333329" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -524,7 +523,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4py-i4-8k3">
                                                         <rect key="frame" x="27.666666666666686" y="7.6666666666666874" width="27.333333333333329" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -593,7 +592,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22U-Hi-RxM">
                                                         <rect key="frame" x="27.666666666666686" y="7.6666666666666874" width="27.333333333333329" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -613,7 +612,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPS-k8-A0w">
                                                         <rect key="frame" x="27.666666666666686" y="7.6666666666666874" width="27.333333333333329" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>

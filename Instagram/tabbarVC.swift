@@ -18,10 +18,10 @@ class tabbarVC: UITabBarController {
 
    fileprivate var storedImageViewArr:[UIImageView?] = []
     
-private var times0 = 1; private var times1 = 0
-private var times2 = 0; private var times3 = 0; var times4 = 0
- 
-   private let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+private var times = [Int].init(repeating: 0, count: 5)
+private var tempTimes = [Int].init(repeating: 0, count: 5)
+    
+private let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
     
 override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,35 +185,14 @@ self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
 extension tabbarVC{
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-            
-        case 0:
-    if times0 == 0
-{setAnimation(at: 0)
-times0 += 1;times1 = 0;times2 = 0;times3 = 0;times4 = 0}
-            
-        case 1:
-if times1 == 0{
-setAnimation(at: 1)
-times0 = 0;times1 += 1;times2 = 0;times3 = 0;times4 = 0
+        
+_ = [0,1,2,3,4].map{
+    if $0 == item.tag,times[$0] == 0{
+        setAnimation(at: $0)
+        times.removeAll()
+        times.append(contentsOf:tempTimes)
+        times[$0] += 1
+    }
 }
-        case 2:
-           if times2 == 0
-{setAnimation(at: 2)
-times0 = 0;times1 = 0;times2 += 1;times3 = 0;times4 = 0
-}
-        case 3:
-if times3 == 0{
-setAnimation(at: 3)
-times0 = 0;times1 = 0;times2 = 0;times3 += 1;times4 = 0
-}
-        case 4:
-if times4 == 0{
-setAnimation(at: 4)
-times0 = 0;times1 = 0;times2 = 0;times3 = 0;times4 += 1
-}
-        default:
-            return
-        }
     }
 }

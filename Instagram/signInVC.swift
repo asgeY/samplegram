@@ -28,8 +28,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var signInBtnHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var assisView: UIView!
-    
    fileprivate var currentColorArrayIndex = -1
     
    fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []

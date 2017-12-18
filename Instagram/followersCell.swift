@@ -23,10 +23,9 @@ class followersCell: UITableViewCell {
     
     fileprivate let gradient = CAGradientLayer()
     
+var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
+var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
     
-     var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
-     var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
- 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -101,7 +100,6 @@ gradient.startPoint = CGPoint.init(x: 0.8, y: 0.1)
 gradient.endPoint = CGPoint.init(x: 0.1, y: 0.8)
 gradient.colors = [gradientColor1, gradientColor2]
 
-    
 shape.lineWidth = 3
     shape.path = UIBezierPath(arcCenter: self.avaImg.center, radius: self.imageInset.bounds.size.width / 2 - 1, startAngle: 0, endAngle: CGFloat(360 * Double.pi / 180), clockwise: true).cgPath
         

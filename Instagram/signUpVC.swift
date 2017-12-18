@@ -241,20 +241,12 @@ extension signUpVC{
 extension signUpVC{
     
     @objc fileprivate func setCountTip(_ argu:Notification){
-if currentTextField.tag == 10{
-setCountTip(with: allCountTip[0], someoneLimitCount: allCountTip[1])
-}
-if currentTextField.tag == 20{
-setCountTip(with: allCountTip[2], someoneLimitCount: allCountTip[3])
-}
-if currentTextField.tag == 30{
-setCountTip(with: allCountTip[4], someoneLimitCount: allCountTip[5])
-}
-if currentTextField.tag == 40{
-setCountTip(with: allCountTip[6], someoneLimitCount: allCountTip[7])
-}
-if currentTextField.tag == 70{
-setCountTip(with: allCountTip[8], someoneLimitCount: allCountTip[9])
+        
+_ = [10,20,30,40,70].enumerated().map{ (offset,element) in
+    
+    if element == currentTextField.tag{
+setCountTip(with: allCountTip[offset * 2], someoneLimitCount: allCountTip[offset * 2 + 1])
+    }
 }
 }
 }

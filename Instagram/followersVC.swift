@@ -186,13 +186,6 @@ cell.followBtn.setTitle("FOLLOWING", for: .normal)
         
  }
 }
-   
-   //hide follow button for current user
-    if cell.username.text == PFUser.current()?.username{
-    cell.followBtn.isHidden = true
-    cell.gradientColor1 = UIColor.white.cgColor
-  cell.gradientColor2 = UIColor.white.cgColor
-    }
         cell.setImgLayer()
         return cell
     }
