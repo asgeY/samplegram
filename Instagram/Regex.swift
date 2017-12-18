@@ -11,6 +11,7 @@ import Foundation
 enum Validate {
 
 case username(_: String)
+case password(_: String)
 case email(_: String)
 case URL(_ :String)
 
@@ -22,6 +23,9 @@ case URL(_ :String)
             
         case let .username(str):
             predicateStr = "[A-Z0-9a-z._%+-]"
+            currObject = str
+        case let .password(str):
+            predicateStr = "[A-Z0-9a-z%+-]"
             currObject = str
         case let .email(str):
             predicateStr = "[A-Z0-9a-z._%+-]{4}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2}"

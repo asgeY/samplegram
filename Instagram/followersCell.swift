@@ -24,8 +24,8 @@ class followersCell: UITableViewCell {
     fileprivate let gradient = CAGradientLayer()
     
     
-    fileprivate var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
-    fileprivate var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
+     var gradientColor1 = UIColor.init(hex:"891F7B").cgColor
+     var gradientColor2 = UIColor.init(hex: "ED953A").cgColor
  
     override func awakeFromNib() {
         super.awakeFromNib()

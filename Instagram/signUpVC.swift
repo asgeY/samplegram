@@ -12,51 +12,14 @@ import Parse
 class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIScrollViewDelegate {
    
     @IBOutlet weak var gradientImgView: UIImageViewX!
-
-//Auto layout height
-    @IBOutlet weak var scrollArea: NSLayoutConstraint!
-  
-    @IBOutlet weak var usernameCount: UILabel!
     
-    @IBOutlet weak var usernameLimitCount: UILabel!
-    
-    @IBOutlet weak var fullnameCount: UILabel!
-    
-    @IBOutlet weak var fullnameLimitCount: UILabel!
-    
-//ImageView
     @IBOutlet weak var avaImg: UIImageView!
  
-    @IBOutlet weak var bioCount: UILabel!
-    
-    @IBOutlet weak var bioLimitCount: UILabel!    
-    
-//TextFields
-    @IBOutlet weak var emailTxt: UITextField!
-        {didSet{emailTxt.delegate = self }}
-    
-    @IBOutlet weak var usernameTxt: UITextField!
-        {didSet{ usernameTxt.delegate = self}}
-    
-    @IBOutlet weak var passwordTxt: UITextField!
-        {didSet{passwordTxt.delegate = self }}
-    
-    @IBOutlet weak var repeat_passwordTxt: UITextField!
-        { didSet{repeat_passwordTxt.delegate = self }}
-    
-    @IBOutlet weak var fullnameTxt: UITextField!
-        {didSet{fullnameTxt.delegate = self }}
-    
-    @IBOutlet weak var bioTxt: UITextField!
-        {didSet{bioTxt.delegate = self}}
-    
-    @IBOutlet weak var webTxt: UITextField!
-        {didSet{webTxt.delegate = self}}
-    
-//ScrollView
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var allTextFieldsInScreen: [UITextField_Attributes]!
+{didSet{_ = self.allTextFieldsInScreen.map{$0.delegate = self}}}
+ 
+    @IBOutlet var allCountTip: [UILabel]!
 
-//Buttons
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
 
@@ -71,24 +34,19 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     fileprivate var tempCount = 0
     
    fileprivate var picker = UIImagePickerController()
-    {
-        didSet{self.picker.delegate = self}
-    }
+     {didSet{self.picker.delegate = self}}
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
+        //create tap gesture
+        createScreenDismissKeyboard()
+        
         //set count label attributes
         setCountLabelAttributes()
         
-        //buttons add the isEnable target
-        initSignUpButton()
-        
-        //scrollview scroll area
-        setScrollArea()
-  
         //ava image layer
         setAvaImgLayer()
         
@@ -129,24 +87,15 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
  
         //dismiss keyboard
    self.view.endEditing(true)
- 
-        //if different passwords
-        if passwordTxt.text != repeat_passwordTxt.text{
-            
-            let alert = UIAlertController(title: "Passwords Error !!", message: "do not match", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
 
         //send data to server to relative columns
         let user = PFUser()
-        user.username = usernameTxt.text?.lowercased()
-        user.email = emailTxt.text?.lowercased()
-        user.password = passwordTxt.text
-        user["fullname"] = fullnameTxt.text?.lowercased()
-        user["bio"] = bioTxt.text
-        user["web"] = webTxt.text?.lowercased()
+        user.username = allTextFieldsInScreen[0].text?.lowercased()
+        user.email = allTextFieldsInScreen[4].text?.lowercased()
+        user.password = allTextFieldsInScreen[2].text
+        user["fullname"] = allTextFieldsInScreen[1].text?.lowercased()
+        user["bio"] = allTextFieldsInScreen[6].text
+        user["web"] = allTextFieldsInScreen[5].text?.lowercased()
         
         //in Edited Profile it's gonna be assigned
         user["tel"] = ""
@@ -157,8 +106,8 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
      
      user["ava"] = avaFile
       
-        //save data in server
-        user.signUpInBackground { (success:Bool, error:Error?) in
+//save data in server
+user.signUpInBackground { (success:Bool, error:Error?) in
             if success{
                 
     //remember logged user
@@ -183,27 +132,18 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 //custom functions
 extension signUpVC {
     
-    fileprivate func setCountLabelAttributes(){
-        
-usernameCount.layer.borderColor = UIColor.white.cgColor
-      usernameCount.layer.borderWidth = 3
-      usernameLimitCount.layer.borderWidth = 3
-usernameLimitCount.layer.borderColor = UIColor.white.cgColor
-      fullnameLimitCount.layer.borderWidth = 3
-    fullnameLimitCount.layer.borderColor = UIColor.white.cgColor
-fullnameCount.layer.borderWidth = 3
-fullnameCount.layer.borderColor = UIColor.white.cgColor
-bioCount.layer.borderWidth = 3
-bioCount.layer.borderColor = UIColor.white.cgColor
-bioLimitCount.layer.borderWidth = 3
-bioLimitCount.layer.borderColor = UIColor.white.cgColor
-}
-    
-    fileprivate func setScrollArea(){
-        
-        //scrollview scroll area
-        scrollArea.constant = 900
+    fileprivate func createScreenDismissKeyboard(){
+        let gestrue = UITapGestureRecognizer.init(target: self, action: #selector(tapGestrue))
+        self.view.addGestureRecognizer(gestrue)
     }
+    
+    fileprivate func setCountLabelAttributes(){
+ 
+_ = allCountTip.map{
+    $0.layer.borderColor = UIColor.white.cgColor
+    $0.layer.borderWidth = 3
+}
+}
     
     fileprivate  func setAvaImgLayer(){
         //round ava
@@ -214,12 +154,6 @@ bioLimitCount.layer.borderColor = UIColor.white.cgColor
         
         avaImg.layer.borderWidth = 3
         avaImg.layer.borderColor = UIColor.black.cgColor
-    }
-    
-    fileprivate func initSignUpButton(){
-       signUpBtn.isEnabled = false
-_ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailTxt].map{$0?.addTarget(self, action: #selector(self.signUpIsEnable(sender:)), for: .editingChanged)}
-       
     }
     
     //initialize text fields false isEnable input
@@ -246,7 +180,7 @@ colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2039215686, green: 
     //recursively run animatedBackground()
     fileprivate func animatedBackground(){
         
-        currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
+currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
 UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
 self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
 self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2
@@ -274,10 +208,8 @@ currentTextField.text = tempString
 //custom functions selectors
 extension signUpVC{
     
-    //control sign up button isEnable
-    @objc fileprivate func signUpIsEnable(sender: UITextField){
-        
-        signUpBtn.isEnabled = !((usernameTxt.text?.isEmpty)!) && !((passwordTxt.text?.isEmpty)!) && !((repeat_passwordTxt.text?.isEmpty)!) && !((emailTxt.text?.isEmpty)!) && !((fullnameTxt.text?.isEmpty)!) && !((bioTxt.text?.isEmpty)!) && !((webTxt.text?.isEmpty)!)
+    @objc fileprivate func tapGestrue(){
+        self.view.endEditing(true)
     }
     
     //choose the photo from the phone library
@@ -310,13 +242,19 @@ extension signUpVC{
     
     @objc fileprivate func setCountTip(_ argu:Notification){
 if currentTextField.tag == 10{
-setCountTip(with: usernameCount, someoneLimitCount: usernameLimitCount)
+setCountTip(with: allCountTip[0], someoneLimitCount: allCountTip[1])
 }
 if currentTextField.tag == 20{
-setCountTip(with: fullnameCount, someoneLimitCount: fullnameLimitCount)
+setCountTip(with: allCountTip[2], someoneLimitCount: allCountTip[3])
+}
+if currentTextField.tag == 30{
+setCountTip(with: allCountTip[4], someoneLimitCount: allCountTip[5])
+}
+if currentTextField.tag == 40{
+setCountTip(with: allCountTip[6], someoneLimitCount: allCountTip[7])
 }
 if currentTextField.tag == 70{
-setCountTip(with: bioCount, someoneLimitCount: bioLimitCount)
+setCountTip(with: allCountTip[8], someoneLimitCount: allCountTip[9])
 }
 }
 }
@@ -329,7 +267,7 @@ extension signUpVC{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailTxt].map{ $0.resignFirstResponder()}
+_ = allTextFieldsInScreen.map{ $0.resignFirstResponder()}
         
         return true
     }

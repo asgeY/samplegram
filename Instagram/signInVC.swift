@@ -13,7 +13,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var gradientBackground: UIImageViewX!
     
-    //TextFields
     @IBOutlet weak var usernameTxt: UITextField!
     {didSet{usernameTxt.delegate = self}}
     
@@ -22,7 +21,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
    fileprivate var activeTextField: UITextField?
  
-    //Buttons
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var signUpbtn: UIButton!
 
