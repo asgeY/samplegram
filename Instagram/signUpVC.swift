@@ -91,8 +91,8 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
  
         //dismiss keyboard
    self.view.endEditing(true)
-
-        //send data to server to relative columns
+        
+//send data to server to relative columns
         let user = PFUser()
         user.username = allTextFieldsInScreen[0].text?.lowercased()
         user.email = allTextFieldsInScreen[4].text?.lowercased()
@@ -115,7 +115,7 @@ user.signUpInBackground { (success:Bool, error:Error?) in
             if success{
                 
     //remember logged user
-      UserDefaults.standard.set(user.username, forKey: "username")
+    UserDefaults.standard.set(user.username, forKey: "username")
     UserDefaults.standard.synchronize()
                
     //call login func from AppleDelegate.swift class
@@ -282,13 +282,33 @@ if currentTextField.tag == 10 {
 guard Validate.username((currentTextField?.text)!).isRight else {
     showAlert(with: "username can only include letters,numbers,dot,underline");return
     }
+    let query = PFQuery.init(className: "_User")
+    query.whereKey("username", equalTo: currentTextField.text!)
+    query.findObjectsInBackground(block: { (objects, error) in
+        if error == nil{
+            if objects!.count > 0{
+                self.showAlert(with: "username has been taken")
+            } else {
+                self.showAlert(with: "username no problem")
+            }
+        }else {print(error!.localizedDescription)}
+    })
 }
 
         if currentTextField.tag == 20 {
    performNilCheck(with: "fullname can't be nil")
 guard Validate.fullname((currentTextField?.text)!).isRight else {
     showAlert(with: "fullname can only include letters,numbers,dot,underline");return
- }
+}
+let query = PFQuery.init(className: "_User")
+query.whereKey("fullname", equalTo: currentTextField.text!)
+query.findObjectsInBackground(block: { (objects, error) in
+if error == nil{
+    if objects!.count > 0{
+self.showAlert(with: "fullname has been taken")
+} else {self.showAlert(with: "fullname no problem")}
+}else {print(error!.localizedDescription)}
+})
 }
         
     if currentTextField.tag == 30{
@@ -311,6 +331,15 @@ return
 guard Validate.email((currentTextField?.text)!).isRight else{
     showAlert(with: "email scheme must 4-7 words, and 2-3 letters after dot");return
 }
+            
+let query = PFQuery.init(className: "_User")
+query.whereKey("email", equalTo: currentTextField.text!)
+query.findObjectsInBackground(block: { (objects, error) in
+if error == nil{
+if objects!.count > 0{self.showAlert(with: "email has been taken")
+} else {self.showAlert(with: "email no problem")}
+}else {print(error!.localizedDescription)}
+})
 }
        
         if currentTextField.tag == 60{
