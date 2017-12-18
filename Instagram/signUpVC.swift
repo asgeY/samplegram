@@ -36,11 +36,15 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
    fileprivate var picker = UIImagePickerController()
      {didSet{self.picker.delegate = self}}
     
+    fileprivate var alertController:UIAlertController?
+    
+   fileprivate let knownAction = UIAlertAction.init(title: "OK,I know that", style: .cancel, handler: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
+        // Do any additional setup after loading the view
+        
         //create tap gesture
         createScreenDismissKeyboard()
         
@@ -203,6 +207,25 @@ someoneCount.text = someoneLimitCount.text
 currentTextField.text = tempString
 }else {someoneCount.text = "\(tempCount)"}
 }
+   
+    fileprivate func performNilCheck(with nilMessage: String){
+        
+guard currentTextField.text != "" else{
+    alertController = nil
+    alertController = UIAlertController.init(title: "Something wrong", message: nilMessage, preferredStyle: .alert)
+    alertController?.addAction(knownAction)
+    present(alertController!, animated: true, completion: nil)
+            return
+        }
+    }
+    
+    fileprivate func showAlert(with message:String){
+        
+        alertController = nil
+        alertController = UIAlertController.init(title: "Something wrong", message: message, preferredStyle: .alert)
+        alertController?.addAction(knownAction)
+        present(alertController!, animated: true, completion: nil)
+    }
 }
 
 //custom functions selectors
@@ -229,6 +252,8 @@ extension signUpVC{
     fileprivate func createObservers(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(setCountTip(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(checkText(argu:)), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
     }
     
     fileprivate func removeObservers(){
@@ -246,9 +271,61 @@ _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
     
     if element == currentTextField.tag{
 setCountTip(with: allCountTip[offset * 2], someoneLimitCount: allCountTip[offset * 2 + 1])
+        }
+  }
+}
+    
+    @objc fileprivate func checkText(argu:Notification){
+        
+if currentTextField.tag == 10 {
+  performNilCheck(with: "username can' be nil")
+guard Validate.username((currentTextField?.text)!).isRight else {
+    showAlert(with: "username can only include letters,numbers,dot,underline");return
     }
 }
+
+        if currentTextField.tag == 20 {
+   performNilCheck(with: "fullname can't be nil")
+guard Validate.fullname((currentTextField?.text)!).isRight else {
+    showAlert(with: "fullname can only include letters,numbers,dot,underline");return
+ }
 }
+        
+    if currentTextField.tag == 30{
+performNilCheck(with: "password can't be nil")
+guard Validate.password((currentTextField?.text)!).isRight else {
+    showAlert(with: "password can only include letters,numbers");return
+    }
+}
+        
+if currentTextField.tag == 40{
+    performNilCheck(with: "must repeat password")
+if currentTextField.text != allTextFieldsInScreen[2].text{
+    showAlert(with: "Twice inputs is not same")
+}
+return
+}
+    
+        if currentTextField.tag == 50{
+   performNilCheck(with: "email can't be nil")
+guard Validate.email((currentTextField?.text)!).isRight else{
+    showAlert(with: "email scheme must 4-7 words, and 2-3 letters after dot");return
+}
+}
+       
+        if currentTextField.tag == 60{
+performNilCheck(with: "URL can't be nil")
+guard Validate.URL((currentTextField?.text)!).isRight else{
+    showAlert(with: "URL format is www.xxxxx.xxx, and xxx must 2-3 letters");return
+}
+}
+        
+  if currentTextField.tag == 70{
+     performNilCheck(with: "bio can't be nil")
+ return
+        }
+    }
+    
 }
 
 //UITextFieldDelegate
