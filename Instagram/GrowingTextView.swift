@@ -141,10 +141,10 @@ import UIKit
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         if text.isEmpty {
-            let xValue = textContainerInset.left + placeHolderLeftMargin
-            let yValue = textContainerInset.top
-            let width = rect.size.width - xValue - textContainerInset.right
-            let height = rect.size.height - yValue - textContainerInset.bottom
+let xValue = textContainerInset.left + placeHolderLeftMargin
+   let yValue = textContainerInset.top
+     let width = rect.size.width - xValue - textContainerInset.right
+       let height = rect.size.height - yValue - textContainerInset.bottom
             let placeHolderRect = CGRect(x: xValue, y: yValue, width: width, height: height)
             
             if let attributedPlaceholder = attributedPlaceHolder {

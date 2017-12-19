@@ -13,10 +13,10 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var gradientBackground: UIImageViewX!
     
-    @IBOutlet weak var usernameTxt: UITextField!
+    @IBOutlet weak var usernameTxt: UITextField_Attributes!
     {didSet{usernameTxt.delegate = self}}
     
-    @IBOutlet weak var passwordTxt: UITextField!
+    @IBOutlet weak var passwordTxt: UITextField_Attributes!
 {didSet{passwordTxt.delegate = self}}
     
    fileprivate var activeTextField: UITextField?
@@ -31,7 +31,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
    fileprivate var currentColorArrayIndex = -1
     
    fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -39,8 +39,10 @@ class signInVC: UIViewController,UITextFieldDelegate{
         initInputsFirst()
         
    //check text fields is or not written all
-            setupAddTargetIsNotEmptyTextFields()
-      
+    setupAddTargetIsNotEmptyTextFields()
+        
+       createLeftImageOnTextField()
+        
       //set image color set
         setColorArr()
       
@@ -79,19 +81,20 @@ class signInVC: UIViewController,UITextFieldDelegate{
             if error == nil{
                
 //remeber user or save in App memory did the user login or not
-                UserDefaults.standard.set(user?.username, forKey: "username")
-                UserDefaults.standard.synchronize()
+UserDefaults.standard.set(user?.username, forKey: "username")
+UserDefaults.standard.synchronize()
                 
    //call login function from AppDelegate.swift class
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.login()
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+appDelegate.login()
                 
-            }else{
-                //another case
-            let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+}else{
+
+//another case
+let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+alert.addAction(ok)
+self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -103,15 +106,24 @@ class signInVC: UIViewController,UITextFieldDelegate{
 //custom functions
 extension signInVC{
     
+    fileprivate func createLeftImageOnTextField(){
+        
+usernameTxt.leftView = UIImageView.init(image: #imageLiteral(resourceName: "Username"))
+usernameTxt.leftView?.frame = CGRect(x: 0, y: 5, width: 30 , height:30)
+usernameTxt.leftViewMode = .always
+        
+        passwordTxt.leftView = UIImageView.init(image: #imageLiteral(resourceName: "Password"))
+        passwordTxt.leftView?.frame = CGRect(x: 0, y: 5, width: 30 , height:30)
+        passwordTxt.leftViewMode = .always
+}
+    
    fileprivate func setupAddTargetIsNotEmptyTextFields() {
         
         //hidden sign In Button
     signInBtnHeight.constant = 0
     
-        usernameTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
-                                    for: .editingChanged)
-        passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
-                                     for: .editingChanged)
+usernameTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),for: .editingChanged)
+passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),for: .editingChanged)
     }
     
     //initialize signInt button layout and background
@@ -161,36 +173,24 @@ extension  signInVC{
     fileprivate  func createObserver(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnHiddenStackLocation(argu:)), name: NSNotification.Name.init("isHidden"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnNotHiddenStackLocation(argu:)), name: NSNotification.Name.init("NotHidden"), object:nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(argu:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(argu:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     //release the observers
     fileprivate func releaseObservers(){
-        
-       NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
-    
 }
 
 //observers selectors
 extension signInVC{
     
     //if the sign In button is or not hidden, change the stack location
-    @objc fileprivate func btnHiddenStackLocation(argu: Notification){
-        
-        signInBtnHeight.constant = 0
-    }
+    @objc fileprivate func btnHiddenStackLocation(argu: Notification){signInBtnHeight.constant = 0}
     
-    @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){
-        
-        signInBtnHeight.constant = 60
-        
-    }
+    @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){signInBtnHeight.constant = 60}
     
     @objc fileprivate func keyboardDidShow(argu: Notification){
         

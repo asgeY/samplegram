@@ -39,9 +39,9 @@ extension UIColor {
         context!.setFillColor(color.cgColor)
         context!.fill(rect)
         
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
+let image = UIGraphicsGetImageFromCurrentImageContext()!
         
-        UIGraphicsEndImageContext()
+UIGraphicsEndImageContext()
         
         return image
     }
@@ -56,9 +56,9 @@ extension UIColor {
         context!.setFillColor(self.cgColor)
         context!.fill(rect)
         
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
+let image = UIGraphicsGetImageFromCurrentImageContext()!
         
-        UIGraphicsEndImageContext()
+UIGraphicsEndImageContext()
         
         return image
     }

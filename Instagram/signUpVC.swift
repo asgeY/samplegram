@@ -282,6 +282,7 @@ if currentTextField.tag == 10 {
 guard Validate.username((currentTextField?.text)!).isRight else {
     showAlert(with: "username can only include letters,numbers,dot,underline");return
     }
+    
     let query = PFQuery.init(className: "_User")
     query.whereKey("username", equalTo: currentTextField.text!)
     query.findObjectsInBackground(block: { (objects, error) in
@@ -300,6 +301,7 @@ guard Validate.username((currentTextField?.text)!).isRight else {
 guard Validate.fullname((currentTextField?.text)!).isRight else {
     showAlert(with: "fullname can only include letters,numbers,dot,underline");return
 }
+            
 let query = PFQuery.init(className: "_User")
 query.whereKey("fullname", equalTo: currentTextField.text!)
 query.findObjectsInBackground(block: { (objects, error) in

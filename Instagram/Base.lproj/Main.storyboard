@@ -85,14 +85,6 @@
                                 <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-LJ-BuY">
                                 <rect key="frame" x="0.0" y="113.33333333333333" width="375" height="162.33333333333337"/>
@@ -130,16 +122,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-Kh-kAM" userLabel="Help Stack">
-                                <rect key="frame" x="60.333333333333329" y="506.33333333333326" width="254.66666666666669" height="25"/>
+                                <rect key="frame" x="62.666666666666657" y="506.33333333333326" width="249.99999999999997" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgoten something?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-tV-eZT">
-                                        <rect key="frame" x="0.0" y="6.0000000000000568" width="126.33333333333333" height="13"/>
+                                        <rect key="frame" x="0.0" y="6.3333333333333153" width="124" height="15.333333333333336"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0L-0Q-V6f">
-                                        <rect key="frame" x="128.33333333333331" y="0.0" width="126.33333333333331" height="25"/>
+                                        <rect key="frame" x="126" y="0.0" width="124" height="28"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <state key="normal" title="Get help signing in">
                                             <color key="titleColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -169,14 +161,6 @@
                                 <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -418,9 +402,6 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="0.0"/>
@@ -761,7 +742,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-zD-BUc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="491.66666666666674" width="343" height="61"/>
+                                <rect key="frame" x="16" y="481.66666666666674" width="343" height="61"/>
                                 <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Cancel">
@@ -787,7 +768,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="307.33333333333331" width="343" height="40"/>
+                                <rect key="frame" x="16" y="297.33333333333331" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mu2-Ce-XDB"/>
                                 </constraints>
@@ -809,7 +790,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="405.33333333333331" width="343" height="61"/>
+                                <rect key="frame" x="16" y="395.33333333333331" width="343" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="NTE-SR-AaP"/>
                                 </constraints>
@@ -836,13 +817,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BW-U1-wXi">
-                                <rect key="frame" x="16" y="99" width="343" height="52"/>
+                                <rect key="frame" x="16" y="99" width="343" height="42"/>
                                 <fontDescription key="fontDescription" name="Crabmeal" family="Crabmeal" pointSize="36"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-Wk-8JB" userLabel="Line View" customClass="UIView_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="268.33333333333331" width="343" height="1"/>
+                                <rect key="frame" x="16" y="258.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bTG-qG-V25"/>
@@ -852,17 +833,17 @@
                                 <rect key="frame" x="16" y="44" width="343" height="22"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qod-YY-hBN" userLabel="Button AspectView">
-                                <rect key="frame" x="16" y="466.33333333333331" width="343" height="25.333333333333314"/>
+                                <rect key="frame" x="16" y="456.33333333333331" width="343" height="25.333333333333314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We can help you reset your password using your the email address linked to your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0po-IK-eDT">
-                                <rect key="frame" x="16" y="161" width="343" height="93.333333333333314"/>
+                                <rect key="frame" x="16" y="151" width="343" height="93.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHy-0N-G21">
-                                <rect key="frame" x="16" y="349.33333333333331" width="343" height="1"/>
+                                <rect key="frame" x="16" y="339.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="GI2-HI-Z97"/>
@@ -2689,7 +2670,7 @@
         <image name="profile" width="683" height="616"/>
         <image name="send" width="50" height="50"/>
         <image name="unlike" width="270" height="270"/>
-        <image name="upload" width="25" height="25"/>
+        <image name="upload" width="16" height="16"/>
         <image name="users" width="25" height="25"/>
         <namedColor name="BarColor">
             <color red="0.71399998664855957" green="0.65499997138977051" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

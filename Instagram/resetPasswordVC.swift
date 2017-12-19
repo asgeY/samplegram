@@ -13,7 +13,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
  
     @IBOutlet weak var gradientImg: UIImageViewX!
     
-    @IBOutlet weak var emailTxt: UITextField!{didSet{emailTxt.delegate = self}}
+    @IBOutlet weak var emailTxt: UITextField_Attributes!{didSet{emailTxt.delegate = self}}
 
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
