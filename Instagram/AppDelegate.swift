@@ -16,17 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+// Override point for customization after application launch.
         
-        Parse.enableLocalDatastore()
+Parse.enableLocalDatastore()
         
-        //configuration of using Parse code in Heroku
-        let parseConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) in
+//configuration of using Parse code in Heroku
+let parseConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) in
             
             //accessing Heroku App via id &keys
-            ParseMutableClientConfiguration.applicationId = "instagramid18950963325"
-            ParseMutableClientConfiguration.clientKey = "instagramkey18950963325"
-            ParseMutableClientConfiguration.server = "http://instagramlike1995.herokuapp.com/parse"
+ParseMutableClientConfiguration.applicationId = "instagramid18950963325"
+ParseMutableClientConfiguration.clientKey = "instagramkey18950963325"
+ParseMutableClientConfiguration.server = "http://instagramlike1995.herokuapp.com/parse"
             
         }
         

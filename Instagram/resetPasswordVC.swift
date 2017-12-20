@@ -55,6 +55,10 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         setUpObservers()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     deinit {
         //deallocate observers
         deallocateObservers()
@@ -121,9 +125,9 @@ extension resetPasswordVC {
     //initialize text fields false isEnable input
     fileprivate  func initInputFirst(){
        
-        self.resetBtn.applyGradient(colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+        self.resetBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
         
-        self.cancelBtn.applyGradient(colours: [UIColor(hex: "C02425"), UIColor(hex: "F0CB35")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+        self.cancelBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "C02425"), UIColor(hex: "F0CB35")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
     }
     
     //set image color set

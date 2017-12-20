@@ -63,6 +63,10 @@ class signInVC: UIViewController,UITextFieldDelegate{
 
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
@@ -131,7 +135,7 @@ passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),for: .edit
         
         signInBtnHeight.constant = 0
         
-        signInBtn.applyGradient(colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0))
+    signInBtn.applyGradient(gradient: CAGradientLayer(), colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
     }
     
     fileprivate func setColorArr(){

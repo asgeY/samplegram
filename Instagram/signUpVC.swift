@@ -44,7 +44,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         super.viewDidLoad()
 
         // Do any additional setup after loading the view
-        
+       
         //create tap gesture
         createScreenDismissKeyboard()
         
@@ -59,6 +59,9 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
  
         //initialize text fields false isEnable input
         initInputFirst()
+        
+        //set text fields right views
+        setRightViews()
         
         //set image color set
         setColorArr()
@@ -81,6 +84,10 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         removeObservers()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,13 +100,13 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
    self.view.endEditing(true)
         
 //send data to server to relative columns
-        let user = PFUser()
-        user.username = allTextFieldsInScreen[0].text?.lowercased()
-        user.email = allTextFieldsInScreen[4].text?.lowercased()
-        user.password = allTextFieldsInScreen[2].text
-        user["fullname"] = allTextFieldsInScreen[1].text?.lowercased()
-        user["bio"] = allTextFieldsInScreen[6].text
-        user["web"] = allTextFieldsInScreen[5].text?.lowercased()
+let user = PFUser()
+user.username = allTextFieldsInScreen[0].text?.lowercased()
+user.email = allTextFieldsInScreen[4].text?.lowercased()
+user.password = allTextFieldsInScreen[2].text
+user["fullname"] = allTextFieldsInScreen[1].text?.lowercased()
+user["bio"] = allTextFieldsInScreen[6].text
+user["web"] = allTextFieldsInScreen[5].text?.lowercased()
         
         //in Edited Profile it's gonna be assigned
         user["tel"] = ""
@@ -129,12 +136,19 @@ user.signUpInBackground { (success:Bool, error:Error?) in
     @IBAction func cancelBtn_click(_ sender: Any) {
         
     self.dismiss(animated: true, completion: nil)
-
     }
 }//signUpVC class over line
 
 //custom functions
 extension signUpVC {
+    
+    fileprivate func setRightViews(){
+       
+        _ = allTextFieldsInScreen.map{
+            $0.rightView?.frame = CGRect(x: 0, y: 5, width: 30 , height:30)
+            $0.rightViewMode = .never
+        }
+    }
     
     fileprivate func createScreenDismissKeyboard(){
         let gestrue = UITapGestureRecognizer.init(target: self, action: #selector(tapGestrue))
@@ -150,22 +164,23 @@ _ = allCountTip.map{
 }
     
     fileprivate  func setAvaImgLayer(){
+        
         //round ava
-        avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
+avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
         
         //clip image
         avaImg.clipsToBounds = true
         
         avaImg.layer.borderWidth = 3
-        avaImg.layer.borderColor = UIColor.black.cgColor
+        avaImg.layer.borderColor = UIColor.white.cgColor
     }
     
     //initialize text fields false isEnable input
  fileprivate func initInputFirst(){
     
-    signUpBtn.applyGradient(colours: [UIColor(hex:"dE6161"),UIColor(hex:"2657EB")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0))
+    signUpBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex:"dE6161"),UIColor(hex:"2657EB")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
     
-    cancelBtn.applyGradient(colours: [UIColor(hex: "FC5C7D"), UIColor(hex: "6A82FB")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+    cancelBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FC5C7D"), UIColor(hex: "6A82FB")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
     }
     
     //declare select image
@@ -193,9 +208,10 @@ self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].
         }
     }
     
-    fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
-        
-    tempCount = (currentTextField.text?.count)!
+fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
+ 
+currentTextField.rightViewMode = .never
+tempCount = (currentTextField.text?.count)!
 if tempCount == 0{
 someoneCount.textColor = UIColor.red
 }else{someoneCount.textColor = someoneLimitCount.textColor}
@@ -208,23 +224,25 @@ currentTextField.text = tempString
 }else {someoneCount.text = "\(tempCount)"}
 }
    
-    fileprivate func performNilCheck(with nilMessage: String){
+fileprivate func performNilCheck(with nilMessage: String){
         
-guard currentTextField.text != "" else{
-    alertController = nil
-    alertController = UIAlertController.init(title: "Something wrong", message: nilMessage, preferredStyle: .alert)
-    alertController?.addAction(knownAction)
-    present(alertController!, animated: true, completion: nil)
-            return
-        }
+    guard currentTextField.text != "" else{
+        alertController = nil
+        alertController = UIAlertController.init(title: "Something wrong", message: nilMessage, preferredStyle: .alert)
+        alertController?.addAction(knownAction)
+        currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+        currentTextField.rightViewMode = .always
+        present(alertController!, animated: true, completion: nil)
+        return
     }
+}
     
     fileprivate func showAlert(with message:String){
         
-        alertController = nil
-        alertController = UIAlertController.init(title: "Something wrong", message: message, preferredStyle: .alert)
+alertController = nil
+alertController = UIAlertController.init(title: "Something wrong", message: message, preferredStyle: .alert)
         alertController?.addAction(knownAction)
-        present(alertController!, animated: true, completion: nil)
+present(alertController!, animated: true, completion: nil)
     }
 }
 
@@ -236,13 +254,12 @@ extension signUpVC{
     }
     
     //choose the photo from the phone library
-    @objc fileprivate func loadImg(recognizer:UITapGestureRecognizer){
+@objc fileprivate func loadImg(recognizer:UITapGestureRecognizer){
         
         //picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
-        
     }
 }
 
@@ -271,15 +288,26 @@ _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
     
     if element == currentTextField.tag{
 setCountTip(with: allCountTip[offset * 2], someoneLimitCount: allCountTip[offset * 2 + 1])
-        }
+       }
   }
 }
     
     @objc fileprivate func checkText(argu:Notification){
         
 if currentTextField.tag == 10 {
-  performNilCheck(with: "username can' be nil")
+ 
+    guard currentTextField.text != "" else{
+        alertController = nil
+        alertController = UIAlertController.init(title: "Something wrong", message: "username can' be nil", preferredStyle: .alert)
+        alertController?.addAction(knownAction)
+        currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+        currentTextField.rightViewMode = .always
+        present(alertController!, animated: true, completion: nil)
+        return
+    }
 guard Validate.username((currentTextField?.text)!).isRight else {
+    currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    currentTextField.rightViewMode = .always
     showAlert(with: "username can only include letters,numbers,dot,underline");return
     }
     
@@ -288,18 +316,33 @@ guard Validate.username((currentTextField?.text)!).isRight else {
     query.findObjectsInBackground(block: { (objects, error) in
         if error == nil{
             if objects!.count > 0{
-                self.showAlert(with: "username has been taken")
+self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+self.currentTextField.rightViewMode = .always
+self.showAlert(with: "username has been taken")
             } else {
-                self.showAlert(with: "username no problem")
+self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.currentTextField.rightViewMode = .always
             }
         }else {print(error!.localizedDescription)}
     })
 }
 
         if currentTextField.tag == 20 {
-   performNilCheck(with: "fullname can't be nil")
+            
+guard currentTextField.text != "" else{
+alertController = nil
+alertController = UIAlertController.init(title: "Something wrong", message: "fullname can't be nil", preferredStyle: .alert)
+alertController?.addAction(knownAction)
+currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+currentTextField.rightViewMode = .always
+present(alertController!, animated: true, completion: nil)
+   return
+}
+            
 guard Validate.fullname((currentTextField?.text)!).isRight else {
-    showAlert(with: "fullname can only include letters,numbers,dot,underline");return
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
+showAlert(with: "fullname can only include letters,numbers,dot,underline");return
 }
             
 let query = PFQuery.init(className: "_User")
@@ -307,53 +350,125 @@ query.whereKey("fullname", equalTo: currentTextField.text!)
 query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{
     if objects!.count > 0{
+        self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+        self.currentTextField.rightViewMode = .always
 self.showAlert(with: "fullname has been taken")
-} else {self.showAlert(with: "fullname no problem")}
+} else {
+self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.currentTextField.rightViewMode = .always}
 }else {print(error!.localizedDescription)}
 })
 }
         
     if currentTextField.tag == 30{
-performNilCheck(with: "password can't be nil")
+        
+guard currentTextField.text != "" else{
+alertController = nil
+alertController = UIAlertController.init(title: "Something wrong", message:  "password can't be nil", preferredStyle: .alert)
+alertController?.addAction(knownAction)
+currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+currentTextField.rightViewMode = .always
+present(alertController!, animated: true, completion: nil)
+            return
+}
+        
 guard Validate.password((currentTextField?.text)!).isRight else {
-    showAlert(with: "password can only include letters,numbers");return
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
+showAlert(with: "password can only include letters,numbers");return
     }
+        self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+        self.currentTextField.rightViewMode = .always
 }
         
 if currentTextField.tag == 40{
-    performNilCheck(with: "must repeat password")
+    
+guard currentTextField.text != "" else{
+        alertController = nil
+        alertController = UIAlertController.init(title: "Something wrong", message:  "must repeat password", preferredStyle: .alert)
+        alertController?.addAction(knownAction)
+        currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+        currentTextField.rightViewMode = .always
+        present(alertController!, animated: true, completion: nil)
+        return
+    }
+    
 if currentTextField.text != allTextFieldsInScreen[2].text{
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
     showAlert(with: "Twice inputs is not same")
-}
-return
+}else {self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+    self.currentTextField.rightViewMode = .always
+    }
 }
     
-        if currentTextField.tag == 50{
-   performNilCheck(with: "email can't be nil")
+    if currentTextField.tag == 50{
+        
+guard currentTextField.text != "" else{
+alertController = nil
+alertController = UIAlertController.init(title: "Something wrong", message:  "email can't be nil", preferredStyle: .alert)
+alertController?.addAction(knownAction)
+currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+currentTextField.rightViewMode = .always
+present(alertController!, animated: true, completion: nil)
+return
+}
+        
 guard Validate.email((currentTextField?.text)!).isRight else{
-    showAlert(with: "email scheme must 4-7 words, and 2-3 letters after dot");return
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
+showAlert(with: "email scheme must 4-7 words, and 2-3 letters after dot");return
 }
             
 let query = PFQuery.init(className: "_User")
 query.whereKey("email", equalTo: currentTextField.text!)
 query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{
-if objects!.count > 0{self.showAlert(with: "email has been taken")
-} else {self.showAlert(with: "email no problem")}
+if objects!.count > 0{
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
+self.showAlert(with: "email has been taken")
+} else {
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+    self.currentTextField.rightViewMode = .always}
 }else {print(error!.localizedDescription)}
 })
 }
        
         if currentTextField.tag == 60{
-performNilCheck(with: "URL can't be nil")
-guard Validate.URL((currentTextField?.text)!).isRight else{
-    showAlert(with: "URL format is www.xxxxx.xxx, and xxx must 2-3 letters");return
+
+guard currentTextField.text != "" else{
+alertController = nil
+alertController = UIAlertController.init(title: "Something wrong", message:  "URL can't be nil", preferredStyle: .alert)
+    alertController?.addAction(knownAction)
+                currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+                currentTextField.rightViewMode = .always
+                present(alertController!, animated: true, completion: nil)
+                return
 }
+guard Validate.URL((currentTextField?.text)!).isRight else{
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    self.currentTextField.rightViewMode = .always
+showAlert(with: "URL format is www.xxxxx.xxx, and xxx must 2-3 letters");return
+}
+self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.currentTextField.rightViewMode = .always
 }
         
   if currentTextField.tag == 70{
-     performNilCheck(with: "bio can't be nil")
- return
+    
+    guard currentTextField.text != "" else{
+        alertController = nil
+        alertController = UIAlertController.init(title: "Something wrong", message:  "bio can't be nil", preferredStyle: .alert)
+        alertController?.addAction(knownAction)
+        currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+        currentTextField.rightViewMode = .always
+        present(alertController!, animated: true, completion: nil)
+        return
+    }
+    
+    self.currentTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+    self.currentTextField.rightViewMode = .always
         }
     }
     
