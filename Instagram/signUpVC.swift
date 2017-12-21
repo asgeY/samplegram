@@ -40,6 +40,42 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
    
     fileprivate var endTextField:UITextField!
     
+    fileprivate let rootLayer:CALayer = {
+        let rootLayer = CALayer()
+        rootLayer.backgroundColor = UIColor.black.cgColor
+        return rootLayer
+    }()
+    
+    fileprivate let views = UIView()
+    
+fileprivate let replicatorLayer:CAReplicatorLayer = {
+        let replicatorLayer = CAReplicatorLayer()
+        replicatorLayer.frame = CGRect(x: -22, y: -5, width: 20, height: 20)
+        replicatorLayer.borderColor = UIColor.clear.cgColor
+        replicatorLayer.cornerRadius = 5.0
+        replicatorLayer.borderWidth = 1.0
+    replicatorLayer.instanceCount = 9
+    replicatorLayer.instanceTransform = CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(9), 0, 0, 1)
+        return replicatorLayer
+    }()
+    
+  fileprivate let circle:CALayer = {
+        let circle = CALayer()
+        circle.frame = CGRect(origin: CGPoint.zero,size: CGSize(width: 7, height: 7))
+        circle.backgroundColor = UIColor.blue.cgColor
+        circle.cornerRadius = 5
+        return circle
+    }()
+    
+   fileprivate let shrinkAnimation:CABasicAnimation = {
+        let shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
+        shrinkAnimation.fromValue = 1
+        shrinkAnimation.toValue = 0.1
+        shrinkAnimation.duration = 0.5
+        shrinkAnimation.repeatCount = Float.infinity
+        return shrinkAnimation
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -116,7 +152,7 @@ user["web"] = allTextFieldsInScreen[5].text?.lowercased()
         user["gender"] = ""
         
         //convert our image for sending to server
-        guard let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else {return}
+          guard let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else {return}
      
      user["ava"] = avaFile
       
@@ -152,7 +188,7 @@ extension signUpVC {
     fileprivate func setRightViews(){
        
         _ = allTextFieldsInScreen.map{
-            $0.rightView?.frame = CGRect(x: 0, y: 5, width: 30 , height:30)
+            $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
             $0.rightViewMode = .never
         }
     }
@@ -176,7 +212,6 @@ avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
         
         //clip image
         avaImg.clipsToBounds = true
-        
         avaImg.layer.borderWidth = 3
         avaImg.layer.borderColor = UIColor.white.cgColor
     }
@@ -229,6 +264,16 @@ someoneCount.text = someoneLimitCount.text
 currentTextField.text = tempString
 }else {someoneCount.text = "\(tempCount)"}
 }
+    
+   fileprivate func progressIndicator(){
+    
+replicatorLayer.addSublayer(circle)
+circle.removeAllAnimations()
+circle.add(shrinkAnimation, forKey: nil)
+replicatorLayer.instanceDelay = shrinkAnimation.duration / CFTimeInterval(9)
+rootLayer.addSublayer(replicatorLayer)
+    }
+    
 }
 
 //custom functions selectors
@@ -259,15 +304,14 @@ NotificationCenter.default.addObserver(self, selector: #selector(checkText(_:)),
     }
     
     fileprivate func removeObservers(){
-        
         NotificationCenter.default.removeObserver(self)
-    }
+ }
 }
 
 //observers selectors
 extension signUpVC{
     
-    @objc fileprivate func setCountTip(_:Notification){
+@objc fileprivate func setCountTip(_:Notification){
         
 _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
     
@@ -278,9 +322,12 @@ setCountTip(with: allCountTip[offset * 2], someoneLimitCount: allCountTip[offset
 }
     
     @objc fileprivate func checkText(_:Notification){
- 
+progressIndicator()
+self.views.layer.addSublayer(rootLayer)
+        
+endTextField.rightView = self.views
+endTextField.rightViewMode = .always
 if endTextField.tag == 10 {
-
     guard endTextField.text != "" else{
 endTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 endTextField.rightViewMode = .always
@@ -289,8 +336,6 @@ endTextField.rightViewMode = .always
     }
     
 guard Validate.username((endTextField?.text)!).isRight else {
-   endTextField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-   endTextField.rightViewMode = .always
     allTipLabelsInScreen[0].text = "username can only include letters,numbers,dot,underline"
     return
     }
