@@ -11,12 +11,12 @@ import Parse
 
 class signInVC: UIViewController,UITextFieldDelegate{
     
-    @IBOutlet weak var gradientBackground: UIImageViewX!
+@IBOutlet weak var gradientBackground: UIImageViewX!
     
-    @IBOutlet weak var usernameTxt: UITextField_Attributes!
+@IBOutlet weak var usernameTxt: UITextField_Attributes!
     {didSet{usernameTxt.delegate = self}}
     
-    @IBOutlet weak var passwordTxt: UITextField_Attributes!
+@IBOutlet weak var passwordTxt: UITextField_Attributes!
 {didSet{passwordTxt.delegate = self}}
     
    fileprivate var activeTextField: UITextField?
@@ -40,7 +40,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
         
    //check text fields is or not written all
     setupAddTargetIsNotEmptyTextFields()
-        
+    
+      //create left image on textfield left
        createLeftImageOnTextField()
         
       //set image color set
