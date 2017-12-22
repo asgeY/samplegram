@@ -36,6 +36,9 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
   //initalize reset btn
  initResetBtn()
   
+       //create view gesture
+        createViewGesture()
+        
         //set image color set
         setColorArr()
         
@@ -110,6 +113,11 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
 //custom functions
 extension resetPasswordVC {
 
+    fileprivate func createViewGesture(){
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
     //convert emailTxt to first responder
     fileprivate func createFirstResponder(){
          emailTxt.becomeFirstResponder()
@@ -145,6 +153,13 @@ extension resetPasswordVC {
         }) { (success) in
             self.animatedBackground()
         }
+    }
+}
+
+//custom functions selectors
+extension resetPasswordVC{
+    @objc fileprivate func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 }
 

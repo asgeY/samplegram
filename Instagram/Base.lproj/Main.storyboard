@@ -363,7 +363,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                                            <button clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="676" width="339" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="jvb-QH-iBl"/>

@@ -37,6 +37,9 @@ class signInVC: UIViewController,UITextFieldDelegate{
  
   //initialize text fields false isEnable input
         initInputsFirst()
+   
+  // create view gesture
+   createViewGesture()
         
    //check text fields is or not written all
     setupAddTargetIsNotEmptyTextFields()
@@ -76,10 +79,9 @@ class signInVC: UIViewController,UITextFieldDelegate{
       releaseObservers()
     }
     
-
     //clicked sign in button
     @IBAction func signInBtn_click(_ sender: Any) {
-
+        
         //login funcitons
         PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user:PFUser?, error:Error?) in
             
@@ -110,6 +112,11 @@ self.present(alert, animated: true, completion: nil)
 
 //custom functions
 extension signInVC{
+    
+    fileprivate func createViewGesture(){
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
     
     fileprivate func createLeftImageOnTextField(){
         
@@ -158,6 +165,10 @@ colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2274509804, green: 
 //custom functions selectors
 extension signInVC{
     
+   @objc fileprivate func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
+
  //if all text fields has not been written anything, the sign In button will be hidden
     @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
 
@@ -209,24 +220,15 @@ extension signInVC{
         
         if self.view.frame.origin.y >= 0{
             
-            //Checking if the textfield is really hidden behind the keyboard
+//Checking if the textfield is really hidden behind the keyboard
     if editingTextField > keyboardY - 60{
 UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
 {[unowned self] in
-self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-                    }, completion: nil)
-            }
-        }
-    }
+self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)}, completion: nil)}}}
     
     @objc fileprivate func keyboardWillHide(argu: Notification){
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
-            {[unowned self] in
-                self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            }, completion: nil)
-    }
-
-}
+UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:{[unowned self] in
+self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)}, completion: nil)}}
 
 //UITextFieldDelegate
 extension signInVC{

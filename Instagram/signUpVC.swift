@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIScrollViewDelegate {
+class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
  
     @IBOutlet var tipSelectedView: [UIView]!
     
@@ -31,7 +31,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     fileprivate var currentTextField:UITextField!
     
-    fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
+fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     
     fileprivate var tempString = ""
     
@@ -48,10 +48,14 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     fileprivate let views = UIView()
     
+    fileprivate var isChanged = false
+    
+    fileprivate var tempText = ""
+    
 fileprivate let replicatorLayer:CAReplicatorLayer = {
         let replicatorLayer = CAReplicatorLayer()
-        replicatorLayer.frame = CGRect(x: -22, y: -5, width: 20, height: 20)
-        replicatorLayer.borderColor = UIColor.clear.cgColor
+     replicatorLayer.frame = CGRect(x: -22, y: -5, width: 20, height: 20)
+replicatorLayer.borderColor = UIColor.clear.cgColor
         replicatorLayer.cornerRadius = 5.0
         replicatorLayer.borderWidth = 1.0
     replicatorLayer.instanceCount = 9
@@ -98,6 +102,9 @@ fileprivate let replicatorLayer:CAReplicatorLayer = {
  
         //initialize text fields false isEnable input
         initInputFirst()
+        
+        //create check targets
+        createCheckTargets()
         
         //set text fields right views
         setRightViews()
@@ -173,7 +180,7 @@ UserDefaults.standard.set(user.username, forKey: "username")
     }
    
     //click cancel
-    @IBAction func cancelBtn_click(_ sender: Any) {
+    @IBAction func cancelBtn_click(_ sender: UIButton) {
 self.dismiss(animated: true, completion: nil)}
 }//signUpVC class over line
 
@@ -243,10 +250,8 @@ currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : 
 UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
 self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
 self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2
-        }) { (success) in
-            self.animatedBackground()
-        }
-    }
+        }) { (success) in self.animatedBackground()}
+}
     
 fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
  
@@ -274,6 +279,13 @@ rootLayer.addSublayer(replicatorLayer)
 self.views.layer.addSublayer(rootLayer)
 }
     
+    fileprivate func createCheckTargets(){
+        
+_ = allTextFieldsInScreen.map{
+$0.addTarget(self, action: #selector(checkText(sender:)), for: .editingChanged)
+        }
+    }
+    
 }
 
 //custom functions selectors
@@ -291,6 +303,11 @@ extension signUpVC{
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
     }
+    
+    @objc fileprivate func checkText(sender:UITextField){
+        isChanged = true
+    }
+    
 }
 
 //observers
@@ -307,7 +324,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(setCountTip(_:)
 
 //observers selectors
 extension signUpVC{
-    
+ 
 @objc fileprivate func setCountTip(_:Notification){
         
 _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
@@ -324,134 +341,131 @@ extension signUpVC{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
 textField.rightViewMode = .never
- allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
+tempText = allTipLabelsInScreen[textField.tag / 10 - 1].text!
+allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
  tipSelectedView[textField.tag / 10 - 1].backgroundColor = .purple
   currentTextField = textField
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
 tipSelectedView[textField.tag / 10 - 1].backgroundColor = .white
-progressIndicator()
 textField.rightViewMode = .always
+        if isChanged == true {
 if textField.tag == 10 {
-textField.rightView = self.views
-    guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard textField.text != "" else{
+allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[0].text = "username can't be nil"
-                return
+        return
 }
-            
-guard Validate.username((textField.text)!).isRight else {
+guard Validate.username((allTextFieldsInScreen[0].text)!).isRight else {
     allTipLabelsInScreen[0].text = "username can only include letters,numbers,dot,underline";return
 }
-            
+progressIndicator()
+allTextFieldsInScreen[0].rightView = self.views
 let query = PFQuery.init(className: "_User")
-query.whereKey("username", equalTo: textField.text!)
+query.whereKey("username", equalTo: allTextFieldsInScreen[0].text!)
 query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{if objects!.count > 0{
-DispatchQueue.main.async{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-self.allTipLabelsInScreen[0].text = "username has been taken"}
+self.allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+self.allTipLabelsInScreen[0].text = "username has been taken"
 } else {
-DispatchQueue.main.async{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+self.allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+}
 }else {print(error!.localizedDescription)}})
 }
         
     if textField.tag == 20 {
-            textField.rightView = self.views
-    guard textField.text != "" else{
+guard textField.text != "" else{
     textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[1].text = "fullname can't be nil"
     return}
-            
-guard Validate.fullname((textField.text)!).isRight else {
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard
+Validate.fullname((allTextFieldsInScreen[1].text)!).isRight else {
+allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[1].text = "fullname can only include letters,numbers,dot,underline";return
 }
-            
+progressIndicator()
+allTextFieldsInScreen[1].rightView = self.views
 let query = PFQuery.init(className: "_User")
-query.whereKey("fullname", equalTo: textField.text!)
+query.whereKey("fullname", equalTo: allTextFieldsInScreen[1].text!)
 query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{if objects!.count > 0{
-DispatchQueue.main.async{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-self.allTipLabelsInScreen[1].text = "fullname has been taken"}
+self.allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+self.allTipLabelsInScreen[1].text = "fullname has been taken"
 } else {
-DispatchQueue.main.async{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+self.allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+    }
 }else {print(error!.localizedDescription)}})}
         
     if textField.tag == 30{
-guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard allTextFieldsInScreen[2].text != "" else{
+allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[2].text = "password can't be nil"
 return
 }
-            
-guard Validate.password((textField.text)!).isRight else {
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-allTipLabelsInScreen[2].text = "password can only include letters,numbers";return
-}
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+guard Validate.password((allTextFieldsInScreen[2].text)!).isRight else {
+allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+allTipLabelsInScreen[2].text = "password can only include letters,numbers";return}
+allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
 }
         
 if textField.tag == 40{
-            
-guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard allTextFieldsInScreen[3].text != "" else{
+allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[3].text = "repeat must be done"
 return}
-            
-if textField.text != allTextFieldsInScreen[2].text{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+if allTextFieldsInScreen[3].text != allTextFieldsInScreen[2].text{
+allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[3].text = "Twice inputs is not same"
-}else {textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+}else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
         
 if textField.tag == 50{
-textField.rightView = self.views
-    guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+allTextFieldsInScreen[4].rightView = self.views
+guard allTextFieldsInScreen[4].text != "" else{
+allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[4].text = "email can't be nil"
 return}
-            
-guard Validate.email((textField.text)!).isRight else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard Validate.email((allTextFieldsInScreen[4].text)!).isRight else{
+allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[4].text = "email scheme must 4-7 words, and 2-3 letters after dot";return
 }
-            
+progressIndicator()
+allTextFieldsInScreen[4].rightView = self.views
 let query = PFQuery.init(className: "_User")
-query.whereKey("email", equalTo: textField.text!)
+query.whereKey("email", equalTo: allTextFieldsInScreen[4].text!)
 query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{if objects!.count > 0{
     DispatchQueue.main.async {
-    textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+self.allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 self.allTipLabelsInScreen[4].text = "email has been taken"
 }} else {DispatchQueue.main.async {
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+self.allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
 }else {print(error!.localizedDescription)}})}
         
 if textField.tag == 60{
-guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard allTextFieldsInScreen[5].text != "" else{
+allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[5].text = "web can't be nil"
     return}
-
-guard Validate.URL((textField.text)!).isRight else{
-   textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard Validate.URL((allTextFieldsInScreen[5].text)!).isRight else{
+   allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[5].text = "URL format is www.xxxxx.xxx, and xxx must 2-3 letters";return
 }
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
 }
         
 if textField.tag == 70{
-guard textField.text != "" else{
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+guard allTextFieldsInScreen[6].text != "" else{
+allTextFieldsInScreen[6].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[6].text = "bio can't be nil"
     return
 }
-textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
-}
+allTextFieldsInScreen[6].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+            }
+    isChanged = false
+        }
+else { allTipLabelsInScreen[textField.tag / 10 - 1].text = tempText
+return}
 }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -470,14 +484,4 @@ extension signUpVC{
     }
 }
 
-//UIScrollViewDelegate
-extension signUpVC{
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
-verticalIndicator.backgroundColor = .orange
-    }
-    
-}
 
