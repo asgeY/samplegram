@@ -285,7 +285,6 @@ _ = allTextFieldsInScreen.map{
 $0.addTarget(self, action: #selector(checkText(sender:)), for: .editingChanged)
         }
     }
-    
 }
 
 //custom functions selectors
@@ -307,7 +306,6 @@ extension signUpVC{
     @objc fileprivate func checkText(sender:UITextField){
         isChanged = true
     }
-    
 }
 
 //observers
@@ -325,6 +323,9 @@ NotificationCenter.default.addObserver(self, selector: #selector(setCountTip(_:)
 //observers selectors
 extension signUpVC{
  
+    
+    
+    
 @objc fileprivate func setCountTip(_:Notification){
         
 _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
@@ -340,7 +341,7 @@ setCountTip(with: allCountTip[offset * 2], someoneLimitCount: allCountTip[offset
 extension signUpVC{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-textField.rightViewMode = .never
+signUpBtn.isEnabled = false
 tempText = allTipLabelsInScreen[textField.tag / 10 - 1].text!
 allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
  tipSelectedView[textField.tag / 10 - 1].backgroundColor = .purple
@@ -349,16 +350,22 @@ allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
 tipSelectedView[textField.tag / 10 - 1].backgroundColor = .white
-textField.rightViewMode = .always
-        if isChanged == true {
+textField.rightViewMode = .unlessEditing
+        
+if isChanged == true {
+textField.isEnabled = false
 if textField.tag == 10 {
-guard textField.text != "" else{
+guard allTextFieldsInScreen[0].text != "" else{
 allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[0].text = "username can't be nil"
+allTextFieldsInScreen[0].isEnabled = true
         return
 }
 guard Validate.username((allTextFieldsInScreen[0].text)!).isRight else {
-    allTipLabelsInScreen[0].text = "username can only include letters,numbers,dot,underline";return
+    allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
+    allTipLabelsInScreen[0].text = "username can only include letters,numbers,dot,underline"
+    allTextFieldsInScreen[0].isEnabled = true
+    return
 }
 progressIndicator()
 allTextFieldsInScreen[0].rightView = self.views
@@ -368,8 +375,10 @@ query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{if objects!.count > 0{
 self.allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 self.allTipLabelsInScreen[0].text = "username has been taken"
+self.allTextFieldsInScreen[0].isEnabled = true
 } else {
 self.allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.allTextFieldsInScreen[0].isEnabled = true
 }
 }else {print(error!.localizedDescription)}})
 }
@@ -378,11 +387,14 @@ self.allTextFieldsInScreen[0].rightView = UIImageView.init(image: #imageLiteral(
 guard textField.text != "" else{
     textField.rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[1].text = "fullname can't be nil"
+allTipLabelsInScreen[1].isEnabled = true
     return}
 guard
 Validate.fullname((allTextFieldsInScreen[1].text)!).isRight else {
 allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-    allTipLabelsInScreen[1].text = "fullname can only include letters,numbers,dot,underline";return
+allTipLabelsInScreen[1].text = "fullname can only include letters,numbers,dot,underline"
+    allTipLabelsInScreen[1].isEnabled = true
+    return
 }
 progressIndicator()
 allTextFieldsInScreen[1].rightView = self.views
@@ -392,8 +404,10 @@ query.findObjectsInBackground(block: { (objects, error) in
 if error == nil{if objects!.count > 0{
 self.allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 self.allTipLabelsInScreen[1].text = "fullname has been taken"
+self.allTextFieldsInScreen[1].isEnabled = true
 } else {
 self.allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.allTextFieldsInScreen[1].isEnabled = true
     }
 }else {print(error!.localizedDescription)}})}
         
@@ -401,33 +415,45 @@ self.allTextFieldsInScreen[1].rightView = UIImageView.init(image: #imageLiteral(
 guard allTextFieldsInScreen[2].text != "" else{
 allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[2].text = "password can't be nil"
+allTextFieldsInScreen[2].isEnabled = true
 return
 }
 guard Validate.password((allTextFieldsInScreen[2].text)!).isRight else {
 allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-allTipLabelsInScreen[2].text = "password can only include letters,numbers";return}
+allTipLabelsInScreen[2].text = "password can only include letters,numbers"
+allTextFieldsInScreen[2].isEnabled = true
+return
+        }
 allTextFieldsInScreen[2].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+allTextFieldsInScreen[2].isEnabled = true
 }
         
 if textField.tag == 40{
 guard allTextFieldsInScreen[3].text != "" else{
 allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[3].text = "repeat must be done"
+allTextFieldsInScreen[3].isEnabled = true
 return}
 if allTextFieldsInScreen[3].text != allTextFieldsInScreen[2].text{
 allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[3].text = "Twice inputs is not same"
-}else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+allTextFieldsInScreen[3].isEnabled = true
+}else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+allTextFieldsInScreen[3].isEnabled = true
+}}
         
 if textField.tag == 50{
 allTextFieldsInScreen[4].rightView = self.views
 guard allTextFieldsInScreen[4].text != "" else{
 allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 allTipLabelsInScreen[4].text = "email can't be nil"
+allTextFieldsInScreen[4].isEnabled = true
 return}
 guard Validate.email((allTextFieldsInScreen[4].text)!).isRight else{
 allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-    allTipLabelsInScreen[4].text = "email scheme must 4-7 words, and 2-3 letters after dot";return
+allTipLabelsInScreen[4].text = "email scheme must 4-7 words, and 2-3 letters after dot"
+allTextFieldsInScreen[4].isEnabled = true
+    return
 }
 progressIndicator()
 allTextFieldsInScreen[4].rightView = self.views
@@ -438,30 +464,42 @@ if error == nil{if objects!.count > 0{
     DispatchQueue.main.async {
 self.allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 self.allTipLabelsInScreen[4].text = "email has been taken"
+self.allTextFieldsInScreen[4].isEnabled = true
+return
 }} else {DispatchQueue.main.async {
-self.allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))}}
+self.allTextFieldsInScreen[4].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+self.allTextFieldsInScreen[4].isEnabled = true
+return}}
 }else {print(error!.localizedDescription)}})}
         
 if textField.tag == 60{
 guard allTextFieldsInScreen[5].text != "" else{
 allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[5].text = "web can't be nil"
-    return}
+    allTextFieldsInScreen[5].isEnabled = true
+    return
+}
 guard Validate.URL((allTextFieldsInScreen[5].text)!).isRight else{
    allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-    allTipLabelsInScreen[5].text = "URL format is www.xxxxx.xxx, and xxx must 2-3 letters";return
+    allTipLabelsInScreen[5].text = "URL format is www.xxxxx.xxx, and xxx must 2-3 letters"
+    allTextFieldsInScreen[5].isEnabled = true
+    return
 }
 allTextFieldsInScreen[5].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
+    allTextFieldsInScreen[5].isEnabled = true
+    return
 }
         
 if textField.tag == 70{
 guard allTextFieldsInScreen[6].text != "" else{
 allTextFieldsInScreen[6].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
     allTipLabelsInScreen[6].text = "bio can't be nil"
+    allTextFieldsInScreen[6].isEnabled = true
     return
 }
 allTextFieldsInScreen[6].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
-            }
+    allTextFieldsInScreen[6].isEnabled = true
+}
     isChanged = false
         }
 else { allTipLabelsInScreen[textField.tag / 10 - 1].text = tempText
