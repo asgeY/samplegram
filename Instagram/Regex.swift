@@ -26,13 +26,13 @@ case URL(_ :String)
             predicateStr = "^[a-zA-Z0-9_.]*$"
             currObject = str
         case let .fullname(str):
-            predicateStr = "^[a-zA-Z0-9_.]*$"
+            predicateStr = "^[a-zA-Z0-9_. ]*$"
             currObject = str
         case let .password(str):
-            predicateStr = "^[a-zA-Z0-9]*$"
+            predicateStr = "^[a-zA-Z0-9]{6,20}"
             currObject = str
         case let .email(str):
-            predicateStr = "[A-Z0-9a-z._%+-]{4,7}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+            predicateStr = "[A-Z0-9a-z._%+-]{4,20}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
             currObject = str
         case let .URL(str):
             predicateStr = "www.+[A-Z0-9a-z._%+-]+.[A-Za-z]{2,3}"
