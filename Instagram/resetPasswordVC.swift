@@ -46,7 +46,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         animatedBackground()
     }
 
-    //when users open this VC, the keyboard will appear at once
+//when users open this VC, the keyboard will appear at once
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -94,8 +94,14 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
     }
     
     //click cancel button
-    @IBAction func cancelBtn_click(_ sender: Any) {
-    
+@IBAction func cancelBtn_click(_ sender: Any) {
+UIView.animate(withDuration: 0.1, animations: {
+self.cancelBtn.layer.bounds.size.width -= 30}, completion: { (_) in
+self.cancelBtn.layer.bounds.size.width += 30
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+        self.dismiss(animated: true, completion: nil)
+            })
+        })
  }
    
     @IBAction func emailTextFieldTap(_ sender: UITextField) {

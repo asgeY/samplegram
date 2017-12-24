@@ -105,9 +105,6 @@ self.present(alert, animated: true, completion: nil)
             }
         }
     }
-    @IBAction func setUnwind(sender: UIStoryboardSegue){
-    }
-    
 }//signInVC class over line
 
 //custom functions
