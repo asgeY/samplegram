@@ -184,9 +184,9 @@ UserDefaults.standard.set(user.username, forKey: "username")
     //click cancel
     @IBAction func cancelBtn_click(_ sender: UIButton) {
 UIView.animate(withDuration: 0.1, animations: {
-    self.cancelBtn.layer.bounds.size.width -= 30
+    self.cancelBtn.layer.bounds.size.width -= 60
 }, completion: { (_) in
-self.cancelBtn.layer.bounds.size.width += 30
+self.cancelBtn.layer.bounds.size.width += 60
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
         self.dismiss(animated: true, completion: nil)
     })

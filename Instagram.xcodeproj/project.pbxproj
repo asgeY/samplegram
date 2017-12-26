@@ -64,6 +64,16 @@
 		A5C177E61F681098008D93AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E51F681098008D93AC /* CFNetwork.framework */; };
 		A5C177E91F68115B008D93AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E71F68115B008D93AC /* Bolts.framework */; };
 		A5C177EA1F68115B008D93AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E81F68115B008D93AC /* Parse.framework */; };
+		A5C76F8A1FF0E8D000B1B9EE /* TOCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F761FF0E8CE00B1B9EE /* TOCropViewController.m */; };
+		A5C76F8B1FF0E8D000B1B9EE /* TOCropScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F7B1FF0E8CF00B1B9EE /* TOCropScrollView.m */; };
+		A5C76F8C1FF0E8D000B1B9EE /* TOCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F7C1FF0E8CF00B1B9EE /* TOCropView.m */; };
+		A5C76F8D1FF0E8D000B1B9EE /* TOCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F7D1FF0E8CF00B1B9EE /* TOCropOverlayView.m */; };
+		A5C76F8E1FF0E8D000B1B9EE /* TOCropToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F7E1FF0E8CF00B1B9EE /* TOCropToolbar.m */; };
+		A5C76F8F1FF0E8D000B1B9EE /* TOActivityCroppedImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F821FF0E8CF00B1B9EE /* TOActivityCroppedImageProvider.m */; };
+		A5C76F901FF0E8D000B1B9EE /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F831FF0E8CF00B1B9EE /* UIImage+CropRotate.m */; };
+		A5C76F911FF0E8D000B1B9EE /* TOCropViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F841FF0E8CF00B1B9EE /* TOCropViewControllerTransitioning.m */; };
+		A5C76F921FF0E8D000B1B9EE /* TOCroppedImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F851FF0E8CF00B1B9EE /* TOCroppedImageAttributes.m */; };
+		A5C76F961FF0EAFD00B1B9EE /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C76F951FF0EAFD00B1B9EE /* CropViewController.swift */; };
 		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 		A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F01FD53EE500246E71 /* commentsNav.swift */; };
@@ -71,6 +81,8 @@
 		A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F41FD55D0200246E71 /* GrowingTextView.swift */; };
 		A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F313FB1FD6D1E700246E71 /* KILabel.m */; };
 		A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F314041FD716E100246E71 /* hashtagsVC.swift */; };
+		A5F4A29B1FF2478300F182F8 /* UITableView_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */; };
+		A5F4A29D1FF24AFC00F182F8 /* MedulaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
 		A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */; };
@@ -137,6 +149,25 @@
 		A5C177E51F681098008D93AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A5C177E71F68115B008D93AC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A5C177E81F68115B008D93AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A5C76F761FF0E8CE00B1B9EE /* TOCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropViewController.m; sourceTree = "<group>"; };
+		A5C76F781FF0E8CF00B1B9EE /* TOCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropView.h; sourceTree = "<group>"; };
+		A5C76F791FF0E8CF00B1B9EE /* TOCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropOverlayView.h; sourceTree = "<group>"; };
+		A5C76F7A1FF0E8CF00B1B9EE /* TOCropToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropToolbar.h; sourceTree = "<group>"; };
+		A5C76F7B1FF0E8CF00B1B9EE /* TOCropScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropScrollView.m; sourceTree = "<group>"; };
+		A5C76F7C1FF0E8CF00B1B9EE /* TOCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropView.m; sourceTree = "<group>"; };
+		A5C76F7D1FF0E8CF00B1B9EE /* TOCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropOverlayView.m; sourceTree = "<group>"; };
+		A5C76F7E1FF0E8CF00B1B9EE /* TOCropToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropToolbar.m; sourceTree = "<group>"; };
+		A5C76F7F1FF0E8CF00B1B9EE /* TOCropScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropScrollView.h; sourceTree = "<group>"; };
+		A5C76F801FF0E8CF00B1B9EE /* TOCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropViewController.h; sourceTree = "<group>"; };
+		A5C76F821FF0E8CF00B1B9EE /* TOActivityCroppedImageProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOActivityCroppedImageProvider.m; sourceTree = "<group>"; };
+		A5C76F831FF0E8CF00B1B9EE /* UIImage+CropRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CropRotate.m"; sourceTree = "<group>"; };
+		A5C76F841FF0E8CF00B1B9EE /* TOCropViewControllerTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCropViewControllerTransitioning.m; sourceTree = "<group>"; };
+		A5C76F851FF0E8CF00B1B9EE /* TOCroppedImageAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCroppedImageAttributes.m; sourceTree = "<group>"; };
+		A5C76F861FF0E8CF00B1B9EE /* TOActivityCroppedImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActivityCroppedImageProvider.h; sourceTree = "<group>"; };
+		A5C76F871FF0E8CF00B1B9EE /* TOCropViewControllerTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropViewControllerTransitioning.h; sourceTree = "<group>"; };
+		A5C76F881FF0E8CF00B1B9EE /* UIImage+CropRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CropRotate.h"; sourceTree = "<group>"; };
+		A5C76F891FF0E8CF00B1B9EE /* TOCroppedImageAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCroppedImageAttributes.h; sourceTree = "<group>"; };
+		A5C76F951FF0EAFD00B1B9EE /* CropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		A5F313F01FD53EE500246E71 /* commentsNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsNav.swift; sourceTree = "<group>"; };
@@ -146,6 +177,8 @@
 		A5F313FA1FD6D1E700246E71 /* KILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KILabel.h; sourceTree = "<group>"; };
 		A5F313FB1FD6D1E700246E71 /* KILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KILabel.m; sourceTree = "<group>"; };
 		A5F314041FD716E100246E71 /* hashtagsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashtagsVC.swift; sourceTree = "<group>"; };
+		A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Attributes.swift; sourceTree = "<group>"; };
+		A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedulaOne-Regular.ttf"; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
 		A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView_Extension.swift; sourceTree = "<group>"; };
@@ -230,8 +263,6 @@
 		A53819151FE40CAB00A9EFBB /* KILabel */ = {
 			isa = PBXGroup;
 			children = (
-				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
-				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
 			);
 			name = KILabel;
 			sourceTree = "<group>";
@@ -254,6 +285,7 @@
 				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
 				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
 				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
+				A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */,
 			);
 			name = Attributes;
 			sourceTree = "<group>";
@@ -310,6 +342,7 @@
 				A538191A1FE40E4900A9EFBB /* Regex Assist */,
 				A538191B1FE40E5700A9EFBB /* UIImageView Assist */,
 				A538191C1FE40E6500A9EFBB /* UITextView Assist */,
+				A5F4A29E1FF250D800F182F8 /* CropView  */,
 			);
 			name = "Custom Assist";
 			sourceTree = "<group>";
@@ -319,6 +352,7 @@
 			children = (
 				A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */,
 				A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */,
+				A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */,
 				A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */,
 				A5EEB27F1FC5C542002CB038 /* murdoink.ttf */,
 				A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */,
@@ -415,6 +449,8 @@
 		A5C177D21F680D66008D93AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5C76F941FF0E8F900B1B9EE /* TOCropViewController */,
+				A5C76F931FF0E8E000B1B9EE /* KILabel */,
 				A5C177E51F681098008D93AC /* CFNetwork.framework */,
 				A5C177E31F681089008D93AC /* AudioToolbox.framework */,
 				A5C177E71F68115B008D93AC /* Bolts.framework */,
@@ -432,6 +468,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A5C76F771FF0E8CF00B1B9EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5C76F781FF0E8CF00B1B9EE /* TOCropView.h */,
+				A5C76F791FF0E8CF00B1B9EE /* TOCropOverlayView.h */,
+				A5C76F7A1FF0E8CF00B1B9EE /* TOCropToolbar.h */,
+				A5C76F7B1FF0E8CF00B1B9EE /* TOCropScrollView.m */,
+				A5C76F7C1FF0E8CF00B1B9EE /* TOCropView.m */,
+				A5C76F7D1FF0E8CF00B1B9EE /* TOCropOverlayView.m */,
+				A5C76F7E1FF0E8CF00B1B9EE /* TOCropToolbar.m */,
+				A5C76F7F1FF0E8CF00B1B9EE /* TOCropScrollView.h */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A5C76F811FF0E8CF00B1B9EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5C76F821FF0E8CF00B1B9EE /* TOActivityCroppedImageProvider.m */,
+				A5C76F831FF0E8CF00B1B9EE /* UIImage+CropRotate.m */,
+				A5C76F841FF0E8CF00B1B9EE /* TOCropViewControllerTransitioning.m */,
+				A5C76F851FF0E8CF00B1B9EE /* TOCroppedImageAttributes.m */,
+				A5C76F861FF0E8CF00B1B9EE /* TOActivityCroppedImageProvider.h */,
+				A5C76F871FF0E8CF00B1B9EE /* TOCropViewControllerTransitioning.h */,
+				A5C76F881FF0E8CF00B1B9EE /* UIImage+CropRotate.h */,
+				A5C76F891FF0E8CF00B1B9EE /* TOCroppedImageAttributes.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5C76F931FF0E8E000B1B9EE /* KILabel */ = {
+			isa = PBXGroup;
+			children = (
+				A5F313FA1FD6D1E700246E71 /* KILabel.h */,
+				A5F313FB1FD6D1E700246E71 /* KILabel.m */,
+			);
+			path = KILabel;
+			sourceTree = "<group>";
+		};
+		A5C76F941FF0E8F900B1B9EE /* TOCropViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A5C76F771FF0E8CF00B1B9EE /* Views */,
+				A5C76F811FF0E8CF00B1B9EE /* Models */,
+				A5C76F801FF0E8CF00B1B9EE /* TOCropViewController.h */,
+				A5C76F761FF0E8CE00B1B9EE /* TOCropViewController.m */,
+			);
+			path = TOCropViewController;
+			sourceTree = "<group>";
+		};
 		A5EEB2851FC5E2B8002CB038 /* Guest Page Part */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +532,14 @@
 				A5F314041FD716E100246E71 /* hashtagsVC.swift */,
 			);
 			name = "Hashtag Page Part";
+			sourceTree = "<group>";
+		};
+		A5F4A29E1FF250D800F182F8 /* CropView  */ = {
+			isa = PBXGroup;
+			children = (
+				A5C76F951FF0EAFD00B1B9EE /* CropViewController.swift */,
+			);
+			name = "CropView ";
 			sourceTree = "<group>";
 		};
 		A5FD76291FCBEA2F007355BF /* Upload Part */ = {
@@ -551,6 +645,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5F4A29D1FF24AFC00F182F8 /* MedulaOne-Regular.ttf in Resources */,
 				A511143B1FD05B5200DCAC4C /* Pacifico.ttf in Resources */,
 				A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */,
 				A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */,
@@ -620,13 +715,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A53819011FDD278800A9EFBB /* UIImageViewX.swift in Sources */,
+				A5C76F911FF0E8D000B1B9EE /* TOCropViewControllerTransitioning.m in Sources */,
 				A511143E1FD0DE5500DCAC4C /* postVC.swift in Sources */,
+				A5C76F8D1FF0E8D000B1B9EE /* TOCropOverlayView.m in Sources */,
 				A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */,
 				A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */,
 				A53819081FDEF4FD00A9EFBB /* newsCell.swift in Sources */,
 				A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */,
 				A52DA23C1FD9871B00ADD815 /* feedNav.swift in Sources */,
 				A51114401FD0DE8800DCAC4C /* postCell.swift in Sources */,
+				A5C76F921FF0E8D000B1B9EE /* TOCroppedImageAttributes.m in Sources */,
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
 				A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */,
 				A515014B1FD85E6A00062052 /* feedVC.swift in Sources */,
@@ -641,27 +739,35 @@
 				A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */,
 				A5F313F31FD548C100246E71 /* UINavigationBar_Attribute.swift in Sources */,
 				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,
+				A5F4A29B1FF2478300F182F8 /* UITableView_Attributes.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */,
+				A5C76F8C1FF0E8D000B1B9EE /* TOCropView.m in Sources */,
 				A53818F91FDBB2A400A9EFBB /* usersNav.swift in Sources */,
 				A53818F71FDBB10300A9EFBB /* uploadNav.swift in Sources */,
 				A51114461FD1863600DCAC4C /* commentVC.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A538190A1FDEF76000A9EFBB /* newsNav.swift in Sources */,
+				A5C76F901FF0E8D000B1B9EE /* UIImage+CropRotate.m in Sources */,
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
+				A5C76F8B1FF0E8D000B1B9EE /* TOCropScrollView.m in Sources */,
 				A587E2D41FDB017000E8E57A /* usersVC.swift in Sources */,
+				A5C76F8A1FF0E8D000B1B9EE /* TOCropViewController.m in Sources */,
 				A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */,
 				A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */,
+				A5C76F961FF0EAFD00B1B9EE /* CropViewController.swift in Sources */,
 				A52DA23A1FD9850400ADD815 /* editNav.swift in Sources */,
 				A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
+				A5C76F8F1FF0E8D000B1B9EE /* TOActivityCroppedImageProvider.m in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,
 				A53819061FDEF4CB00A9EFBB /* newsVC.swift in Sources */,
 				A51114481FD1864E00DCAC4C /* commentCell.swift in Sources */,
+				A5C76F8E1FF0E8D000B1B9EE /* TOCropToolbar.m in Sources */,
 				A51114311FD043C100DCAC4C /* newAlertAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,7 +841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -785,7 +891,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -805,7 +911,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -828,7 +934,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
