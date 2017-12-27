@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
+class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CropViewControllerDelegate{
  
     @IBOutlet var tipSelectedView: [UIView]!
     
@@ -27,33 +27,48 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
 
+    //background gradient colors array index
     fileprivate var currentColorArrayIndex = -1
     
+    //input curosr shown textfield
     fileprivate var currentTextField:UITextField!
-    
+  
+    //background gradient colors tuple type array
 fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     
+    //record tip text when tip limit
     fileprivate var tempString = ""
     
+    //record temporary limited text
     fileprivate var tempCount = 0
     
+    //if mark image show , get true, if not,false
     fileprivate var tempMarkArr = [Bool].init(repeating: false, count: 7)
-    
+  
+    //pick image from phone library
    fileprivate var picker = UIImagePickerController()
      {didSet{self.picker.delegate = self}}
     
+    //loading animation root layer
     fileprivate let rootLayer:CALayer = {
         let rootLayer = CALayer()
         rootLayer.backgroundColor = UIColor.black.cgColor
         return rootLayer
     }()
     
+    //loading view on textfield right view
     fileprivate let views = UIView()
     
+    //text on same textfield which input again
     fileprivate var isChanged = false
     
+    //shown text when input same textfield again
     fileprivate var tempText = ""
     
+    //profile setting button
+    fileprivate var profileSettingBtn = dropDownBtn()
+
+    //loading animation effect layer
 fileprivate let replicatorLayer:CAReplicatorLayer = {
         let replicatorLayer = CAReplicatorLayer()
      replicatorLayer.frame = CGRect(x: -22, y: -5, width: 20, height: 20)
@@ -64,7 +79,8 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
     replicatorLayer.instanceTransform = CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(9), 0, 0, 1)
         return replicatorLayer
     }()
-    
+  
+    //loading animation layer look
   fileprivate let circle:CALayer = {
         let circle = CALayer()
         circle.frame = CGRect(origin: CGPoint.zero,size: CGSize(width: 7, height: 7))
@@ -72,7 +88,8 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         circle.cornerRadius = 5
         return circle
     }()
-    
+   
+   //loading shrink effect animation
    fileprivate let shrinkAnimation:CABasicAnimation = {
         let shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
         shrinkAnimation.fromValue = 1
@@ -116,6 +133,9 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         
         //recursively run animatedBackground()
         animatedBackground()
+        
+        //put profile setting buttton on screen
+        configueProfileSettingBtn()
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,6 +143,9 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         
        //create observers
         createObservers()
+        
+        //layout profile setting button
+        layoutProfileSettingBtn()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -190,8 +213,8 @@ self.cancelBtn.layer.bounds.size.width += 60
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
         self.dismiss(animated: true, completion: nil)
     })
-        })
-    }
+})
+}
 }//signUpVC class over line
 
 //custom functions
@@ -204,10 +227,28 @@ extension signUpVC {
     fileprivate func setRightViews(){
        
         _ = allTextFieldsInScreen.map{
-            $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
+         $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
             $0.rightViewMode = .unlessEditing
         }
     }
+    
+    fileprivate func configueProfileSettingBtn(){
+     
+    profileSettingBtn = dropDownBtn.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+profileSettingBtn.translatesAutoresizingMaskIntoConstraints = false
+ 
+ self.view.addSubview(profileSettingBtn)
+    }
+    
+    fileprivate func layoutProfileSettingBtn(){
+        
+profileSettingBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
+profileSettingBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+profileSettingBtn.bottomAnchor.constraint(equalTo: avaImg.bottomAnchor).isActive = true
+profileSettingBtn.leftAnchor.constraint(equalTo: avaImg.rightAnchor, constant: 10).isActive = true
+
+profileSettingBtn.dropView.dropDownOptions = ["Choose from photo library","Reset to default"]
+}
     
     fileprivate func createScreenDismissKeyboard(){
         let gestrue = UITapGestureRecognizer.init(target: self, action: #selector(tapGestrue))
@@ -269,7 +310,8 @@ fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel
 tempCount = (currentTextField.text?.count)!
 if tempCount == 0{
 someoneCount.textColor = UIColor.red
-}else{someoneCount.textColor = someoneLimitCount.textColor}
+}else{
+someoneCount.textColor = someoneLimitCount.textColor}
 if tempCount == Int(someoneLimitCount.text!)!{
 someoneCount.text = someoneLimitCount.text
 tempString = currentTextField.text!
@@ -321,7 +363,7 @@ if allTextFieldsInScreen[3].text != allTextFieldsInScreen[2].text{
 allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
             tempMarkArr[3] = false
 allTipLabelsInScreen[3].text = "Twice inputs is not same"
-            allTextFieldsInScreen[3].isEnabled = true
+allTextFieldsInScreen[3].isEnabled = true
 }else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
             tempMarkArr[3] = true
             allTextFieldsInScreen[3].isEnabled = true
@@ -416,7 +458,7 @@ extension signUpVC{
 signUpBtn.isEnabled = false
 tempText = allTipLabelsInScreen[textField.tag / 10 - 1].text!
 allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
- tipSelectedView[textField.tag / 10 - 1].backgroundColor = .purple
+tipSelectedView[textField.tag / 10 - 1].backgroundColor = .purple
   currentTextField = textField
 }
     

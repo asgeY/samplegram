@@ -81,8 +81,9 @@
 		A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F41FD55D0200246E71 /* GrowingTextView.swift */; };
 		A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F313FB1FD6D1E700246E71 /* KILabel.m */; };
 		A5F314051FD716E100246E71 /* hashtagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F314041FD716E100246E71 /* hashtagsVC.swift */; };
-		A5F4A29B1FF2478300F182F8 /* UITableView_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */; };
 		A5F4A29D1FF24AFC00F182F8 /* MedulaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */; };
+		A5F4A2A11FF252FF00F182F8 /* dropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2A01FF252FF00F182F8 /* dropDownView.swift */; };
+		A5F4A2A31FF2535400F182F8 /* dropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2A21FF2535400F182F8 /* dropDownBtn.swift */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
 		A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */; };
@@ -177,8 +178,9 @@
 		A5F313FA1FD6D1E700246E71 /* KILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KILabel.h; sourceTree = "<group>"; };
 		A5F313FB1FD6D1E700246E71 /* KILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KILabel.m; sourceTree = "<group>"; };
 		A5F314041FD716E100246E71 /* hashtagsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashtagsVC.swift; sourceTree = "<group>"; };
-		A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Attributes.swift; sourceTree = "<group>"; };
 		A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedulaOne-Regular.ttf"; sourceTree = "<group>"; };
+		A5F4A2A01FF252FF00F182F8 /* dropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownView.swift; sourceTree = "<group>"; };
+		A5F4A2A21FF2535400F182F8 /* dropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownBtn.swift; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
 		A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView_Extension.swift; sourceTree = "<group>"; };
@@ -260,13 +262,6 @@
 			name = "News Page Part";
 			sourceTree = "<group>";
 		};
-		A53819151FE40CAB00A9EFBB /* KILabel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = KILabel;
-			sourceTree = "<group>";
-		};
 		A53819161FE40D5D00A9EFBB /* newAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,7 +280,6 @@
 				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
 				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
 				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
-				A5F4A29A1FF2478300F182F8 /* UITableView_Attributes.swift */,
 			);
 			name = Attributes;
 			sourceTree = "<group>";
@@ -334,15 +328,15 @@
 		A549C1541F6AC77F00207D42 /* Custom Assist */ = {
 			isa = PBXGroup;
 			children = (
+				A5F4A29F1FF252C300F182F8 /* Dropdown  */,
 				A53819171FE40D6D00A9EFBB /* Attributes */,
 				A53819191FE40E2F00A9EFBB /* Color Assist */,
 				A53819181FE40D7F00A9EFBB /* Extensions */,
-				A53819151FE40CAB00A9EFBB /* KILabel */,
 				A53819161FE40D5D00A9EFBB /* newAlert */,
 				A538191A1FE40E4900A9EFBB /* Regex Assist */,
 				A538191B1FE40E5700A9EFBB /* UIImageView Assist */,
 				A538191C1FE40E6500A9EFBB /* UITextView Assist */,
-				A5F4A29E1FF250D800F182F8 /* CropView  */,
+				A5F4A29E1FF250D800F182F8 /* CropView Effect */,
 			);
 			name = "Custom Assist";
 			sourceTree = "<group>";
@@ -534,12 +528,21 @@
 			name = "Hashtag Page Part";
 			sourceTree = "<group>";
 		};
-		A5F4A29E1FF250D800F182F8 /* CropView  */ = {
+		A5F4A29E1FF250D800F182F8 /* CropView Effect */ = {
 			isa = PBXGroup;
 			children = (
 				A5C76F951FF0EAFD00B1B9EE /* CropViewController.swift */,
 			);
-			name = "CropView ";
+			name = "CropView Effect";
+			sourceTree = "<group>";
+		};
+		A5F4A29F1FF252C300F182F8 /* Dropdown  */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4A2A01FF252FF00F182F8 /* dropDownView.swift */,
+				A5F4A2A21FF2535400F182F8 /* dropDownBtn.swift */,
+			);
+			name = "Dropdown ";
 			sourceTree = "<group>";
 		};
 		A5FD76291FCBEA2F007355BF /* Upload Part */ = {
@@ -735,11 +738,11 @@
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
 				A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */,
+				A5F4A2A11FF252FF00F182F8 /* dropDownView.swift in Sources */,
 				A51114351FD0442F00DCAC4C /* newAlertVC.swift in Sources */,
 				A5F313FC1FD6D1E800246E71 /* KILabel.m in Sources */,
 				A5F313F31FD548C100246E71 /* UINavigationBar_Attribute.swift in Sources */,
 				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,
-				A5F4A29B1FF2478300F182F8 /* UITableView_Attributes.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
@@ -751,6 +754,7 @@
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A538190A1FDEF76000A9EFBB /* newsNav.swift in Sources */,
 				A5C76F901FF0E8D000B1B9EE /* UIImage+CropRotate.m in Sources */,
+				A5F4A2A31FF2535400F182F8 /* dropDownBtn.swift in Sources */,
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  UITableView_Attributes.swift
+//  dropDownView.swift
 //  Instagram
 //
 //  Created by Bobby Negoat on 12/26/17.
@@ -8,13 +8,14 @@
 
 import UIKit
 
-class UITableView_Attributes: UIView,UITableViewDelegate, UITableViewDataSource {
-
+class dropDownView: UIView,UITableViewDelegate, UITableViewDataSource {
+    
     var dropDownOptions = [String]()
     
+    var delegate: dropDownDelegate!
+    
     var tableView = UITableView(){
-        didSet{
-            tableView.delegate = self
+        didSet{tableView.delegate = self
             tableView.dataSource = self
         }
     }
@@ -22,7 +23,6 @@ class UITableView_Attributes: UIView,UITableViewDelegate, UITableViewDataSource 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView.layer.cornerRadius = 10
         tableView.backgroundColor = UIColor.red
         self.backgroundColor = UIColor.clear
         
@@ -41,13 +41,17 @@ tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    fatalError("init(coder:) has not been implemented")
     }
     
-}//UITableView_Attributes class over line
+}//dropDownView class over line
 
 //UITableViewDataSource
-extension UITableView_Attributes{
+extension dropDownView{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dropDownOptions.count
@@ -55,16 +59,20 @@ extension UITableView_Attributes{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
-  cell.textLabel?.text = dropDownOptions[indexPath.row]
-    cell.backgroundColor = .red
+        cell.textLabel?.font = UIFont.init(name: "MedulaOne-Regular", size: 23)
+        cell.textLabel?.textColor = .white
+    cell.textLabel?.text = dropDownOptions[indexPath.row]
+        cell.backgroundColor = .red
         return cell
     }
 }
 
 //UITableViewDelegate
-extension UITableView_Attributes{
+extension dropDownView{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate.dismissDropDown()
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
