@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CropViewControllerDelegate{
+class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CropViewControllerDelegate,selectCellDelegate{
  
     @IBOutlet var tipSelectedView: [UIView]!
     
@@ -27,6 +27,13 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
 
+    //profile crop image
+    var image: UIImage? = #imageLiteral(resourceName: "profile")
+    
+    //profile crop rect & angle
+    var croppedRect = CGRect.zero
+    var croppedAngle = 0
+    
     //background gradient colors array index
     fileprivate var currentColorArrayIndex = -1
     
@@ -236,7 +243,7 @@ extension signUpVC {
      
     profileSettingBtn = dropDownBtn.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
 profileSettingBtn.translatesAutoresizingMaskIntoConstraints = false
- 
+  profileSettingBtn.dropView.tapDelegate = self
  self.view.addSubview(profileSettingBtn)
     }
     
@@ -283,7 +290,7 @@ avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
     
     //declare select image
  fileprivate func declareSelectedImage(){
-        let avaTap = UITapGestureRecognizer(target: self, action: #selector(self.loadImg(recognizer:)))
+        let avaTap = UITapGestureRecognizer(target: self, action: #selector(didTapImageView))
         avaTap.numberOfTapsRequired = 1
         avaImg.isUserInteractionEnabled = true
         avaImg.addGestureRecognizer(avaTap)
@@ -300,8 +307,7 @@ colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2039215686, green: 
 currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
 UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
 self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
-self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2
-        }) { (success) in self.animatedBackground()}
+self.gradientImgView.secondColor = self.colorArray[self.currentColorArrayIndex].color2}) { (success) in self.animatedBackground()}
 }
     
 fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
@@ -393,6 +399,13 @@ self.tempMarkArr[index] = true
 self.allTextFieldsInScreen[index].isEnabled = true}
 }else {print(error!.localizedDescription)}})
     }
+    
+    func updateImageViewWithImage(_ image: UIImage, fromCropViewController cropViewController: CropViewController) {
+    
+    avaImg.image = image
+   //self.avaImg.isHidden = false
+cropViewController.dismiss(animated: true, completion: nil)
+    }
 }
 
 //custom functions selectors
@@ -402,15 +415,25 @@ extension signUpVC{
         self.view.endEditing(true)
     }
     
-    //choose the photo from the phone library
-@objc fileprivate func loadImg(recognizer:UITapGestureRecognizer){
+    @objc func didTapImageView() {
         
-        //picker.delegate = self
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-    }
-    
+// When tapping the image view, restore the image to the previous cropping state
+let viewFrame = view.convert(avaImg.frame, to: self.view)
+  
+        if avaImg.image == #imageLiteral(resourceName: "profile"){
+let cropViewControllers = CropViewController(croppingStyle:.circular, image: #imageLiteral(resourceName: "profile"))
+cropViewControllers.delegate = self
+cropViewControllers.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromView: avaImg,fromFrame: viewFrame,angle: self.croppedAngle,toImageFrame: self.croppedRect,setup:
+{ self.avaImg.isHidden = false },completion: nil)
+        }else {
+let cropViewController = CropViewController(croppingStyle:.circular, image: self.image!)
+cropViewController.delegate = self
+cropViewController.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromView: avaImg,fromFrame: viewFrame,angle: self.croppedAngle,toImageFrame: self.croppedRect,setup:
+    { self.avaImg.isHidden = false },completion: nil)
+        }
+        
+}
+
     @objc fileprivate func checkText(sender:UITextField){
         isChanged = true
     }
@@ -555,9 +578,41 @@ extension signUpVC{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
-        self.dismiss(animated: true, completion: nil)
+        guard let image = (info[UIImagePickerControllerOriginalImage] as? UIImage) else { return }
+        
+       let cropController = CropViewController(croppingStyle: .circular, image: image)
+    cropController.delegate = self
+        self.image = image
+picker.pushViewController(cropController, animated: true)
     }
 }
 
+//CropViewControllerDelegate
+extension signUpVC{
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        self.croppedRect = cropRect
+        self.croppedAngle = angle
+        
+   updateImageViewWithImage(image, fromCropViewController: cropViewController)
+    }
+}
+
+//selectCellDelegate
+extension signUpVC{
+    
+    func tapToPhotoLibrary() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.modalPresentationStyle = .popover
+        imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func tapToReset() {
+       avaImg.image = #imageLiteral(resourceName: "profile")
+    }
+}
 

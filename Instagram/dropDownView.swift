@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol selectCellDelegate{
+    func tapToPhotoLibrary()
+    func tapToReset()
+}
+
 class dropDownView: UIView,UITableViewDelegate, UITableViewDataSource {
     
     var dropDownOptions = [String]()
     
     var delegate: dropDownDelegate!
+    
+    var tapDelegate:selectCellDelegate?
     
     var tableView = UITableView(){
         didSet{tableView.delegate = self
@@ -72,7 +79,12 @@ extension dropDownView{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate.dismissDropDown()
-        self.tableView.deselectRow(at: indexPath, animated: true)
+self.tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 1{
+            self.tapDelegate?.tapToReset()
+        }else if indexPath.row == 0{
+            self.tapDelegate?.tapToPhotoLibrary()
+        }
     }
 }
 

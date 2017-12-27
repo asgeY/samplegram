@@ -15,7 +15,6 @@ protocol dropDownDelegate {
 class dropDownBtn:UIButton,dropDownDelegate{
     
     var dropView = dropDownView()
-    //{didSet{self.dropView.delegate = self}}
     
     var height = NSLayoutConstraint()
     
@@ -78,7 +77,7 @@ required init?(coder aDecoder: NSCoder) {
 //custom functions
 extension dropDownBtn{
     
-    func dismissDropDown() {
+     func dismissDropDown() {
         isOpen = false
     NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
