@@ -21,7 +21,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
    fileprivate var activeTextField: UITextField?
  
-    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet weak var signInBtn: TransitionButton!
     @IBOutlet weak var signUpbtn: UIButton!
 
     @IBOutlet weak var forgotBtn: UIButton!
@@ -80,28 +80,34 @@ class signInVC: UIViewController,UITextFieldDelegate{
     }
     
     //clicked sign in button
-    @IBAction func signInBtn_click(_ sender: Any) {
+    @IBAction func signInBtn_click(_ sender: TransitionButton) {
+        
+     sender.startAnimation()
         
         //login funcitons
-        PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user:PFUser?, error:Error?) in
+PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!)
+{ (user:PFUser?, error:Error?) in
             
             if error == nil{
                
 //remeber user or save in App memory did the user login or not
 UserDefaults.standard.set(user?.username, forKey: "username")
 UserDefaults.standard.synchronize()
-                
-   //call login function from AppDelegate.swift class
+ 
+    sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
+        //call login function from AppDelegate.swift class
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 appDelegate.login()
-                
+})
 }else{
 
-//another case
-let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-alert.addAction(ok)
-self.present(alert, animated: true, completion: nil)
+sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+    //another case
+    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+    let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    alert.addAction(ok)
+    self.present(alert, animated: true, completion: nil)
+})
             }
         }
     }

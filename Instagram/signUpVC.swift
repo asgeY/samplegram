@@ -24,7 +24,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
     @IBOutlet var allTipLabelsInScreen: [UILabel]!
     
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: TransitionButton!
     @IBOutlet weak var cancelBtn: UIButton!
 
     //profile crop image
@@ -106,6 +106,9 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         return shrinkAnimation
     }()
     
+    fileprivate var shapeLayer: CAShapeLayer!
+    fileprivate var pulsatingLayer: CAShapeLayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -143,6 +146,7 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         
         //put profile setting buttton on screen
         configueProfileSettingBtn()
+        
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,10 +176,12 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
     }
 
     //click sign up
-    @IBAction func signUpBtn_click(_ sender: UIButton) {
+    @IBAction func signUpBtn_click(_ sender: TransitionButton) {
  
         //dismiss keyboard
-   self.view.endEditing(true)
+  // self.view.endEditing(true)
+        
+  sender.startAnimation()
         
 //send data to server to relative columns
 let user = PFUser()
@@ -203,11 +209,14 @@ user.signUpInBackground { (success:Bool, error:Error?) in
     //remember logged user
 UserDefaults.standard.set(user.username, forKey: "username")
     UserDefaults.standard.synchronize()
-               
+   
+sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1.0, completion: {
     //call login func from AppleDelegate.swift class
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.login()
-            }else{print(error ?? "")}
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.login()
+})
+}else{sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1.0, completion: nil)
+                print(error ?? "")}
         }
     }
    
@@ -226,6 +235,45 @@ self.cancelBtn.layer.bounds.size.width += 60
 
 //custom functions
 extension signUpVC {
+    
+    fileprivate func animatePulsatingLayer() {
+        
+     let animation = CABasicAnimation(keyPath: "transform.scale")
+        
+        animation.toValue = 1.5
+        animation.duration = 0.8
+animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.autoreverses = true
+        animation.repeatCount = Float.infinity
+pulsatingLayer.add(animation, forKey: "pulsing")
+    }
+    
+   fileprivate func setupCircleLayers() {
+pulsatingLayer = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(red: 86, green: 30, blue: 63, alpha: 1))
+        signUpBtn.layer.addSublayer(pulsatingLayer)
+        animatePulsatingLayer()
+        
+let trackLayer = createCircleShapeLayer(strokeColor:UIColor.init(red: 56, green: 25, blue: 49, alpha: 1), fillColor: UIColor.init(red: 21, green: 22, blue: 33, alpha: 1))
+signUpBtn.layer.addSublayer(trackLayer)
+        
+shapeLayer = createCircleShapeLayer(strokeColor: UIColor.init(red: 234, green: 46, blue: 111, alpha: 1), fillColor: .clear)
+        
+  shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
+        shapeLayer.strokeEnd = 0
+    signUpBtn.layer.addSublayer(shapeLayer)
+}
+    
+   fileprivate func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        layer.path = circularPath.cgPath
+        layer.strokeColor = strokeColor.cgColor
+        layer.lineWidth = 20
+        layer.fillColor = fillColor.cgColor
+        layer.lineCap = kCALineCapRound
+        layer.position = signUpBtn.center
+        return layer
+    }
     
     fileprivate func setTipTextRed(){
       _ = allTipLabelsInScreen.map{$0.textColor = .red}
@@ -256,7 +304,7 @@ profileSettingBtn.leftAnchor.constraint(equalTo: avaImg.rightAnchor, constant: 1
 
 profileSettingBtn.dropView.dropDownOptions = ["Choose from photo library","Reset to default"]
 }
-    
+
     fileprivate func createScreenDismissKeyboard(){
         let gestrue = UITapGestureRecognizer.init(target: self, action: #selector(tapGestrue))
         self.view.addGestureRecognizer(gestrue)
@@ -367,7 +415,7 @@ allTextFieldsInScreen[index].isEnabled = true
         
 if allTextFieldsInScreen[3].text != allTextFieldsInScreen[2].text{
 allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
-            tempMarkArr[3] = false
+              tempMarkArr[3] = false
 allTipLabelsInScreen[3].text = "Twice inputs is not same"
 allTextFieldsInScreen[3].isEnabled = true
 }else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))

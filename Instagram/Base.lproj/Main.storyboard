@@ -55,8 +55,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalGradient" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg5-aP-2fK" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="447.33333333333331" width="343" height="60"/>
+                            <button clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg5-aP-2fK" customClass="TransitionButton" customModule="Instagram" customModuleProvider="target">
+                                <rect key="frame" x="16" y="456.33333333333331" width="343" height="59.999999999999943"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="F5i-sd-jOt"/>
@@ -66,14 +66,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="27"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -122,10 +119,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-Kh-kAM" userLabel="Help Stack">
-                                <rect key="frame" x="60.333333333333329" y="507.33333333333326" width="254.66666666666669" height="25"/>
+                                <rect key="frame" x="60.333333333333329" y="516.33333333333337" width="254.66666666666669" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgoten something?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-tV-eZT">
-                                        <rect key="frame" x="0.0" y="6.0000000000000568" width="126.33333333333333" height="13"/>
+                                        <rect key="frame" x="0.0" y="6" width="126.33333333333333" height="13"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -191,7 +188,7 @@
                             <constraint firstItem="yHm-Kh-kAM" firstAttribute="top" secondItem="Gg5-aP-2fK" secondAttribute="bottom" id="Scn-Om-ytE"/>
                             <constraint firstItem="aMX-lm-TZC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Uct-yI-Sd0"/>
                             <constraint firstItem="cz6-3g-Mrd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="40:667" id="UfX-40-8Hb"/>
-                            <constraint firstItem="Gg5-aP-2fK" firstAttribute="top" secondItem="RF5-XY-Lv1" secondAttribute="bottom" constant="1" id="VhW-Aq-KmE"/>
+                            <constraint firstItem="Gg5-aP-2fK" firstAttribute="top" secondItem="RF5-XY-Lv1" secondAttribute="bottom" constant="10" id="VhW-Aq-KmE"/>
                             <constraint firstItem="Gg5-aP-2fK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zhy-6u-sWj"/>
                             <constraint firstItem="RF5-XY-Lv1" firstAttribute="top" secondItem="cz6-3g-Mrd" secondAttribute="bottom" constant="4" id="ac9-3a-I9d"/>
                             <constraint firstItem="j3b-LJ-BuY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bRq-aM-yGb"/>
@@ -363,7 +360,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <button clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                                            <button clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="TransitionButton" customModule="Instagram" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="676" width="339" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="jvb-QH-iBl"/>
@@ -377,14 +374,14 @@
                                                 </state>
                                                 <state key="highlighted" backgroundImage="logo.svg"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiu">
                                                         <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -446,12 +443,6 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>

@@ -84,6 +84,12 @@
 		A5F4A29D1FF24AFC00F182F8 /* MedulaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */; };
 		A5F4A2A11FF252FF00F182F8 /* dropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2A01FF252FF00F182F8 /* dropDownView.swift */; };
 		A5F4A2A31FF2535400F182F8 /* dropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2A21FF2535400F182F8 /* dropDownBtn.swift */; };
+		A5F4A2AB1FF5116700F182F8 /* CGRect_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2AA1FF5116700F182F8 /* CGRect_Extension.swift */; };
+		A5F4A2AD1FF5129A00F182F8 /* CustomTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2AC1FF5129A00F182F8 /* CustomTransitionViewController.swift */; };
+		A5F4A2AF1FF5137B00F182F8 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2AE1FF5137B00F182F8 /* FadeTransition.swift */; };
+		A5F4A2B11FF514E500F182F8 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2B01FF514E500F182F8 /* SpinerLayer.swift */; };
+		A5F4A2B31FF5158900F182F8 /* TransitionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2B21FF5158900F182F8 /* TransitionButton.swift */; };
+		A5F4A2B51FF5172C00F182F8 /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4A2B41FF5172C00F182F8 /* UIImage_Extension.swift */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
 		A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */; };
@@ -181,6 +187,12 @@
 		A5F4A29C1FF24AA400F182F8 /* MedulaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedulaOne-Regular.ttf"; sourceTree = "<group>"; };
 		A5F4A2A01FF252FF00F182F8 /* dropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownView.swift; sourceTree = "<group>"; };
 		A5F4A2A21FF2535400F182F8 /* dropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownBtn.swift; sourceTree = "<group>"; };
+		A5F4A2AA1FF5116700F182F8 /* CGRect_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect_Extension.swift; sourceTree = "<group>"; };
+		A5F4A2AC1FF5129A00F182F8 /* CustomTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionViewController.swift; sourceTree = "<group>"; };
+		A5F4A2AE1FF5137B00F182F8 /* FadeTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		A5F4A2B01FF514E500F182F8 /* SpinerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
+		A5F4A2B21FF5158900F182F8 /* TransitionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionButton.swift; sourceTree = "<group>"; };
+		A5F4A2B41FF5172C00F182F8 /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
 		A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView_Extension.swift; sourceTree = "<group>"; };
@@ -289,6 +301,8 @@
 			children = (
 				A51114381FD0447100DCAC4C /* UIColor_Extension.swift */,
 				A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */,
+				A5F4A2AA1FF5116700F182F8 /* CGRect_Extension.swift */,
+				A5F4A2B41FF5172C00F182F8 /* UIImage_Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -328,6 +342,7 @@
 		A549C1541F6AC77F00207D42 /* Custom Assist */ = {
 			isa = PBXGroup;
 			children = (
+				A5F4A2B61FF522CF00F182F8 /* TransitionButton */,
 				A5F4A29F1FF252C300F182F8 /* Dropdown  */,
 				A53819171FE40D6D00A9EFBB /* Attributes */,
 				A53819191FE40E2F00A9EFBB /* Color Assist */,
@@ -545,6 +560,17 @@
 			name = "Dropdown ";
 			sourceTree = "<group>";
 		};
+		A5F4A2B61FF522CF00F182F8 /* TransitionButton */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4A2AC1FF5129A00F182F8 /* CustomTransitionViewController.swift */,
+				A5F4A2AE1FF5137B00F182F8 /* FadeTransition.swift */,
+				A5F4A2B01FF514E500F182F8 /* SpinerLayer.swift */,
+				A5F4A2B21FF5158900F182F8 /* TransitionButton.swift */,
+			);
+			name = TransitionButton;
+			sourceTree = "<group>";
+		};
 		A5FD76291FCBEA2F007355BF /* Upload Part */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,7 +756,9 @@
 				A5C76F921FF0E8D000B1B9EE /* TOCroppedImageAttributes.m in Sources */,
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
 				A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */,
+				A5F4A2B31FF5158900F182F8 /* TransitionButton.swift in Sources */,
 				A515014B1FD85E6A00062052 /* feedVC.swift in Sources */,
+				A5F4A2AD1FF5129A00F182F8 /* CustomTransitionViewController.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
 				A526D5801FC7DCFA00B41468 /* homeNav.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
@@ -745,6 +773,8 @@
 				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
+				A5F4A2AF1FF5137B00F182F8 /* FadeTransition.swift in Sources */,
+				A5F4A2B51FF5172C00F182F8 /* UIImage_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */,
 				A5C76F8C1FF0E8D000B1B9EE /* TOCropView.m in Sources */,
@@ -755,6 +785,7 @@
 				A538190A1FDEF76000A9EFBB /* newsNav.swift in Sources */,
 				A5C76F901FF0E8D000B1B9EE /* UIImage+CropRotate.m in Sources */,
 				A5F4A2A31FF2535400F182F8 /* dropDownBtn.swift in Sources */,
+				A5F4A2AB1FF5116700F182F8 /* CGRect_Extension.swift in Sources */,
 				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
@@ -772,6 +803,7 @@
 				A53819061FDEF4CB00A9EFBB /* newsVC.swift in Sources */,
 				A51114481FD1864E00DCAC4C /* commentCell.swift in Sources */,
 				A5C76F8E1FF0E8D000B1B9EE /* TOCropToolbar.m in Sources */,
+				A5F4A2B11FF514E500F182F8 /* SpinerLayer.swift in Sources */,
 				A51114311FD043C100DCAC4C /* newAlertAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
