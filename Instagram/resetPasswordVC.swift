@@ -9,17 +9,23 @@
 import UIKit
 import Parse
 
-class resetPasswordVC: UIViewController,UITextFieldDelegate {
+class resetPasswordVC: UIViewController,UITextFieldDelegate,goBackDelegate {
  
     @IBOutlet weak var gradientImg: UIImageViewX!
     
     @IBOutlet weak var emailTxt: UITextField_Attributes!{didSet{emailTxt.delegate = self}}
 
-    @IBOutlet weak var resetBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var resetBtn: TransitionButton!
+        {didSet{resetBtn.isHidden = true}}
+    
+    @IBOutlet weak var cancelBtn: UIButton_Attributes!{
+didSet{self.cancelBtn.backDelegate = self}}
 
     @IBOutlet weak var distanceOfBtnAndTxtF: NSLayoutConstraint!
+  {didSet{distanceOfBtnAndTxtF.constant = 0.0}}
+    
     @IBOutlet weak var resetBtnHeight: NSLayoutConstraint!
+{didSet{resetBtnHeight.constant = 0.0}}
     
    fileprivate var currentTextField: UITextField?
     
@@ -30,11 +36,8 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//initalize button
+//add gradient colors on buttons
         initInputFirst()
- 
-  //initalize reset btn
- initResetBtn()
   
        //create view gesture
         createViewGesture()
@@ -72,8 +75,12 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetBtn_click(_ sender: Any) {
-   
+    @IBAction func resetBtn_click(_ sender: TransitionButton) {
+
+ resetBtn.isEnabled = false
+        
+sender.startAnimation()
+        
 //request for reseting password
 PFUser.requestPasswordResetForEmail(inBackground: emailTxt.text!) { (success:Bool, error:Error?) in
             
@@ -88,21 +95,20 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
      self.dismiss(animated: true, completion: nil)
 })
            alert.addAction(ok)
-           self.present(alert, animated: true, completion: nil)
-            }
+        sender.stopAnimation(animationStyle: .normal, revertAfterDelay: 1, completion: {
+   [unowned self] in
+self.present(alert, animated: true, completion: nil)
+        })
+        self.resetBtn.isEnabled = true
+        }
+    else {
+     sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+        [unowned self] in
+        self.resetBtn.isEnabled = true})
+        print(error ?? "")
+    }
         }
     }
-    
-    //click cancel button
-@IBAction func cancelBtn_click(_ sender: Any) {
-UIView.animate(withDuration: 0.1, animations: {
-self.cancelBtn.layer.bounds.size.width -= 30}, completion: { (_) in
-self.cancelBtn.layer.bounds.size.width += 30
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-        self.dismiss(animated: true, completion: nil)
-            })
-        })
- }
    
     @IBAction func emailTextFieldTap(_ sender: UITextField) {
 
@@ -128,15 +134,8 @@ extension resetPasswordVC {
     fileprivate func createFirstResponder(){
          emailTxt.becomeFirstResponder()
     }
-    
-    //initalize reset button
-    fileprivate func initResetBtn(){
-        resetBtn.isHidden = true
-        resetBtnHeight.constant = 0.0
-        distanceOfBtnAndTxtF.constant = 0.0
-    }
 
-    //initialize text fields false isEnable input
+    //add gradient colors on buttons
     fileprivate  func initInputFirst(){
        
         self.resetBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
@@ -232,19 +231,22 @@ extension resetPasswordVC{
     
     //get current textfield context
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         currentTextField = textField
     }
     
     //the delegate or datasource function
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         emailTxt.resignFirstResponder()
         return true
     }
 }
 
-
+extension resetPasswordVC{
+    
+    func goBackFromPage() {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
 
 
 

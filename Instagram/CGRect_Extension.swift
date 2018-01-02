@@ -9,7 +9,7 @@
 import UIKit
 
 extension CGRect {
-    
+   /*
     var x: CGFloat {
         get {
             return self.origin.x
@@ -111,6 +111,6 @@ extension CGRect {
         set {
             self = CGRect(x: newValue.x - width / 2, y: newValue.y - height / 2, width: width, height: height)
         }
-    }
+    }*/
 }
 

@@ -22,7 +22,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
    fileprivate var activeTextField: UITextField?
  
     @IBOutlet weak var signInBtn: TransitionButton!
-    @IBOutlet weak var signUpbtn: UIButton!
+    @IBOutlet weak var signUpbtn: UIButton_Attributes!
 
     @IBOutlet weak var forgotBtn: UIButton!
     
@@ -35,7 +35,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
  
-  //initialize text fields false isEnable input
+  //initialize signInt button layout and background
         initInputsFirst()
    
   // create view gesture
@@ -57,6 +57,9 @@ class signInVC: UIViewController,UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        //change textfield to enable
+        changeTextfieldToEnable()
         
         //observe sign In button if is or not hidden
         createObserver()
@@ -81,6 +84,9 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     //clicked sign in button
     @IBAction func signInBtn_click(_ sender: TransitionButton) {
+     
+        usernameTxt.isEnabled = false
+        passwordTxt.isEnabled = false
         
      sender.startAnimation()
         
@@ -95,26 +101,34 @@ UserDefaults.standard.set(user?.username, forKey: "username")
 UserDefaults.standard.synchronize()
  
     sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
-        //call login function from AppDelegate.swift class
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 appDelegate.login()
 })
 }else{
 
 sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+    [unowned self] in
+    
     //another case
     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
     let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
     alert.addAction(ok)
     self.present(alert, animated: true, completion: nil)
-})
-            }
-        }
-    }
+    self.usernameTxt.isEnabled = true
+    self.passwordTxt.isEnabled = true
+})}}
+}
 }//signInVC class over line
 
 //custom functions
 extension signInVC{
+    
+    fileprivate func changeTextfieldToEnable(){
+    
+    //call login function from AppDelegate.swift class
+    usernameTxt.isEnabled = true
+    passwordTxt.isEnabled = true
+    }
     
     fileprivate func createViewGesture(){
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
@@ -146,8 +160,8 @@ passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),for: .edit
         
         signInBtnHeight.constant = 0
         
-    signInBtn.applyGradient(gradient: CAGradientLayer(), colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
-    }
+    signInBtn.applyGradient(gradient: CAGradientLayer(), colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0,1.0], stP:CGPoint(x:0.0,y:0.0), edP:CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
+}
     
     fileprivate func setColorArr(){
 colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2274509804, green: 0.1098039216, blue: 0.4431372549, alpha: 1), color2: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1)),(color1: #colorLiteral(red: 0.8431372549, green: 0.4274509804, blue: 0.4666666667, alpha: 1), color2: #colorLiteral(red: 1, green: 0.8470588235, blue: 0.6078431373, alpha: 1)),(color1: #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1), color2: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)),(color1: #colorLiteral(red: 0.8980392157, green: 0.1764705882, blue: 0.1529411765, alpha: 1), color2: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)),(color1: #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1), color2: #colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))])
@@ -157,8 +171,8 @@ colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.2274509804, green: 
         
         currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
         UIView.transition(with: gradientBackground, duration: 2, options: [.transitionCrossDissolve], animations: {
-            self.gradientBackground.firstColor = self.colorArray[self.currentColorArrayIndex].color1
-            self.gradientBackground.secondColor = self.colorArray[self.currentColorArrayIndex].color2
+self.gradientBackground.firstColor = self.colorArray[self.currentColorArrayIndex].color1
+self.gradientBackground.secondColor = self.colorArray[self.currentColorArrayIndex].color2
         }) { (success) in
             self.animatedBackground()
         }

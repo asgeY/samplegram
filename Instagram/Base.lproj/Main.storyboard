@@ -377,9 +377,6 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiu">
-                                                        <real key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
@@ -445,9 +442,6 @@
                                                         <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="cancelBtn_click:" destination="h1a-jx-I6M" eventType="touchUpInside" id="kVW-CC-BgE"/>
-                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="09p-Oi-kyp">
                                                 <rect key="frame" x="302" y="165" width="55" height="40"/>
@@ -860,9 +854,6 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="cancelBtn_click:" destination="vga-24-kaf" eventType="touchUpInside" id="tXE-fG-hKS"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
                                 <rect key="frame" x="16" y="307.33333333333331" width="343" height="40"/>
@@ -886,7 +877,7 @@
                                     <action selector="emailTextFieldTap:" destination="vga-24-kaf" eventType="editingChanged" id="z3k-n0-7s8"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="TransitionButton" customModule="Instagram" customModuleProvider="target">
                                 <rect key="frame" x="16" y="405.33333333333331" width="343" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="NTE-SR-AaP"/>
@@ -899,14 +890,11 @@
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1210,6 +1198,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" image="Settings" id="xYr-id-TOv">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

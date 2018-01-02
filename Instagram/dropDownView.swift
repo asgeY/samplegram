@@ -21,11 +21,7 @@ class dropDownView: UIView,UITableViewDelegate, UITableViewDataSource {
     
     var tapDelegate:selectCellDelegate?
     
-    var tableView = UITableView(){
-        didSet{tableView.delegate = self
-            tableView.dataSource = self
-        }
-    }
+    var tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +33,7 @@ class dropDownView: UIView,UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-tableView.translatesAutoresizingMaskIntoConstraints = false
+tableView.translatesAutoresizingMaskIntoConstraints=false
         
         self.addSubview(tableView)
         
@@ -66,7 +62,7 @@ extension dropDownView{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
-        cell.textLabel?.font = UIFont.init(name: "MedulaOne-Regular", size: 23)
+ cell.textLabel?.font = UIFont.init(name: "MedulaOne-Regular", size: 23)
         cell.textLabel?.textColor = .white
     cell.textLabel?.text = dropDownOptions[indexPath.row]
         cell.backgroundColor = .red
@@ -80,6 +76,7 @@ extension dropDownView{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate.dismissDropDown()
 self.tableView.deselectRow(at: indexPath, animated: true)
+        
         if indexPath.row == 1{
             self.tapDelegate?.tapToReset()
         }else if indexPath.row == 0{

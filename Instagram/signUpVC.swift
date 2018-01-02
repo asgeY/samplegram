@@ -9,23 +9,33 @@
 import UIKit
 import Parse
 
-class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CropViewControllerDelegate,selectCellDelegate{
+class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CropViewControllerDelegate,selectCellDelegate,goBackDelegate{
  
     @IBOutlet var tipSelectedView: [UIView]!
     
  @IBOutlet weak var gradientImgView: UIImageViewX!
     
-    @IBOutlet weak var avaImg: UIImageView!
+@IBOutlet weak var avaImg: UIImageView!
  
 @IBOutlet var allTextFieldsInScreen: [UITextField_Attributes]!
-{didSet{_ = self.allTextFieldsInScreen.map{$0.delegate = self}}}
+{didSet{_ = self.allTextFieldsInScreen.map{$0.delegate = self
+    $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
+    $0.rightViewMode = .unlessEditing
+    }}}
  
     @IBOutlet var allCountTip: [UILabel]!
-
+        {didSet{
+_ = allCountTip.map{
+$0.layer.borderColor = UIColor.white.cgColor
+$0.layer.borderWidth = 3}}}
+    
     @IBOutlet var allTipLabelsInScreen: [UILabel]!
+{didSet{_ = self.allTipLabelsInScreen.map{$0.textColor = .red}}}
     
     @IBOutlet weak var signUpBtn: TransitionButton!
-    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton_Attributes!{
+  didSet{self.cancelBtn.backDelegate = self}
+}
 
     //profile crop image
     var image: UIImage? = #imageLiteral(resourceName: "profile")
@@ -53,8 +63,7 @@ fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     fileprivate var tempMarkArr = [Bool].init(repeating: false, count: 7)
   
     //pick image from phone library
-   fileprivate var picker = UIImagePickerController()
-     {didSet{self.picker.delegate = self}}
+   fileprivate let imagePicker = UIImagePickerController()
     
     //loading animation root layer
     fileprivate let rootLayer:CALayer = {
@@ -74,7 +83,7 @@ fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
     
     //profile setting button
     fileprivate var profileSettingBtn = dropDownBtn()
-
+    
     //loading animation effect layer
 fileprivate let replicatorLayer:CAReplicatorLayer = {
         let replicatorLayer = CAReplicatorLayer()
@@ -106,22 +115,13 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         return shrinkAnimation
     }()
     
-    fileprivate var shapeLayer: CAShapeLayer!
-    fileprivate var pulsatingLayer: CAShapeLayer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view
-       
-        //set tip texts to red
-        setTipTextRed()
         
         //create tap gesture
         createScreenDismissKeyboard()
-        
-        //set count label attributes
-        setCountLabelAttributes()
         
         //ava image layer
         setAvaImgLayer()
@@ -129,15 +129,12 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         //declare select image
         declareSelectedImage()
  
-        //initialize text fields false isEnable input
+        //add gradient colors on buttons
         initInputFirst()
         
         //create check targets
         createCheckTargets()
-        
-        //set text fields right views
-        setRightViews()
-        
+
         //set image color set
         setColorArr()
         
@@ -146,17 +143,16 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
         
         //put profile setting buttton on screen
         configueProfileSettingBtn()
-        
 }
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
        //create observers
         createObservers()
         
-        //layout profile setting button
-        layoutProfileSettingBtn()
+        //change text field to enable
+        changeTextfieldToEnable()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -178,8 +174,7 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
     //click sign up
     @IBAction func signUpBtn_click(_ sender: TransitionButton) {
  
-        //dismiss keyboard
-  // self.view.endEditing(true)
+_ = allTextFieldsInScreen.map{$0.isEnabled = false}
         
   sender.startAnimation()
         
@@ -211,80 +206,25 @@ UserDefaults.standard.set(user.username, forKey: "username")
     UserDefaults.standard.synchronize()
    
 sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1.0, completion: {
+
     //call login func from AppleDelegate.swift class
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    appDelegate.login()
+(UIApplication.shared.delegate as! AppDelegate).login()
 })
-}else{sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1.0, completion: nil)
-                print(error ?? "")}
+}else{
+sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1.0, completion: nil)
+                print(error ?? "")
+_ = self.allTextFieldsInScreen.map{$0.isEnabled = false}
+    }
         }
     }
-   
-    //click cancel
-    @IBAction func cancelBtn_click(_ sender: UIButton) {
-UIView.animate(withDuration: 0.1, animations: {
-    self.cancelBtn.layer.bounds.size.width -= 60
-}, completion: { (_) in
-self.cancelBtn.layer.bounds.size.width += 60
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-        self.dismiss(animated: true, completion: nil)
-    })
-})
-}
+    
 }//signUpVC class over line
 
 //custom functions
 extension signUpVC {
     
-    fileprivate func animatePulsatingLayer() {
-        
-     let animation = CABasicAnimation(keyPath: "transform.scale")
-        
-        animation.toValue = 1.5
-        animation.duration = 0.8
-animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        animation.autoreverses = true
-        animation.repeatCount = Float.infinity
-pulsatingLayer.add(animation, forKey: "pulsing")
-    }
-    
-   fileprivate func setupCircleLayers() {
-pulsatingLayer = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(red: 86, green: 30, blue: 63, alpha: 1))
-        signUpBtn.layer.addSublayer(pulsatingLayer)
-        animatePulsatingLayer()
-        
-let trackLayer = createCircleShapeLayer(strokeColor:UIColor.init(red: 56, green: 25, blue: 49, alpha: 1), fillColor: UIColor.init(red: 21, green: 22, blue: 33, alpha: 1))
-signUpBtn.layer.addSublayer(trackLayer)
-        
-shapeLayer = createCircleShapeLayer(strokeColor: UIColor.init(red: 234, green: 46, blue: 111, alpha: 1), fillColor: .clear)
-        
-  shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
-        shapeLayer.strokeEnd = 0
-    signUpBtn.layer.addSublayer(shapeLayer)
-}
-    
-   fileprivate func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
-        let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        layer.path = circularPath.cgPath
-        layer.strokeColor = strokeColor.cgColor
-        layer.lineWidth = 20
-        layer.fillColor = fillColor.cgColor
-        layer.lineCap = kCALineCapRound
-        layer.position = signUpBtn.center
-        return layer
-    }
-    
-    fileprivate func setTipTextRed(){
-      _ = allTipLabelsInScreen.map{$0.textColor = .red}
-}
-    
-    fileprivate func setRightViews(){
-       
-        _ = allTextFieldsInScreen.map{
-         $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
-            $0.rightViewMode = .unlessEditing
-        }
+    fileprivate func changeTextfieldToEnable(){
+_ = self.allTextFieldsInScreen.map{$0.isEnabled = true}
     }
     
     fileprivate func configueProfileSettingBtn(){
@@ -293,29 +233,19 @@ shapeLayer = createCircleShapeLayer(strokeColor: UIColor.init(red: 234, green: 4
 profileSettingBtn.translatesAutoresizingMaskIntoConstraints = false
   profileSettingBtn.dropView.tapDelegate = self
  self.view.addSubview(profileSettingBtn)
-    }
-    
-    fileprivate func layoutProfileSettingBtn(){
-        
+
 profileSettingBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
 profileSettingBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
 profileSettingBtn.bottomAnchor.constraint(equalTo: avaImg.bottomAnchor).isActive = true
 profileSettingBtn.leftAnchor.constraint(equalTo: avaImg.rightAnchor, constant: 10).isActive = true
-
+        
 profileSettingBtn.dropView.dropDownOptions = ["Choose from photo library","Reset to default"]
-}
-
+    }
+  
     fileprivate func createScreenDismissKeyboard(){
         let gestrue = UITapGestureRecognizer.init(target: self, action: #selector(tapGestrue))
         self.view.addGestureRecognizer(gestrue)
     }
-    
-    fileprivate func setCountLabelAttributes(){
-_ = allCountTip.map{
-    $0.layer.borderColor = UIColor.white.cgColor
-    $0.layer.borderWidth = 3
-}
-}
     
     fileprivate  func setAvaImgLayer(){
         
@@ -328,10 +258,10 @@ avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
         avaImg.layer.borderColor = UIColor.white.cgColor
     }
     
-    //initialize text fields false isEnable input
+    //add gradient colors on buttons
  fileprivate func initInputFirst(){
     
-    signUpBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex:"dE6161"),UIColor(hex:"2657EB")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
+    signUpBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex:"000000"),UIColor(hex:"FF0000")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
     
     cancelBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FC5C7D"), UIColor(hex: "6A82FB")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
     }
@@ -392,7 +322,7 @@ $0.addTarget(self, action: #selector(checkText(sender:)), for: .editingChanged)
         }
     }
     
-    fileprivate func checkIfNil(with index: Int, and text: String) -> Bool{
+fileprivate func checkIfNil(with index: Int, and text: String) -> Bool{
     guard allTextFieldsInScreen[index].text != "" else{
 allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
 tempMarkArr[index] = false
@@ -477,9 +407,7 @@ cropViewControllers.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromVi
 let cropViewController = CropViewController(croppingStyle:.circular, image: self.image!)
 cropViewController.delegate = self
 cropViewController.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromView: avaImg,fromFrame: viewFrame,angle: self.croppedAngle,toImageFrame: self.croppedRect,setup:
-    { self.avaImg.isHidden = false },completion: nil)
-        }
-        
+    { self.avaImg.isHidden = false },completion: nil)}
 }
 
     @objc fileprivate func checkText(sender:UITextField){
@@ -607,15 +535,14 @@ ifThereNoWrong(index:6)
 //after check completes, tell observer the status of ✓ & ✘
     NotificationCenter.default.post(name: NSNotification.Name.init("isEnableClicked"), object: nil)
  }
-else {
-    allTipLabelsInScreen[textField.tag / 10 - 1].text = tempText
+else {allTipLabelsInScreen[textField.tag / 10 - 1].text = tempText
     
 //if there has no change than before, also tell observern the status of ✓ & ✘
      NotificationCenter.default.post(name: NSNotification.Name.init("isEnableClicked"), object: nil)
    }
 }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 _ = allTextFieldsInScreen.map{ $0.resignFirstResponder()}
 return true
     }
@@ -626,9 +553,9 @@ extension signUpVC{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        guard let image = (info[UIImagePickerControllerOriginalImage] as? UIImage) else { return }
+  guard let image = (info[UIImagePickerControllerOriginalImage] as? UIImage) else { return }
         
-       let cropController = CropViewController(croppingStyle: .circular, image: image)
+ let cropController = CropViewController(croppingStyle: .circular, image: image)
     cropController.delegate = self
         self.image = image
 picker.pushViewController(cropController, animated: true)
@@ -650,7 +577,6 @@ extension signUpVC{
 extension signUpVC{
     
     func tapToPhotoLibrary() {
-        let imagePicker = UIImagePickerController()
         imagePicker.modalPresentationStyle = .popover
         imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
         imagePicker.sourceType = .photoLibrary
@@ -661,6 +587,14 @@ self.present(imagePicker, animated: true, completion: nil)
     
     func tapToReset() {
        avaImg.image = #imageLiteral(resourceName: "profile")
+    }
+}
+
+//goBackDelegate
+extension signUpVC{
+    
+    func goBackFromPage() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

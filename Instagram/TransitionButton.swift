@@ -15,7 +15,6 @@ enum StopAnimationStyle {
 }
 
 @IBDesignable
-
 class TransitionButton: UIButton,UIViewControllerTransitioningDelegate, CAAnimationDelegate {
     
     // the color of the spinner while animating the button
@@ -30,7 +29,7 @@ class TransitionButton: UIButton,UIViewControllerTransitioningDelegate, CAAnimat
     @IBInspectable
 var disabledBackgroundColor: UIColor = UIColor.lightGray {
         didSet {
-            self.setBackgroundImage(UIImage(color: disabledBackgroundColor), for: .disabled)
+self.setBackgroundImage(UIImage(color: disabledBackgroundColor), for: .disabled)
         }
     }
     
@@ -92,7 +91,7 @@ UIView.animate(withDuration: 0.1, animations: {
         }, completion: { completed -> Void in
     self.shrink()
             
-    // reduce the width to be equal to the height in order to have a circle
+// reduce the width to be equal to the height in order to have a circle
             self.spiner.animation()
         })
     }
@@ -102,20 +101,26 @@ func stopAnimation(animationStyle:StopAnimationStyle = .normal, revertAfterDelay
         switch animationStyle {
         case .normal:
             completion?()
-            // We return to original state after a delay to give opportunity to custom transition
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            
+    // We return to original state after a delay to give opportunity to custom transition
+DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.setOriginalState()
             }
         case .shake:
             completion?()
-            // We return to original state after a delay to give opportunity to custom transition
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            
+// We return to original state after a delay to give opportunity to custom transition
+DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.setOriginalState()
                 self.shakeAnimation()
             }
         case .expand:
-            self.spiner.stopAnimation() // before animate the expand animation we need to hide the spiner first
-            self.expand(completion: completion, revertDelay:delay) // scale the round button to fill the screen
+            
+// before animate the expand animation we need to hide the spiner first
+            self.spiner.stopAnimation()
+
+  // scale the round button to fill the screen
+    self.expand(completion: completion, revertDelay:delay)
         }
     }
     

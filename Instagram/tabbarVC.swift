@@ -45,9 +45,9 @@ createCornerIcon()
 createDotIcon()
         
         // call function of all type of notifications
-        query(["like"], image: UIImage(named: "likeIcon.png")!)
-        query(["follow"], image: UIImage(named: "followIcon.png")!)
-        query(["mention", "comment"], image: UIImage(named: "commentIcon.png")!)
+query(["like"], image: UIImage(named: "likeIcon.png")!)
+query(["follow"], image: UIImage(named: "followIcon.png")!)
+query(["mention", "comment"], image: UIImage(named: "commentIcon.png")!)
         
 // hide icons objects
 setHideItemAnimation()

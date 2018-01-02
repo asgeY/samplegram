@@ -8,8 +8,35 @@
 
 import UIKit
 
+protocol goBackDelegate{
+func goBackFromPage()
+}
+
 @IBDesignable
-class UIButton_Attributes: UIButton {}
+class UIButton_Attributes: UIButton {
+    
+    var backDelegate: goBackDelegate!
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        }) { (_) in
+            self.bounds.size.width -= 30
+        }
+    }
+   
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        }) { (_) in
+            self.bounds.size.width += 30
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+    self.backDelegate.goBackFromPage()
+            })
+        }
+    }
+}
 
 //UIButton
 extension UIButton {
