@@ -65,11 +65,6 @@ class signInVC: UIViewController,UITextFieldDelegate{
         createObserver()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }

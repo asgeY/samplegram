@@ -26,8 +26,8 @@ class dropDownView: UIView,UITableViewDelegate, UITableViewDataSource {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView.backgroundColor = UIColor.red
-        self.backgroundColor = UIColor.clear
+        tableView.backgroundColor = .red
+        self.backgroundColor = .clear
         
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -37,10 +37,10 @@ tableView.translatesAutoresizingMaskIntoConstraints=false
         
         self.addSubview(tableView)
         
-        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

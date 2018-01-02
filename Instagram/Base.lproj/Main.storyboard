@@ -1199,12 +1199,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" image="Settings" id="xYr-id-TOv">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="logout:" destination="BEf-b8-oXe" id="zrE-Me-wWx"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-dJ-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2742,7 +2736,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Settings" width="30" height="30"/>
         <image name="back" width="26" height="26"/>
         <image name="comment" width="270" height="270"/>
         <image name="down" width="50" height="50"/>
@@ -2765,6 +2758,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="smk-6g-Dv1"/>
+        <segue reference="1bI-cr-ZhO"/>
     </inferredMetricsTieBreakers>
 </document>

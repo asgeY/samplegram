@@ -20,6 +20,9 @@ class homeVC: UICollectionViewController{
     fileprivate var uuidArray = [String]()
     fileprivate var picArray = [PFFile]()
     
+    fileprivate var titleButton = UIButton.init()
+    fileprivate var isOpen = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -31,6 +34,9 @@ class homeVC: UICollectionViewController{
         
  //load posts func
 loadPosts()
+
+     //configue button on title
+titleButtonConfig()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,57 +58,28 @@ loadPosts()
         // Dispose of any resources that can be recreated.
     }
     
-  // clicked log out
-    @IBAction func logout(_ sender: Any) {
-
-     let alert = newAlertVC(title: "", message: "You want to...?", preferredStyle: .alert)
-        
-        let cancelAction = newAlertAction(title: "✓ Cancel!", style: .cancel, bgColor: UIColor.init(hex: "833AB4") ,handler: nil)
-     
-        let logoutAction = newAlertAction(title: "✘ Log Out!", style: .default,bgColor: UIColor.init(hex: "FCB045")) { _ in
-            
-// implement log out
-     PFUser.logOutInBackground { (error) in
-                
-if error == nil {
-                    
-let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
-                    
-    // remove logged in user from App memory
-    UserDefaults.standard.removeObject(forKey: "username")
-    UserDefaults.standard.synchronize()
-                    
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-appDelegate.window?.rootViewController = signIn
-                }
-            }
-        }
-
-    alert.alertBackgroundColor = UIColor.black
-    alert.hasRoundedCorners = true
-    alert.dividerColor = UIColor.black
-     alert.titleImage = #imageLiteral(resourceName: "alertIcon")
-    alert.titleViewBackgroundColor = UIColor.white
-    alert.messageTextColor = UIColor.white
-    alert.messageFont = UIFont.init(name: "Pacifico", size: 22)
-    alert.setButtonTextColorFor(.cancel, to: UIColor(hex: "FCB045"))
-    alert.setButtonTextColorFor(.default, to: UIColor(hex: "833AB4"))
-    alert.setButtonFontFor(.cancel, to: .boldSystemFont(ofSize: 19))
-    alert.setButtonFontFor(.default, to: .boldSystemFont(ofSize: 19))
-     alert.addAction(cancelAction)
-        alert.addAction(logoutAction)
-    present(alert, animated: true, completion: nil)
-    }
-    
 }//homeVC class over line
 
 //custom functions
 extension homeVC{
     
+    fileprivate func titleButtonConfig(){
+   
+   titleButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+titleButton.setTitle(PFUser.current()?.username?.uppercased(), for: .normal)
+titleButton.titleLabel?.font = UIFont.init(name: "MedulaOne-Regular", size: 23)
+titleButton.semanticContentAttribute = .forceRightToLeft
+titleButton.isSelected = true
+        
+titleButton.addTarget(self, action: #selector(homeDropMenuBtnClicked), for: .touchUpInside)
+titleButton.sizeToFit()
+self.navigationItem.titleView = titleButton
+}
+    
  //create observer
 fileprivate func createObserver(){
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reload(_:)), name: NSNotification.Name!.init(NSNotification.Name(rawValue: "reload")), object: nil)
+  NotificationCenter.default.addObserver(self, selector: #selector(reload(_:)), name: NSNotification.Name!.init(NSNotification.Name(rawValue: "reload")), object: nil)
     }
     
     //deallocate observer
@@ -116,9 +93,6 @@ fileprivate func createObserver(){
      
       //background color
     collectionView?.backgroundColor = UIColor.white
-
-        //title at the top
-    navigationItem.title = PFUser.current()?.username?.uppercased()
     
     //pull to refresh
     refresher = UIRefreshControl()
@@ -148,7 +122,7 @@ fileprivate func createObserver(){
         query.limit = page
         
         //find objects related to my request
-        query.findObjectsInBackground { (objects, error) in
+query.findObjectsInBackground { (objects, error) in
             
  if error == nil{
     //clean up
@@ -159,18 +133,44 @@ self.picArray = objects!.map{$0.value(forKey: "pic") as! PFFile}
 self.uuidArray = objects!.map{$0.value(forKey: "uuid") as! String}
 
     self.collectionView?.reloadData()
-            }else{
-                print(error!.localizedDescription)
-            }
+}else{print(error!.localizedDescription)}
         }
-    }
+               }
     
     // reloading func after received notification
  @objc fileprivate func reload(_ notification:Notification) {
         collectionView?.reloadData()
     }
+    
+    @objc fileprivate func homeDropMenuBtnClicked(){
+        
+        if isOpen == false {
+    isOpen = true
+UIView.animate(withDuration: 0.4, animations: {
+self.titleButton.imageView?.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)})
+} else {
+isOpen = false
+UIView.animate(withDuration: 0.4, animations: {
+    self.titleButton.imageView?.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0)})
 }
-
+        /*
+        // implement log out
+        PFUser.logOutInBackground { (error) in
+            
+            if error == nil {
+                
+let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+                
+                // remove logged in user from App memory
+    UserDefaults.standard.removeObject(forKey: "username")
+    UserDefaults.standard.synchronize()
+                
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.window?.rootViewController = signIn
+            }
+        }*/
+    }
+}
 
 //colleciton view data source
 extension homeVC {
@@ -188,14 +188,12 @@ extension homeVC {
         //get picture from the array
         picArray[indexPath.row].getDataInBackground { (data, error) in
             if error == nil{
-                cell.picImg.image = UIImage(data: data!)
+cell.picImg.image = UIImage(data: data!)
             }
         }
         return cell
     }
-    
 }
-
 
 //collection view delegate
 extension homeVC{
@@ -215,32 +213,31 @@ extension homeVC{
         // navigate to post view controller
         let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
     
-    self.navigationController?.pushViewController(post, animated: true)
+   self.navigationController?.pushViewController(post, animated: true)
 }
     
     //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
        //get header
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
+  let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
         //STEP 1. Fetch user data
         //get users data with connections to collumns of PFUser class
         header.fullnameLbl.text = (PFUser.current()?.object(forKey: "fullname") as? String)?.uppercased()
         
-        header.webTxt.text = PFUser.current()?.object(forKey: "web") as? String
+header.webTxt.text = PFUser.current()?.object(forKey: "web") as? String
         header.webTxt.sizeToFit()
         
-        header.bioLbl.text = PFUser.current()?.object(forKey: "bio") as? String
+header.bioLbl.text = PFUser.current()?.object(forKey: "bio") as? String
         header.bioLbl.sizeToFit()
         
-        
        let avaQuery = PFUser.current()?.object(forKey: "ava") as! PFFile
-        avaQuery.getDataInBackground { (data, error) in
+avaQuery.getDataInBackground { (data, error) in
             header.avaImg.image = UIImage(data: data!)
-        }
+}
         
-        header.button.setTitle("edit profile", for: .normal)
+header.button.setTitle("edit profile", for: .normal)
         
         //STEP 2. Count statistics
         //count total posts
@@ -272,24 +269,24 @@ extension homeVC{
         
         //STEP 3. Impelement top gestures
         //tap posts
-        let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsT))
+let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsT))
         postsTap.numberOfTapsRequired = 1
         header.posts.isUserInteractionEnabled = true
         header.posts.addGestureRecognizer(postsTap)
         
         //tap followers
-        let followersTap = UITapGestureRecognizer(target: self, action: #selector(followersT))
+let followersTap = UITapGestureRecognizer(target: self, action: #selector(followersT))
         followersTap.numberOfTapsRequired = 1
-        header.followers.isUserInteractionEnabled = true
-        header.followers.addGestureRecognizer(followersTap)
+header.followers.isUserInteractionEnabled = true
+header.followers.addGestureRecognizer(followersTap)
         
         //tap followings
-        let followingsTap = UITapGestureRecognizer(target: self, action: #selector(followingsT))
+let followingsTap = UITapGestureRecognizer(target: self, action: #selector(followingsT))
        followingsTap.numberOfTapsRequired = 1
-      header.followings.isUserInteractionEnabled = true
-     header.followings.addGestureRecognizer(followingsTap)
+header.followings.isUserInteractionEnabled = true
+header.followings.addGestureRecognizer(followingsTap)
         
-return header
+   return header
     }
     
 }// homeVC class over line
@@ -308,14 +305,15 @@ extension homeVC{
       // if there is more objects
         if self.page <= picArray.count{
             
-            // increase page size
-            page = page + 12
+    // increase page size
+    page = page + 12
+            
             // load more posts
-            let query = PFQuery(className: "posts")
-            query.whereKey("username", equalTo: (PFUser.current()!.username)!)
-            query.limit = page
-            query.findObjectsInBackground(block: { (objects, error) in
-                if error == nil {
+        let query = PFQuery(className: "posts")
+    query.whereKey("username", equalTo: (PFUser.current()!.username)!)
+    query.limit = page
+query.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
                     
         // clean up
     self.uuidArray.removeAll(keepingCapacity: false)

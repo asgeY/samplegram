@@ -38,7 +38,6 @@ class headerView: UICollectionReusableView {
         setImgLayer()
     }
   
-    
   // clicked follow button from GuestVC
     @IBAction func followBtn_clicked(_ sender: Any) {
         

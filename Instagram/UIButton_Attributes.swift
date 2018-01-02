@@ -16,7 +16,7 @@ func goBackFromPage()
 class UIButton_Attributes: UIButton {
     
     var backDelegate: goBackDelegate!
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()
@@ -31,7 +31,7 @@ class UIButton_Attributes: UIButton {
         }) { (_) in
             self.bounds.size.width += 30
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
     self.backDelegate.goBackFromPage()
             })
         }
