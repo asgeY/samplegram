@@ -20,9 +20,6 @@ class homeVC: UICollectionViewController{
     fileprivate var uuidArray = [String]()
     fileprivate var picArray = [PFFile]()
     
-    fileprivate var titleButton = UIButton.init()
-    fileprivate var isOpen = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -34,9 +31,7 @@ class homeVC: UICollectionViewController{
         
  //load posts func
 loadPosts()
-
-     //configue button on title
-titleButtonConfig()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,19 +58,6 @@ titleButtonConfig()
 //custom functions
 extension homeVC{
     
-    fileprivate func titleButtonConfig(){
-   
-   titleButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
-titleButton.setTitle(PFUser.current()?.username?.uppercased(), for: .normal)
-titleButton.titleLabel?.font = UIFont.init(name: "MedulaOne-Regular", size: 23)
-titleButton.semanticContentAttribute = .forceRightToLeft
-titleButton.isSelected = true
-        
-titleButton.addTarget(self, action: #selector(homeDropMenuBtnClicked), for: .touchUpInside)
-titleButton.sizeToFit()
-self.navigationItem.titleView = titleButton
-}
-    
  //create observer
 fileprivate func createObserver(){
         
@@ -93,6 +75,8 @@ fileprivate func createObserver(){
      
       //background color
     collectionView?.backgroundColor = UIColor.white
+    
+navigationItem.title = PFUser.current()?.username?.uppercased()
     
     //pull to refresh
     refresher = UIRefreshControl()
@@ -142,34 +126,6 @@ self.uuidArray = objects!.map{$0.value(forKey: "uuid") as! String}
         collectionView?.reloadData()
     }
     
-    @objc fileprivate func homeDropMenuBtnClicked(){
-        
-        if isOpen == false {
-    isOpen = true
-UIView.animate(withDuration: 0.4, animations: {
-self.titleButton.imageView?.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)})
-} else {
-isOpen = false
-UIView.animate(withDuration: 0.4, animations: {
-    self.titleButton.imageView?.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0)})
-}
-        /*
-        // implement log out
-        PFUser.logOutInBackground { (error) in
-            
-            if error == nil {
-                
-let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
-                
-                // remove logged in user from App memory
-    UserDefaults.standard.removeObject(forKey: "username")
-    UserDefaults.standard.synchronize()
-                
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    appDelegate.window?.rootViewController = signIn
-            }
-        }*/
-    }
 }
 
 //colleciton view data source
@@ -211,7 +167,7 @@ extension homeVC{
         postuuid.append(uuidArray[indexPath.row])
         
         // navigate to post view controller
-        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
+let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
     
    self.navigationController?.pushViewController(post, animated: true)
 }
@@ -341,7 +297,7 @@ extension homeVC{
         
         if !picArray.isEmpty{
             let indexPath = IndexPath(item: 0, section: 0)
-            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+ collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
     

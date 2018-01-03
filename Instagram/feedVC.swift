@@ -97,21 +97,22 @@ let cell = tableView.cellForRow(at: i) as! postCell
 commentuuid.append(cell.uuidLbl.text!)
 commentowner.append(cell.usernameBtn.titleLabel!.text!)
 }
+
     
     // clicked more button
     @IBAction func moreBtn_clicks(_ sender: AnyObject) {
         
         // call index of button
-        let i = sender.layer.value(forKey: "index") as! IndexPath
+let i = sender.layer.value(forKey: "index") as! IndexPath
         
         // call cell to call further cell date
-        let cell = tableView.cellForRow(at: i) as! postCell
+let cell = tableView.cellForRow(at: i) as! postCell
         
         // DELET ACTION
-    let delete = UIAlertAction(title: "Delete", style: .default) { (UIAlertAction) in
+let delete = UIAlertAction(title: "Delete", style: .default) { (UIAlertAction) in
             
     // STEP 1. Delete row from tableView
-    self.usernameArray.remove(at: i.row)
+self.usernameArray.remove(at: i.row)
 self.avaArray.remove(at: i.row)
 self.dateArray.remove(at: i.row)
 self.picArray.remove(at: i.row)
@@ -135,8 +136,7 @@ _ = self.navigationController?.popViewController(animated: true)
 } else {print(error!.localizedDescription)}
                         })
                     }
-} else {print(error?.localizedDescription ?? String())}
-            })
+} else {print(error?.localizedDescription ?? String())}})
             
             // STEP 2. Delete likes of post from server
             let likeQuery = PFQuery(className: "likes")
@@ -176,24 +176,24 @@ _ = self.navigationController?.popViewController(animated: true)
         let complain = UIAlertAction(title: "Complain", style: .default) { (UIAlertAction)  in
             
             // send complain to server
-            let complainObj = PFObject(className: "complain")
+    let complainObj = PFObject(className: "complain")
             complainObj["by"] = PFUser.current()?.username
             complainObj["to"] = cell.uuidLbl.text
-            complainObj["owner"] = cell.usernameBtn.titleLabel?.text
+complainObj["owner"] = cell.usernameBtn.titleLabel?.text
             complainObj.saveInBackground(block: { (success, error) in
                 if success {
-                    self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
+self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
                 } else {
-                    self.alert("ERROR", message: error!.localizedDescription)
+self.alert("ERROR", message: error!.localizedDescription)
                 }
             })
         }
         
         // CANCEL ACTION
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         // create menu controller
-        let menu = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
+let menu = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
         
         // if post belongs to user, he can delete post, else he can't
         if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
@@ -205,11 +205,12 @@ _ = self.navigationController?.popViewController(animated: true)
         }
         
         // show menu
-        self.present(menu, animated: true, completion: nil)
-    }
+self.present(menu, animated: true, completion: nil)
+}
     
 }// feedVC class over line
 
+//custom functions
 extension feedVC{
     
    //set navigation attributes
@@ -291,17 +292,16 @@ self.uuidArray.append(object.object(forKey: "uuid") as! String)
     self.tableView.reloadData()
                             
 } else {print(error!.localizedDescription)}})
-} else {print(error!.localizedDescription)}
-            })
+} else {print(error!.localizedDescription)}})
         }
     }
     
     // alert action
-   fileprivate func alert(_ title: String, message : String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+fileprivate func alert(_ title: String, message : String) {
+let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
+present(alert, animated: true, completion: nil)
     }
 }
 
@@ -521,7 +521,7 @@ extension feedVC{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height * 2 {
+       if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height * 2 {
             loadMore()
         }
     }

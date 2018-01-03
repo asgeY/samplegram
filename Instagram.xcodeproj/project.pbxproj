@@ -41,6 +41,7 @@
 		A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */; };
 		A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */; };
 		A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */; };
+		A56901B61FFCE26700DA383F /* optionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56901B51FFCE26700DA383F /* optionsVC.swift */; };
 		A587E2D41FDB017000E8E57A /* usersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E2D31FDB017000E8E57A /* usersVC.swift */; };
 		A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6B91FC5381E0083AAEC /* followersVC.swift */; };
 		A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6BB1FC538670083AAEC /* followersCell.swift */; };
@@ -127,6 +128,7 @@
 		A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZingScriptRustSBDemo-Base.otf"; sourceTree = "<group>"; };
 		A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crabmeal.otf; sourceTree = "<group>"; };
 		A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SG_Alternative_High-Alt.otf"; sourceTree = "<group>"; };
+		A56901B51FFCE26700DA383F /* optionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionsVC.swift; sourceTree = "<group>"; };
 		A587E2D31FDB017000E8E57A /* usersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersVC.swift; sourceTree = "<group>"; };
 		A588A6B91FC5381E0083AAEC /* followersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersVC.swift; sourceTree = "<group>"; };
 		A588A6BB1FC538670083AAEC /* followersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersCell.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				A518268B1FA0D4B8005B50D0 /* homeVC.swift */,
 				A518268F1FA0D8B2005B50D0 /* pictureCell.swift */,
+				A56901B51FFCE26700DA383F /* optionsVC.swift */,
 			);
 			name = "Home Page Part";
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				A5C76F921FF0E8D000B1B9EE /* TOCroppedImageAttributes.m in Sources */,
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
 				A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */,
+				A56901B61FFCE26700DA383F /* optionsVC.swift in Sources */,
 				A5F4A2B31FF5158900F182F8 /* TransitionButton.swift in Sources */,
 				A515014B1FD85E6A00062052 /* feedVC.swift in Sources */,
 				A5F4A2AD1FF5129A00F182F8 /* CustomTransitionViewController.swift in Sources */,
