@@ -2876,6 +2876,38 @@
             </objects>
             <point key="canvasLocation" x="5505" y="1102"/>
         </scene>
+        <!--CameraVC-->
+        <scene sceneID="I5d-dL-jw3">
+            <objects>
+                <viewController id="6yl-tf-b8f" customClass="ARCameraVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0cD-fP-nGW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jag-81-J2f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="raC-uE-d93">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oD2-S2-5O9">
+                                <rect key="frame" x="0.0" y="96" width="375" height="625"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oD2-S2-5O9" firstAttribute="leading" secondItem="raC-uE-d93" secondAttribute="leading" id="AkO-eR-Jqo"/>
+                            <constraint firstItem="Jag-81-J2f" firstAttribute="top" secondItem="oD2-S2-5O9" secondAttribute="bottom" constant="8" id="Bug-xp-x3K"/>
+                            <constraint firstAttribute="trailing" secondItem="oD2-S2-5O9" secondAttribute="trailing" id="Rg1-9C-Glh"/>
+                            <constraint firstItem="oD2-S2-5O9" firstAttribute="top" secondItem="0cD-fP-nGW" secondAttribute="bottom" constant="8" id="VSa-Xh-ChH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="oD2-S2-5O9" id="VsN-rb-icg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YL4-YJ-CeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4640.8000000000002" y="304.43349753694582"/>
+        </scene>
         <!--FeedVC-->
         <scene sceneID="oaO-ev-Ioh">
             <objects>
@@ -3045,7 +3077,14 @@
                             <constraint firstItem="1dC-h4-arl" firstAttribute="top" secondItem="pyz-nP-75Z" secondAttribute="top" id="srE-LW-UIM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wsT-hn-UhM"/>
+                    <navigationItem key="navigationItem" id="wsT-hn-UhM">
+                        <barButtonItem key="leftBarButtonItem" image="camera" id="Bci-Ec-1P4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="6yl-tf-b8f" kind="show" id="GBE-DL-5Gz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1dC-h4-arl" id="pbL-1b-CsF"/>
                     </connections>
@@ -3213,6 +3252,7 @@
     </scenes>
     <resources>
         <image name="back" width="26" height="26"/>
+        <image name="camera" width="25" height="25"/>
         <image name="comment" width="270" height="270"/>
         <image name="contacts" width="25" height="25"/>
         <image name="down" width="50" height="50"/>
