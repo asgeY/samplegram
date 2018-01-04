@@ -82,6 +82,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
      
         usernameTxt.isEnabled = false
         passwordTxt.isEnabled = false
+        forgotBtn.isEnabled = false
+        signUpbtn.isEnabled = false
         
      sender.startAnimation()
         
@@ -111,6 +113,8 @@ sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
     self.present(alert, animated: true, completion: nil)
     self.usernameTxt.isEnabled = true
     self.passwordTxt.isEnabled = true
+    self.forgotBtn.isEnabled = true
+    self.signUpbtn.isEnabled = true
 })}}
 }
 }//signInVC class over line
@@ -123,6 +127,8 @@ extension signInVC{
     //call login function from AppDelegate.swift class
     usernameTxt.isEnabled = true
     passwordTxt.isEnabled = true
+        forgotBtn.isEnabled = true
+        signUpbtn.isEnabled = true
     }
     
     fileprivate func createViewGesture(){

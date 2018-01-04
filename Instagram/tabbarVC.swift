@@ -64,7 +64,8 @@ setHideItemAnimation()
 extension tabbarVC{
     
     fileprivate func getImageView(){
-        storedImageViewArr = [0,1,2,3,4].map{ (offset) -> UIImageView in
+times[0] = 1
+storedImageViewArr = [0,1,2,3,4].map{ (offset) -> UIImageView in
 let tempImageView = self.tabBar.subviews[offset].subviews.first as! UIImageView
 tempImageView.contentMode = .center
 return tempImageView
@@ -186,13 +187,9 @@ extension tabbarVC{
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-_ = [0,1,2,3,4].map{
-    if $0 == item.tag,times[$0] == 0{
-        setAnimation(at: $0)
-        times.removeAll()
-        times.append(contentsOf:tempTimes)
-        times[$0] += 1
-    }
-}
-    }
+        if times[item.tag] == 0{
+            setAnimation(at: item.tag)
+            times = tempTimes
+            times[item.tag] += 1;return
+        }}
 }

@@ -26,7 +26,7 @@ class dropDownBtn:UIButton,dropDownDelegate{
         self.backgroundColor = .clear
         
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
-        self.setImage(#imageLiteral(resourceName: "gear"), for: .normal)
+        self.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
         self.contentMode = .bottom
         dropView.delegate = self
 dropView.translatesAutoresizingMaskIntoConstraints = false

@@ -175,6 +175,7 @@ replicatorLayer.borderColor = UIColor.clear.cgColor
     @IBAction func signUpBtn_click(_ sender: TransitionButton) {
  
 _ = allTextFieldsInScreen.map{$0.isEnabled = false}
+cancelBtn.isEnabled = false
         
   sender.startAnimation()
         
@@ -213,7 +214,8 @@ sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1.0, completion:
 }else{
 sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1.0, completion: nil)
                 print(error ?? "")
-_ = self.allTextFieldsInScreen.map{$0.isEnabled = false}
+_ = self.allTextFieldsInScreen.map{$0.isEnabled = true}
+self.cancelBtn.isEnabled = true
     }
         }
     }
@@ -225,6 +227,7 @@ extension signUpVC {
     
     fileprivate func changeTextfieldToEnable(){
 _ = self.allTextFieldsInScreen.map{$0.isEnabled = true}
+    cancelBtn.isEnabled = true
     }
     
     fileprivate func configueProfileSettingBtn(){

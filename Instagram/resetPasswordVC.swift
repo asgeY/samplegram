@@ -78,6 +78,7 @@ didSet{self.cancelBtn.backDelegate = self}}
     @IBAction func resetBtn_click(_ sender: TransitionButton) {
 
  resetBtn.isEnabled = false
+ cancelBtn.isEnabled = false
         
 sender.startAnimation()
         
@@ -100,11 +101,14 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
 self.present(alert, animated: true, completion: nil)
         })
         self.resetBtn.isEnabled = true
+        self.cancelBtn.isEnabled = true
         }
     else {
      sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
         [unowned self] in
-        self.resetBtn.isEnabled = true})
+        self.resetBtn.isEnabled = true
+        self.cancelBtn.isEnabled = true
+     })
         print(error ?? "")
     }
         }
