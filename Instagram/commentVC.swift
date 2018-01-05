@@ -482,46 +482,35 @@ extension commentVC{
         let leadingCell = tableView.cellForRow(at: indexPath) as! commentCell
        
         // ACTION. Delete
-        let deleteAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
+let deleteAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
             
             // STEP 1. Delete comment from server
-            let commentQuery = PFQuery(className: "comments")
-            commentQuery.whereKey("to", equalTo: commentuuid.last!)
-            commentQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
-            commentQuery.findObjectsInBackground (block: { (objects, error) in
+    let commentQuery = PFQuery(className: "comments")
+commentQuery.whereKey("to", equalTo: commentuuid.last!)
+commentQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
+commentQuery.findObjectsInBackground (block: { (objects, error) in
                 if error == nil {
                     // find related objects
-                    for object in objects! {
-                        object.deleteEventually()
-                    }
-                } else {print(error!.localizedDescription)
-                }
-            })
+for object in objects! {object.deleteEventually()}
+} else {print(error!.localizedDescription)}})
             
             // STEP 2. Delete #hashtag from server
-            let hashtagQuery = PFQuery(className: "hashtags")
-            hashtagQuery.whereKey("to", equalTo: commentuuid.last!)
-            hashtagQuery.whereKey("by", equalTo: leadingCell.usernameBtn.titleLabel!.text!)
-            hashtagQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
-            hashtagQuery.findObjectsInBackground(block: { (objects, error) in
-                for object in objects! {
-                    object.deleteEventually()
-                }
-            })
+let hashtagQuery = PFQuery(className: "hashtags")
+hashtagQuery.whereKey("to", equalTo: commentuuid.last!)
+hashtagQuery.whereKey("by", equalTo: leadingCell.usernameBtn.titleLabel!.text!)
+hashtagQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
+hashtagQuery.findObjectsInBackground(block: { (objects, error) in
+for object in objects! {object.deleteEventually()}})
             
-            // STEP 3. Delete notification: mention comment
+// STEP 3. Delete notification: mention comment
 let newsQuery = PFQuery(className: "news")
 newsQuery.whereKey("by", equalTo: leadingCell.usernameBtn.titleLabel!.text!)
-            newsQuery.whereKey("to", equalTo: commentowner.last!)
-            newsQuery.whereKey("uuid", equalTo: commentuuid.last!)
-            newsQuery.whereKey("type", containedIn: ["comment", "mention"])
-            newsQuery.findObjectsInBackground(block: { (objects, error) in
-                if error == nil {
-                    for object in objects! {
-                        object.deleteEventually()
-                    }
-                }
-            })
+newsQuery.whereKey("to", equalTo: commentowner.last!)
+newsQuery.whereKey("uuid", equalTo: commentuuid.last!)
+newsQuery.whereKey("type", containedIn: ["comment", "mention"])
+newsQuery.findObjectsInBackground(block: { (objects, error) in
+if error == nil {
+for object in objects! {object.deleteEventually()}}})
             
   // close cell
 tableView.setEditing(false, animated: true)
@@ -532,19 +521,18 @@ self.dateArray.remove(at: indexPath.row)
 self.usernameArray.remove(at: indexPath.row)
 self.avaArray.remove(at: indexPath.row)
             
-tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+tableView.deleteRows(at: [indexPath], with: .fade)}
         
-        deleteAction.image = #imageLiteral(resourceName: "delete")
+deleteAction.image = #imageLiteral(resourceName: "delete")
 deleteAction.backgroundColor = .purple
         
          // post whether belongs to user
         if (leadingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username) || (commentowner.last == PFUser.current()?.username){
-        let config = UISwipeActionsConfiguration.init(actions: [deleteAction])
-    return config
+let config = UISwipeActionsConfiguration.init(actions: [deleteAction])
+return config
             
         // post whether belongs to others
-        }else {return nil}
+   }else {return nil}
 }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -553,17 +541,17 @@ deleteAction.backgroundColor = .purple
         let trailingCell = tableView.cellForRow(at: indexPath) as! commentCell
         
        // ACTION. Mention or address message to someone
-        let mentionAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
+let mentionAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
            
             // include username in textView
-            self.commentTxt.text = "\(self.commentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
+self.commentTxt.text = "\(self.commentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
             
             // enable button
-            self.sendBtn.isEnabled = true
+    self.sendBtn.isEnabled = true
             
             // close cell
-            tableView.setEditing(false, animated: true)
-        }
+    tableView.setEditing(false, animated: true)
+}
        
         //Action.Complain
  let complainAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
@@ -590,7 +578,7 @@ self.alert("Complain has been made successfully", message: "Thank You! We will c
         complainAction.backgroundColor = .green
         
         // comment belogs to user
-        if trailingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+if trailingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
 let config = UISwipeActionsConfiguration(actions: [mentionAction])
 config.performsFirstActionWithFullSwipe = false
         return config
