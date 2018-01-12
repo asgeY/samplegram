@@ -187,16 +187,15 @@ user.password = allTextFieldsInScreen[2].text
 user["fullname"] = allTextFieldsInScreen[1].text?.lowercased()
 user["bio"] = allTextFieldsInScreen[6].text
 user["web"] = allTextFieldsInScreen[5].text?.lowercased()
-        
+       
         //in Edited Profile it's gonna be assigned
         user["tel"] = ""
         user["gender"] = ""
-        
+       
         //convert our image for sending to server
 guard let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else
 {return}
-     
-     user["ava"] = avaFile
+user["ava"] = avaFile
       
 //save data in server
 user.signUpInBackground { (success:Bool, error:Error?) in
@@ -264,7 +263,7 @@ avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
     //add gradient colors on buttons
  fileprivate func initInputFirst(){
     
-    signUpBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex:"000000"),UIColor(hex:"FF0000")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
+    signUpBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex:"000000"),UIColor(hex:"FF0000")], locations: [0.0,1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0), gradientAnimation: CABasicAnimation())
     
     cancelBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FC5C7D"), UIColor(hex: "6A82FB")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
     }

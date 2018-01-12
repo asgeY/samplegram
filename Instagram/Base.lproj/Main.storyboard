@@ -2143,7 +2143,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VpB-Sv-Wni">
                                                 <rect key="frame" x="126" y="54" width="233" height="90"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-OM-lHk" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-OM-lHk">
                                                         <rect key="frame" x="0.0" y="0.0" width="233" height="40"/>
                                                         <color key="backgroundColor" red="0.55686274509803924" green="0.98039215686274506" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
@@ -2165,7 +2165,7 @@
                                                             <action selector="publishBtn_clicked:" destination="mMz-YM-p7v" eventType="touchUpInside" id="A90-XA-pZl"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzC-Ns-oNz" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzC-Ns-oNz">
                                                         <rect key="frame" x="0.0" y="50" width="233" height="40"/>
                                                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>

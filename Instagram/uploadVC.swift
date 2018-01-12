@@ -96,7 +96,7 @@ deleteObservers()
         
         
 // send #hashtag to server
-        let words:[String] = titleTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+   let words:[String] = titleTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
         
         // define taged word
         for var word in words {
@@ -108,17 +108,15 @@ deleteObservers()
         word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
     word = word.trimmingCharacters(in: CharacterSet.symbols)
                 
-                let hashtagObj = PFObject(className: "hashtags")
-                hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
-                hashtagObj["by"] = PFUser.current()?.username
+    let hashtagObj = PFObject(className: "hashtags")
+hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
+hashtagObj["by"] = PFUser.current()?.username
                 hashtagObj["hashtag"] = word.lowercased()
                 hashtagObj["comment"] = titleTxt.text
-                hashtagObj.saveInBackground(block: { (success, error) -> Void in
-                    if success {
-                        print("hashtag \(word) is created")
-                    } else {
-                        print(error!.localizedDescription)
-                    }
+hashtagObj.saveInBackground(block: { (success, error) -> Void in
+    if success {
+    print("hashtag \(word) is created")
+} else { print(error!.localizedDescription)}
                 })
             }
         }

@@ -21,16 +21,11 @@ class tabbarVC: UITabBarController {
 private var times = [Int].init(repeating: 0, count: 5)
 private var tempTimes = [Int].init(repeating: 0, count: 5)
     
-private let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-    
 override func viewDidLoad() {
         super.viewDidLoad()
 
   // create image views
  getImageView()
-  
-//set path
-    setPath()
     
         //set tab bar layer
 setTabBarLayer()
@@ -69,16 +64,18 @@ storedImageViewArr = [0,1,2,3,4].map{ (offset) -> UIImageView in
 let tempImageView = self.tabBar.subviews[offset].subviews.first as! UIImageView
 tempImageView.contentMode = .center
 return tempImageView
-        }
-        
+        }        
     }
     
-    fileprivate func setPath(){
+    fileprivate func setPath(at index:Int){
         
+  let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0 ,0.6, 0.9, 1.15, 0.95, 1.02, 1.0]
         bounceAnimation.duration = TimeInterval(0.5)
-        bounceAnimation.calculationMode = kCAAnimationCubic
-    }
+    bounceAnimation.calculationMode = kCAAnimationCubic
+self.storedImageViewArr[index]?.layer.removeAllAnimations()
+self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
+}
     
     //set tab bar layer
     fileprivate func setTabBarLayer(){
@@ -156,9 +153,9 @@ return tempImageView
         view.addSubview(label)
         
         // update icons view frame
-        icons.frame.size.width = icons.frame.size.width + view.frame.size.width - 4
-        icons.contentSize.width = icons.contentSize.width + view.frame.size.width - 4
-        icons.center.x = self.view.frame.size.width / 5 * 4 - (self.view.frame.size.width / 5) / 4
+icons.frame.size.width = icons.frame.size.width + view.frame.size.width - 4
+icons.contentSize.width = icons.contentSize.width + view.frame.size.width - 4
+icons.center.x = self.view.frame.size.width / 5 * 4 - (self.view.frame.size.width / 5) / 4
         
         // unhide elements
         corner.isHidden = false
@@ -174,12 +171,6 @@ return tempImageView
             dot.alpha = 0
         }, completion: nil)
     }
-    
-    fileprivate func setAnimation(at index: Int)
-{
-self.storedImageViewArr[index]?.layer.removeAllAnimations()
-self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
-    }
 }
 
 //UITabBarControllerDelegate
@@ -188,7 +179,7 @@ extension tabbarVC{
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         if times[item.tag] == 0{
-            setAnimation(at: item.tag)
+            setPath(at: item.tag)
             times = tempTimes
             times[item.tag] += 1;return
         }}
