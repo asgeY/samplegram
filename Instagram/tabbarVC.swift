@@ -87,7 +87,7 @@ self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
         self.tabBar.isTranslucent = false
         
         // color of background
-        self.tabBar.barTintColor = UIColor(red: 235.0 / 255.0, green: 235.0 / 255.0, blue: 241.0 / 255.0, alpha: 1)
+self.tabBar.barTintColor = UIColor(red: 235.0 / 255.0, green: 235.0 / 255.0, blue: 241.0 / 255.0, alpha: 1)
     }
     
     // creare total icons
@@ -124,8 +124,8 @@ self.storedImageViewArr[index]?.layer.add(bounceAnimation, forKey: nil)
     fileprivate func query (_ type:[String], image:UIImage) {
         
         let query = PFQuery(className: "news")
-        query.whereKey("to", equalTo: PFUser.current()!.username!)
-        //query.whereKey("checked", equalTo: "no")
+        query.whereKey("to", equalTo: (PFUser.current()?.username)!)
+        query.whereKey("checked", equalTo: "no")
         query.whereKey("type", containedIn: type)
         query.countObjectsInBackground (block: { (count, error) in
             if error == nil {

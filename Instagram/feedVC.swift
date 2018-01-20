@@ -151,8 +151,8 @@ _ = self.navigationController?.popViewController(animated: true)
             
             // STEP 3. Delete comments of post from server
             let commentQuery = PFQuery(className: "comments")
-            commentQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
-            commentQuery.findObjectsInBackground(block: { (objects, error) in
+    commentQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
+commentQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
                         object.deleteEventually()
@@ -162,7 +162,7 @@ _ = self.navigationController?.popViewController(animated: true)
             
             // STEP 4. Delete hashtags of post from server
             let hashtagQuery = PFQuery(className: "hashtags")
-            hashtagQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
+    hashtagQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
             hashtagQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
@@ -173,7 +173,7 @@ _ = self.navigationController?.popViewController(animated: true)
         }
         
         // COMPLAIN ACTION
-        let complain = UIAlertAction(title: "Complain", style: .default) { (UIAlertAction)  in
+let complain = UIAlertAction(title: "Complain", style: .default) { (UIAlertAction)  in
             
             // send complain to server
     let complainObj = PFObject(className: "complain")
@@ -192,10 +192,10 @@ self.alert("ERROR", message: error!.localizedDescription)
         // CANCEL ACTION
 let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        // create menu controller
+    // create menu controller
 let menu = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
         
-        // if post belongs to user, he can delete post, else he can't
+// if post belongs to user, he can delete post, else he can't
         if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
             menu.addAction(delete)
             menu.addAction(cancel)
@@ -245,7 +245,7 @@ extension feedVC{
             // increase page size to load +10 posts
             page = page + 10
             
-   // STEP 1. Find posts realted to people who we are following
+// STEP 1. Find posts realted to people who we are following
 let followQuery = PFQuery(className: "follow")
     followQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
     followQuery.findObjectsInBackground (block: { (objects, error) in
@@ -318,7 +318,7 @@ extension feedVC{
         
         // STEP 1. Find posts realted to people who we are following
         let followQuery = PFQuery(className: "follow")
-        followQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
+        followQuery.whereKey("follower", equalTo: (PFUser.current()?.username)!)
         followQuery.findObjectsInBackground (block: { (objects, error) in
             if error == nil {
                 
@@ -332,9 +332,9 @@ self.followArray.append(object.object(forKey: "following") as! String)
 }
                 
 // append current user to see own posts in feed
-self.followArray.append(PFUser.current()!.username!)
+self.followArray.append((PFUser.current()?.username)!)
                 
-   // STEP 2. Find posts made by people appended to followArray
+// STEP 2. Find posts made by people appended to followArray
     let query = PFQuery(className: "posts")
 query.whereKey("username", containedIn: self.followArray)
 query.limit = self.page
@@ -397,8 +397,7 @@ extension feedVC{
     // reloading func with posts  after received notification
    @objc fileprivate func uploaded(_ notification:Notification) {
         loadPosts()
-    }
-    
+    }    
 }
 
 //UITableViewDataSource
@@ -435,7 +434,7 @@ cell.titleLbl.sizeToFit()
         let components : NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfMonth]
         let difference = (Calendar.current as NSCalendar).components(components, from: from!, to: now, options: [])
         
-        // logic what to show: seconds, minuts, hours, days or weeks
+// logic what to show: seconds, minuts, hours, days or weeks
         if difference.second! <= 0 {
             cell.dateLbl.text = "now"
         }

@@ -34,7 +34,7 @@ extension editNav{
     //set navigation bar attributes
     fileprivate func setNavBarAttributes(){
      
-        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")])
+self.navigationBar.setGradientBackground(colors: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")])
         
         // disable translucent
         self.navigationBar.isTranslucent = false

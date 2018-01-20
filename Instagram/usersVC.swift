@@ -129,7 +129,7 @@ extension usersVC{
 let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
 self.navigationController?.show(home, sender: nil)
         } else {guestName.append(cell.username.text!)
-        let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
 self.navigationController?.show(guest, sender: nil)
         }
     }

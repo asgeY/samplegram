@@ -355,12 +355,12 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
  @param completion A block that is called once the transition animation is completed.
  */
 - (void)presentAnimatedFromParentViewController:(nonnull UIViewController *)viewController
-                                      fromImage:(nullable UIImage *)image
-                                       fromView:(nullable UIView *)fromView
-                                      fromFrame:(CGRect)fromFrame
-                                          angle:(NSInteger)angle
-                                   toImageFrame:(CGRect)toFrame
-                                          setup:(nullable void (^)(void))setup
+fromImage:(nullable UIImage *)image
+fromView:(nullable UIView *)fromView
+fromFrame:(CGRect)fromFrame
+angle:(NSInteger)angle
+toImageFrame:(CGRect)toFrame
+setup:(nullable void (^)(void))setup
                                      completion:(nullable void (^)(void))completion NS_SWIFT_NAME(presentAnimatedFrom(_:fromImage:fromView:fromFrame:angle:toFrame:setup:completion:));
 
 /**

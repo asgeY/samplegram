@@ -102,13 +102,14 @@ navigationItem.title = PFUser.current()?.username?.uppercased()
         // request infomration from server
         let query = PFQuery(className: "posts")
         
-        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+query.whereKey("username", equalTo: (PFUser.current()?.username)!)
         query.limit = page
         
         //find objects related to my request
 query.findObjectsInBackground { (objects, error) in
             
  if error == nil{
+    
     //clean up
 self.uuidArray.removeAll(keepingCapacity: false)
 self.picArray.removeAll(keepingCapacity: false)
@@ -119,7 +120,7 @@ self.uuidArray = objects!.map{$0.value(forKey: "uuid") as! String}
     self.collectionView?.reloadData()
 }else{print(error!.localizedDescription)}
         }
-               }
+}
     
     // reloading func after received notification
  @objc fileprivate func reload(_ notification:Notification) {
@@ -141,8 +142,9 @@ extension homeVC {
         
         //define cell
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! pictureCell
+        
         //get picture from the array
-        picArray[indexPath.row].getDataInBackground { (data, error) in
+picArray[indexPath.row].getDataInBackground { (data, error) in
             if error == nil{
 cell.picImg.image = UIImage(data: data!)
             }
@@ -156,7 +158,7 @@ extension homeVC{
     
     // cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
+let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
         return size
     }
     
@@ -164,7 +166,7 @@ extension homeVC{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // send post uuid to "postuuid" variable
-        postuuid.append(uuidArray[indexPath.row])
+postuuid.append(uuidArray[indexPath.row])
         
         // navigate to post view controller
 let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
@@ -179,7 +181,7 @@ let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") 
   let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
         //STEP 1. Fetch user data
-        //get users data with connections to collumns of PFUser class
+//get users data with connections to collumns of PFUser class
         header.fullnameLbl.text = (PFUser.current()?.object(forKey: "fullname") as? String)?.uppercased()
         
 header.webTxt.text = PFUser.current()?.object(forKey: "web") as? String
@@ -188,7 +190,7 @@ header.webTxt.text = PFUser.current()?.object(forKey: "web") as? String
 header.bioLbl.text = PFUser.current()?.object(forKey: "bio") as? String
         header.bioLbl.sizeToFit()
         
-       let avaQuery = PFUser.current()?.object(forKey: "ava") as! PFFile
+let avaQuery = PFUser.current()?.object(forKey: "ava") as! PFFile
 avaQuery.getDataInBackground { (data, error) in
             header.avaImg.image = UIImage(data: data!)
 }
@@ -198,7 +200,7 @@ header.button.setTitle("edit profile", for: .normal)
         //STEP 2. Count statistics
         //count total posts
         let posts = PFQuery(className: "posts")
-        posts.whereKey("username", equalTo: (PFUser.current()?.username)!)
+posts.whereKey("username", equalTo: (PFUser.current()?.username)!)
         posts.countObjectsInBackground { (count, error) in
             if error == nil{
                 header.posts.text = "\(count)"
@@ -286,7 +288,6 @@ query.findObjectsInBackground(block: { (objects, error) in
           })
         }
     }
-
 }
 
 //custom functions selectors
@@ -311,7 +312,7 @@ extension homeVC{
         let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
         
         //present
-        navigationController?.pushViewController(followers, animated: true)
+   navigationController?.pushViewController(followers, animated: true)
     }
     
     //taped following label

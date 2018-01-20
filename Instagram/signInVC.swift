@@ -12,9 +12,9 @@ import Parse
 class signInVC: UIViewController,UITextFieldDelegate{
     
 @IBOutlet weak var gradientBackground: UIImageViewX!
-    
+
 @IBOutlet weak var usernameTxt: UITextField_Attributes!
-    {didSet{usernameTxt.delegate = self}}
+{didSet{usernameTxt.delegate = self}}
     
 @IBOutlet weak var passwordTxt: UITextField_Attributes!
 {didSet{passwordTxt.delegate = self}}
@@ -190,7 +190,7 @@ extension signInVC{
  //if all text fields has not been written anything, the sign In button will be hidden
     @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
 
-    self.signInBtn.isHidden = (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!
+self.signInBtn.isHidden = (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!
       
         if self.signInBtn.isHidden{
           NotificationCenter.default.post(name: NSNotification.Name.init("isHidden"), object: nil)

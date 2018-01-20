@@ -14,10 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-// Override point for customization after application launch.
         
+// Override point for customization after application launch
 Parse.enableLocalDatastore()
         
 //configuration of using Parse code in Heroku
@@ -27,8 +26,7 @@ let parseConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) i
 ParseMutableClientConfiguration.applicationId = "instagramid18950963325"
 ParseMutableClientConfiguration.clientKey = "instagramkey18950963325"
 ParseMutableClientConfiguration.server = "http://instagramlike1995.herokuapp.com/parse"
-            
-        }
+}
         
         Parse.initialize(with: parseConfig)
       
@@ -70,16 +68,15 @@ extension AppDelegate{
     func login(){
         
         //get user's login "username" and "password"
-        let currentUsername = UserDefaults.standard.value(forKey: "username")
+let currentUsername = UserDefaults.standard.value(forKey: "username")
         
         //if logged in
         if currentUsername != nil{
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let myTabBar = storyboard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+let storyboard = UIStoryboard(name: "Main", bundle: nil)
+let myTabBar = storyboard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
             window?.rootViewController = myTabBar
         }
-        
     }
 }
 
