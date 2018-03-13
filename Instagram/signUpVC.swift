@@ -6,6 +6,17 @@
 //  Copyright © 2017 Mac. All rights reserved.
 //
 
+
+/**
+ if click textfield, then other textfields can't click
+ if someone text has no changed after end touch, all textfields can be touched
+ if someone text has changed after end touch, all textfields can't be touched, then checkout if it matches all, if it matches all, the one can be touched
+ */
+
+
+
+
+
 import UIKit
 import Parse
 
@@ -329,7 +340,7 @@ extension signUpVC {
             allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
             tempMarkArr[index] = false
             allTipLabelsInScreen[index].text = text
-            allTextFieldsInScreen[index].isEnabled = true
+            _ = allTextFieldsInScreen.map{$0.isEnabled = true}
             return false
         }
         return true
@@ -340,7 +351,7 @@ extension signUpVC {
         allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
         tempMarkArr[index] = false
         allTipLabelsInScreen[index].text = text
-        allTextFieldsInScreen[index].isEnabled = true
+        _ = allTextFieldsInScreen.map{$0.isEnabled = true}
     }
     
     fileprivate func checkIfSameInput(){
@@ -349,17 +360,17 @@ extension signUpVC {
             allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
             tempMarkArr[3] = false
             allTipLabelsInScreen[3].text = "Twice inputs is not same"
-            allTextFieldsInScreen[3].isEnabled = true
+            _ = allTextFieldsInScreen.map{$0.isEnabled = true}
         }else {allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
             tempMarkArr[3] = true
-            allTextFieldsInScreen[3].isEnabled = true
+            _ = allTextFieldsInScreen.map{$0.isEnabled = true}
         }
     }
     
     fileprivate func ifThereNoWrong(index: Int){
         allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
         tempMarkArr[index] = true
-        allTextFieldsInScreen[index].isEnabled = true
+        _ = allTextFieldsInScreen.map{$0.isEnabled = true}
     }
     
     fileprivate func checkIfBeTaken(with index: Int, and text: String){
@@ -372,11 +383,11 @@ extension signUpVC {
                 self.allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
                 self.tempMarkArr[index] = false
                 self.allTipLabelsInScreen[index].text = text
-                self.allTextFieldsInScreen[index].isEnabled = true
+                _ = self.allTextFieldsInScreen.map{$0.isEnabled = true}
             } else {
                 self.allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "right"))
                 self.tempMarkArr[index] = true
-                self.allTextFieldsInScreen[index].isEnabled = true}
+                _ = self.allTextFieldsInScreen.map{$0.isEnabled = true}}
             }else {print(error!.localizedDescription)}})
     }
     
@@ -460,6 +471,9 @@ extension signUpVC{
         tempText = allTipLabelsInScreen[textField.tag / 10 - 1].text!
         allTipLabelsInScreen[textField.tag / 10 - 1].text = ""
         tipSelectedView[textField.tag / 10 - 1].backgroundColor = .purple
+        _ = allTextFieldsInScreen.map{if $0 != textField {
+            $0.isEnabled = false
+            }}
         currentTextField = textField
     }
     
@@ -469,8 +483,8 @@ extension signUpVC{
         //if text has changed than before
         if isChanged == true {
             
-            //user can't edit in the check time
-            textField.isEnabled = false
+            //user can't edit in the checking time
+            _ = allTextFieldsInScreen.map{$0.isEnabled = false}
             
             //username textfield
             if textField.tag == 10 {
@@ -529,18 +543,19 @@ extension signUpVC{
             //bio textfield
             if textField.tag == 70{
                 guard checkIfNil(with: 6, and: "bio can't be nil") else {return}
-                ifThereNoWrong(index:6)
+                ifThereNoWrong(index: 6)
             }
             
             isChanged = false
             
-            //after check completes, tell observer the status of ✓ & ✘
+            //after checking completes, tell observer the status of ✓ & ✘
             NotificationCenter.default.post(name: NSNotification.Name.init("isEnableClicked"), object: nil)
         }
         else {allTipLabelsInScreen[textField.tag / 10 - 1].text = tempText
             
             //if there has no change than before, also tell observern the status of ✓ & ✘
             NotificationCenter.default.post(name: NSNotification.Name.init("isEnableClicked"), object: nil)
+            _ = allTextFieldsInScreen.map{$0.isEnabled = true}
         }
     }
     

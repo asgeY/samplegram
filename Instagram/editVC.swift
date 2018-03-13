@@ -165,9 +165,6 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
 }// editVC class over line
 
 //custom functions
