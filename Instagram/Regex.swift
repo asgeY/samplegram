@@ -9,14 +9,14 @@
 import Foundation
 
 enum Validate {
-
-case username(_: String)
-case fullname(_: String)
-case password(_: String)
-case email(_: String)
-case URL(_ :String)
-
-     var isRight: Bool {
+    
+    case username(_: String)
+    case fullname(_: String)
+    case password(_: String)
+    case email(_: String)
+    case URL(_ :String)
+    
+    var isRight: Bool {
         var predicateStr:String!
         var currObject:String!
         

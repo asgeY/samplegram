@@ -14,8 +14,8 @@ extension UINavigationBar {
         
         var updatedFrame = bounds
         updatedFrame.size.height += 20
-let gradientLayer = CAGradientLayer(frame: updatedFrame, colors: colors)
-setBackgroundImage(gradientLayer.creatGradientImage(), for: UIBarMetrics.default)
+        let gradientLayer = CAGradientLayer(frame: updatedFrame, colors: colors)
+        setBackgroundImage(gradientLayer.creatGradientImage(), for: UIBarMetrics.default)
     }
 }
 
@@ -39,7 +39,7 @@ extension CAGradientLayer {
         UIGraphicsBeginImageContext(bounds.size)
         if let context = UIGraphicsGetCurrentContext() {
             render(in: context)
-    image = UIGraphicsGetImageFromCurrentImageContext()
+            image = UIGraphicsGetImageFromCurrentImageContext()
         }
         UIGraphicsEndImageContext()
         return image

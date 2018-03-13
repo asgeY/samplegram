@@ -10,24 +10,24 @@ import UIKit
 import Parse
 
 class resetPasswordVC: UIViewController,UITextFieldDelegate,goBackDelegate {
- 
+    
     @IBOutlet weak var gradientImg: UIImageViewX!
     
     @IBOutlet weak var emailTxt: UITextField_Attributes!{didSet{emailTxt.delegate = self}}
-
+    
     @IBOutlet weak var resetBtn: TransitionButton!
         {didSet{resetBtn.isHidden = true}}
     
     @IBOutlet weak var cancelBtn: UIButton_Attributes!{
-didSet{self.cancelBtn.backDelegate = self}}
-
+        didSet{self.cancelBtn.backDelegate = self}}
+    
     @IBOutlet weak var distanceOfBtnAndTxtF: NSLayoutConstraint!
-  {didSet{distanceOfBtnAndTxtF.constant = 0.0}}
+        {didSet{distanceOfBtnAndTxtF.constant = 0.0}}
     
     @IBOutlet weak var resetBtnHeight: NSLayoutConstraint!
-{didSet{resetBtnHeight.constant = 0.0}}
+        {didSet{resetBtnHeight.constant = 0.0}}
     
-   fileprivate var currentTextField: UITextField?
+    fileprivate var currentTextField: UITextField?
     
     fileprivate var currentColorArrayIndex = -1
     
@@ -35,11 +35,11 @@ didSet{self.cancelBtn.backDelegate = self}}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//add gradient colors on buttons
+        
+        //add gradient colors on buttons
         initInputFirst()
-  
-       //create view gesture
+        
+        //create view gesture
         createViewGesture()
         
         //set image color set
@@ -48,14 +48,14 @@ didSet{self.cancelBtn.backDelegate = self}}
         //recursively run animatedBackground()
         animatedBackground()
     }
-
-//when users open this VC, the keyboard will appear at once
+    
+    //when users open this VC, the keyboard will appear at once
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-  //convert emailTxt to first responder
-         createFirstResponder()
+        //convert emailTxt to first responder
+        createFirstResponder()
         
         //create observers
         setUpObservers()
@@ -76,50 +76,50 @@ didSet{self.cancelBtn.backDelegate = self}}
     }
     
     @IBAction func resetBtn_click(_ sender: TransitionButton) {
-
- resetBtn.isEnabled = false
- cancelBtn.isEnabled = false
         
-sender.startAnimation()
+        resetBtn.isEnabled = false
+        cancelBtn.isEnabled = false
         
-//request for reseting password
-PFUser.requestPasswordResetForEmail(inBackground: emailTxt.text!) { (success:Bool, error:Error?) in
+        sender.startAnimation()
+        
+        //request for reseting password
+        PFUser.requestPasswordResetForEmail(inBackground: emailTxt.text!) { (success:Bool, error:Error?) in
             
-    if success{
-            
-    //show alert message
-let alert = UIAlertController(title: "Email for reseting password", message: "has been sent to texted Email", preferredStyle: .alert)
+            if success{
                 
-    //if press OK call self.dismiss... function
-   let ok = UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+                //show alert message
+                let alert = UIAlertController(title: "Email for reseting password", message: "has been sent to texted Email", preferredStyle: .alert)
+                
+                //if press OK call self.dismiss... function
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
                     
-     self.dismiss(animated: true, completion: nil)
-})
-           alert.addAction(ok)
-        sender.stopAnimation(animationStyle: .normal, revertAfterDelay: 1, completion: {
-   [unowned self] in
-self.present(alert, animated: true, completion: nil)
-        })
-        self.resetBtn.isEnabled = true
-        self.cancelBtn.isEnabled = true
+                    self.dismiss(animated: true, completion: nil)
+                })
+                alert.addAction(ok)
+                sender.stopAnimation(animationStyle: .normal, revertAfterDelay: 1, completion: {
+                    [unowned self] in
+                    self.present(alert, animated: true, completion: nil)
+                })
+                self.resetBtn.isEnabled = true
+                self.cancelBtn.isEnabled = true
+            }
+            else {
+                sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+                    [unowned self] in
+                    self.resetBtn.isEnabled = true
+                    self.cancelBtn.isEnabled = true
+                })
+                print(error ?? "")
+            }
         }
-    else {
-     sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
-        [unowned self] in
-        self.resetBtn.isEnabled = true
-        self.cancelBtn.isEnabled = true
-     })
-        print(error ?? "")
     }
-        }
-    }
-   
+    
     @IBAction func emailTextFieldTap(_ sender: UITextField) {
-
+        
         resetBtn.isHidden = (emailTxt.text?.isEmpty)!
         
         if resetBtn.isHidden{
-        NotificationCenter.default.post(name: NSNotification.Name.init("didHidden"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name.init("didHidden"), object: nil)
         }else {
             NotificationCenter.default.post(name: NSNotification.Name.init("disHidden"), object: nil)
         }
@@ -128,7 +128,7 @@ self.present(alert, animated: true, completion: nil)
 
 //custom functions
 extension resetPasswordVC {
-
+    
     fileprivate func createViewGesture(){
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -136,12 +136,12 @@ extension resetPasswordVC {
     
     //convert emailTxt to first responder
     fileprivate func createFirstResponder(){
-         emailTxt.becomeFirstResponder()
+        emailTxt.becomeFirstResponder()
     }
-
+    
     //add gradient colors on buttons
     fileprivate  func initInputFirst(){
-       
+        
         self.resetBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
         
         self.cancelBtn.applyGradient(gradient: CAGradientLayer(), colours: [UIColor(hex: "C02425"), UIColor(hex: "F0CB35")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0), gradientAnimation: CABasicAnimation())
@@ -149,8 +149,8 @@ extension resetPasswordVC {
     
     //set image color set
     fileprivate func setColorArr(){
-     colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)),(color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)),(color1: #colorLiteral(red: 0.01960784314, green: 0.4588235294, blue: 0.9019607843, alpha: 1), color2: #colorLiteral(red: 0.007843137255, green: 0.1058823529, blue: 0.4745098039, alpha: 1)),(color1: #colorLiteral(red: 0.168627451, green: 0.1960784314, blue: 0.6980392157, alpha: 1), color2: #colorLiteral(red: 0.3607843137, green: 0.1450980392, blue: 0.5529411765, alpha: 1))])
-}
+        colorArray.append(contentsOf: [(color1: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)),(color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)),(color1: #colorLiteral(red: 0.01960784314, green: 0.4588235294, blue: 0.9019607843, alpha: 1), color2: #colorLiteral(red: 0.007843137255, green: 0.1058823529, blue: 0.4745098039, alpha: 1)),(color1: #colorLiteral(red: 0.168627451, green: 0.1960784314, blue: 0.6980392157, alpha: 1), color2: #colorLiteral(red: 0.3607843137, green: 0.1450980392, blue: 0.5529411765, alpha: 1))])
+    }
     
     //recursively run animatedBackground()
     fileprivate func animatedBackground(){
@@ -185,7 +185,7 @@ extension resetPasswordVC{
     
     fileprivate func deallocateObservers(){
         
-       NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

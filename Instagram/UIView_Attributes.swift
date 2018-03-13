@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable
 class UIView_Attributes: UIView {
-
+    
     override func draw(_ rect: CGRect) {
         
         //returns a current CGContext type context

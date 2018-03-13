@@ -276,8 +276,8 @@
 		A53819171FE40D6D00A9EFBB /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
 				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
+				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
 				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
 				A5F313F21FD548C000246E71 /* UINavigationBar_Attribute.swift */,
 			);
@@ -357,12 +357,12 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
-		A587E2D21FDB013200E8E57A /* Users Page */ = {
+		A587E2D21FDB013200E8E57A /* Users Page Part */ = {
 			isa = PBXGroup;
 			children = (
 				A587E2D31FDB017000E8E57A /* usersVC.swift */,
 			);
-			name = "Users Page";
+			name = "Users Page Part";
 			sourceTree = "<group>";
 		};
 		A588A6BD1FC58F8E0083AAEC /* Login Part */ = {
@@ -427,7 +427,7 @@
 				A51114411FD1008A00DCAC4C /* Tab Bar Part */,
 				A5FD76321FCECC87007355BF /* Navigation Part */,
 				A51501491FD85E4E00062052 /* Feed Page Part */,
-				A587E2D21FDB013200E8E57A /* Users Page */,
+				A587E2D21FDB013200E8E57A /* Users Page Part */,
 				A5FD76291FCBEA2F007355BF /* Upload Part */,
 				A53819041FDEF49700A9EFBB /* News Page Part */,
 				A588A6BE1FC58FE50083AAEC /* Home Page Part */,

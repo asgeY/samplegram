@@ -12,7 +12,7 @@ import Parse
 var hashtag = [String]()
 
 class hashtagsVC: UICollectionViewController{
-
+    
     //UI objects
     fileprivate var refresher:UIRefreshControl!
     fileprivate var page = 24
@@ -26,32 +26,32 @@ class hashtagsVC: UICollectionViewController{
         super.viewDidLoad()
         
         //set collection attribute
-    setCollectionAttribute()
+        setCollectionAttribute()
         
         //configue navigation bar
-configueNavigationBar()
+        configueNavigationBar()
         
         // pull to refresh
-createRefresh()
+        createRefresh()
         
         //back button
-createBackButton()
+        createBackButton()
         
         // load hashtags function
-loadHashtags()
+        loadHashtags()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-   
+    
+    
 }// hashtagsVC class over line
 
 //custom functions
 extension hashtagsVC{
- 
+    
     //set collection attribute
     fileprivate func setCollectionAttribute(){
         // be able to pull down even if few post
@@ -78,9 +78,9 @@ extension hashtagsVC{
         self.view.addGestureRecognizer(backSwipe)
     }
     
-     // pull to refresh
+    // pull to refresh
     fileprivate func createRefresh(){
-    
+        
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(hashtagsVC.refresh), for: UIControlEvents.valueChanged)
         collectionView?.addSubview(refresher)
@@ -88,104 +88,104 @@ extension hashtagsVC{
     
     // load hashtags function
     fileprivate  func loadHashtags() {
-    
-    // STEP 1. Find poss related to hashtags
-let hashtagQuery = PFQuery(className: "hashtags")
-    hashtagQuery.whereKey("hashtag", equalTo: hashtag.last!)
-    hashtagQuery.findObjectsInBackground (block: { (objects, error) in
+        
+        // STEP 1. Find poss related to hashtags
+        let hashtagQuery = PFQuery(className: "hashtags")
+        hashtagQuery.whereKey("hashtag", equalTo: hashtag.last!)
+        hashtagQuery.findObjectsInBackground (block: { (objects, error) in
             if error == nil {
                 
-    // clean up
-self.filterArray.removeAll(keepingCapacity: false)
+                // clean up
+                self.filterArray.removeAll(keepingCapacity: false)
                 
-// store related posts in filterArray
-    for object in objects! {
-    self.filterArray.append(object.value(forKey: "to") as! String)
-}
+                // store related posts in filterArray
+                for object in objects! {
+                    self.filterArray.append(object.value(forKey: "to") as! String)
+                }
                 
-//STEP 2. Find posts that have uuid appended to filterArray
-let query = PFQuery(className: "posts")
-query.whereKey("uuid", containedIn: self.filterArray)
-query.limit = self.page
-query.addDescendingOrder("createdAt")
-query.findObjectsInBackground(block: { (objects, error) in
-    if error == nil {
+                //STEP 2. Find posts that have uuid appended to filterArray
+                let query = PFQuery(className: "posts")
+                query.whereKey("uuid", containedIn: self.filterArray)
+                query.limit = self.page
+                query.addDescendingOrder("createdAt")
+                query.findObjectsInBackground(block: { (objects, error) in
+                    if error == nil {
                         
-// clean up
-    self.picArray.removeAll(keepingCapacity: false)
-    self.uuidArray.removeAll(keepingCapacity: false)
+                        // clean up
+                        self.picArray.removeAll(keepingCapacity: false)
+                        self.uuidArray.removeAll(keepingCapacity: false)
                         
-// find related objects
-    for object in objects! {
+                        // find related objects
+                        for object in objects! {
                             
-    self.picArray.append(object.value(forKey: "pic") as! PFFile)
-    self.uuidArray.append(object.value(forKey: "uuid") as! String)
- }
+                            self.picArray.append(object.value(forKey: "pic") as! PFFile)
+                            self.uuidArray.append(object.value(forKey: "uuid") as! String)
+                        }
                         
-    // reload
-self.collectionView?.reloadData()
-self.refresher.endRefreshing()
-} else {print(error?.localizedDescription ?? String())
+                        // reload
+                        self.collectionView?.reloadData()
+                        self.refresher.endRefreshing()
+                    } else {print(error?.localizedDescription ?? String())
                     }
                 })
-} else {print(error?.localizedDescription ?? String())
+            } else {print(error?.localizedDescription ?? String())
             }
         })
     }
     
     // pagination
-   fileprivate func loadMore() {
+    fileprivate func loadMore() {
         
- // if posts on the server are more than shown
-    if page <= uuidArray.count {
+        // if posts on the server are more than shown
+        if page <= uuidArray.count {
             
-    // increase page size
-    page = page + 15
+            // increase page size
+            page = page + 15
             
-    // STEP 1. Find poss related to hashtags
-let hashtagQuery = PFQuery(className: "hashtags")
-hashtagQuery.whereKey("hashtag", equalTo: hashtag.last!)
-    hashtagQuery.findObjectsInBackground (block: { (objects, error) in
-        if error == nil {
+            // STEP 1. Find poss related to hashtags
+            let hashtagQuery = PFQuery(className: "hashtags")
+            hashtagQuery.whereKey("hashtag", equalTo: hashtag.last!)
+            hashtagQuery.findObjectsInBackground (block: { (objects, error) in
+                if error == nil {
                     
-    // clean up
-self.filterArray.removeAll(keepingCapacity: false)
+                    // clean up
+                    self.filterArray.removeAll(keepingCapacity: false)
                     
-// store related posts in filterArray
-    for object in objects! {
-self.filterArray.append(object.value(forKey: "to") as! String)
-}
+                    // store related posts in filterArray
+                    for object in objects! {
+                        self.filterArray.append(object.value(forKey: "to") as! String)
+                    }
                     
-//STEP 2. Find posts that have uuid appended to filterArray
-    let query = PFQuery(className: "posts")
-    query.whereKey("uuid", containedIn: self.filterArray)
-    query.limit = self.page
-    query.addDescendingOrder("createdAt")
-    query.findObjectsInBackground(block: { (objects, error) in
-        if error == nil {
+                    //STEP 2. Find posts that have uuid appended to filterArray
+                    let query = PFQuery(className: "posts")
+                    query.whereKey("uuid", containedIn: self.filterArray)
+                    query.limit = self.page
+                    query.addDescendingOrder("createdAt")
+                    query.findObjectsInBackground(block: { (objects, error) in
+                        if error == nil {
                             
-            // clean up
-        self.picArray.removeAll(keepingCapacity: false)
-        self.uuidArray.removeAll(keepingCapacity: false)
+                            // clean up
+                            self.picArray.removeAll(keepingCapacity: false)
+                            self.uuidArray.removeAll(keepingCapacity: false)
                             
-    // find related objects
-      for object in objects! {
-    self.picArray.append(object.value(forKey: "pic") as! PFFile)
-    self.uuidArray.append(object.value(forKey: "uuid") as! String)
+                            // find related objects
+                            for object in objects! {
+                                self.picArray.append(object.value(forKey: "pic") as! PFFile)
+                                self.uuidArray.append(object.value(forKey: "uuid") as! String)
                             }
                             
-// reload
-    self.collectionView?.reloadData()
+                            // reload
+                            self.collectionView?.reloadData()
                             
-} else {print(error?.localizedDescription ?? String())}})
-} else {print(error?.localizedDescription ?? String())
+                        } else {print(error?.localizedDescription ?? String())}})
+                } else {print(error?.localizedDescription ?? String())
                 }
             })
         }
     }
     
     // cell size
-   fileprivate func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    fileprivate func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
         return size
     }
@@ -194,10 +194,10 @@ self.filterArray.append(object.value(forKey: "to") as! String)
 //custom functions selectors
 extension hashtagsVC{
     
-   @objc fileprivate func back(_ sender : UIBarButtonItem) {
+    @objc fileprivate func back(_ sender : UIBarButtonItem) {
         
         // pop effect back
-_ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         
         // clean hashtag or deduct the last guest userame from guestname = Array
         if !hashtag.isEmpty {
@@ -222,8 +222,8 @@ extension hashtagsVC{
         postuuid.append(uuidArray[indexPath.row])
         
         // navigate to post view controller
-let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
-self.navigationController?.show(post, sender: nil)
+        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
+        self.navigationController?.show(post, sender: nil)
     }
 }
 

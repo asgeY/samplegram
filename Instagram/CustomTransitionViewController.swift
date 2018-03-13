@@ -9,12 +9,12 @@
 import UIKit
 
 class CustomTransitionViewController: UIViewController,UIViewControllerTransitioningDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-setDelegate()
+        setDelegate()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,7 +34,7 @@ extension CustomTransitionViewController{
 extension CustomTransitionViewController{
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-  return FadeTransition(transitionDuration: 0.5, startingAlpha: 0.8)
+        return FadeTransition(transitionDuration: 0.5, startingAlpha: 0.8)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

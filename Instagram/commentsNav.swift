@@ -9,16 +9,16 @@
 import UIKit
 
 class commentsNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar attributes
         setNavBarAtrributes()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle
-        {
+    {
         return .lightContent
     }
     
@@ -33,8 +33,8 @@ extension commentsNav{
     
     //set navigation bar attributes
     fileprivate func setNavBarAtrributes(){
-    
+        
         // color of background of nav controller
-    self.navigationBar.setGradientBackground(colors: [UIColor(hex: "FC466B"),UIColor(hex: "3F5EFB")])
+        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "FC466B"),UIColor(hex: "3F5EFB")])
     }
 }

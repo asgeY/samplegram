@@ -9,7 +9,7 @@
 import UIKit
 
 protocol goBackDelegate{
-func goBackFromPage()
+    func goBackFromPage()
 }
 
 @IBDesignable
@@ -24,15 +24,15 @@ class UIButton_Attributes: UIButton {
             self.bounds.size.width -= 30
         }
     }
-   
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()
         }) { (_) in
             self.bounds.size.width += 30
             
-DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-    self.backDelegate.goBackFromPage()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+                self.backDelegate.goBackFromPage()
             })
         }
     }
@@ -77,6 +77,6 @@ extension UIButton {
             }
         }
     }
-
+    
 }
 

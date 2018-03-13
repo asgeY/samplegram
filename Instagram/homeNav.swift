@@ -9,14 +9,14 @@
 import UIKit
 
 class homeNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      //set navigation bar attributes
+        
+        //set navigation bar attributes
         setNavBarAtrributes()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,15 +29,15 @@ class homeNav: UINavigationController {
 
 //custom functions
 extension homeNav{
-
+    
     //set navigation bar attributes
     fileprivate func setNavBarAtrributes(){
         
-       // color of background of nav controller
+        // color of background of nav controller
         self.navigationBar.setGradientBackground(colors: [UIColor(hex: "833AB4"), UIColor(hex: "FD1D1D"), UIColor(hex: "FCB045")])
         
         // disable translucent
         self.navigationBar.isTranslucent = false
     }
-
+    
 }

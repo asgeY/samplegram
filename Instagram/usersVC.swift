@@ -10,32 +10,32 @@ import UIKit
 import Parse
 
 class usersVC: UITableViewController,UISearchBarDelegate{
-
+    
     // declare search bar
-fileprivate var searchBar = UISearchBar()
+    fileprivate var searchBar = UISearchBar()
     
     // tableView arrays to hold information from server
-   fileprivate var usernameArray = [String]()
-fileprivate var avaArray = [PFFile]()
-  
+    fileprivate var usernameArray = [String]()
+    fileprivate var avaArray = [PFFile]()
+    
     // collectionView UI
-   fileprivate var collectionView : UICollectionView!
+    fileprivate var collectionView : UICollectionView!
     
     // collectionView arrays to hold infromation from server
     fileprivate var picArray = [PFFile]()
     fileprivate var uuidArray = [String]()
     fileprivate var page = 15
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       //set search bar attributes
+        
+        //set search bar attributes
         setSearchBarAttributes()
-       
+        
         //fetch user info from server
         loadUsers()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,7 +57,7 @@ extension usersVC{
     }
     
     // load users function
-   fileprivate func loadUsers() {
+    fileprivate func loadUsers() {
         
         let usersQuery = PFQuery(className: "_User")
         usersQuery.addDescendingOrder("createdAt")
@@ -66,19 +66,19 @@ extension usersVC{
             if error == nil {
                 
                 // clean up
-self.usernameArray.removeAll(keepingCapacity: false)
-self.avaArray.removeAll(keepingCapacity: false)
+                self.usernameArray.removeAll(keepingCapacity: false)
+                self.avaArray.removeAll(keepingCapacity: false)
                 
-    // found related objects
-   for object in objects! {
-    
-self.usernameArray.append(object.value(forKey: "username") as! String)
-self.avaArray.append(object.value(forKey: "ava") as! PFFile)
-}
+                // found related objects
+                for object in objects! {
+                    
+                    self.usernameArray.append(object.value(forKey: "username") as! String)
+                    self.avaArray.append(object.value(forKey: "ava") as! PFFile)
+                }
                 
-        // reload
-           self.tableView.reloadData()
-} else {print(error!.localizedDescription)}
+                // reload
+                self.tableView.reloadData()
+            } else {print(error!.localizedDescription)}
         })
     }
     
@@ -86,7 +86,7 @@ self.avaArray.append(object.value(forKey: "ava") as! PFFile)
 
 //UITableViewDataSource
 extension usersVC{
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usernameArray.count
     }
@@ -126,11 +126,11 @@ extension usersVC{
         
         // if user tapped on his name go home, else go guest
         if cell.username.text! == PFUser.current()?.username {
-let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
-self.navigationController?.show(home, sender: nil)
+            let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+            self.navigationController?.show(home, sender: nil)
         } else {guestName.append(cell.username.text!)
-let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
-self.navigationController?.show(guest, sender: nil)
+            let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+            self.navigationController?.show(guest, sender: nil)
         }
     }
 }
@@ -140,44 +140,44 @@ extension usersVC{
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-// find by username
-let usernameQuery = PFQuery(className: "_User")
-usernameQuery.whereKey("username", matchesRegex: "(?i)" + searchBar.text!)
-usernameQuery.findObjectsInBackground (block: { (objects, error) in
+        // find by username
+        let usernameQuery = PFQuery(className: "_User")
+        usernameQuery.whereKey("username", matchesRegex: "(?i)" + searchBar.text!)
+        usernameQuery.findObjectsInBackground (block: { (objects, error) in
             if error == nil {
                 
-       // if no objects are found according to entered text in usernaem colomn, find by fullname
-    if objects!.isEmpty {
+                // if no objects are found according to entered text in usernaem colomn, find by fullname
+                if objects!.isEmpty {
                     
-let fullnameQuery = PFUser.query()
-fullnameQuery?.whereKey("fullname", matchesRegex: "(?i)" + self.searchBar.text!)
-fullnameQuery?.findObjectsInBackground(block: { (objects, error) in
-        if error == nil {
+                    let fullnameQuery = PFUser.query()
+                    fullnameQuery?.whereKey("fullname", matchesRegex: "(?i)" + self.searchBar.text!)
+                    fullnameQuery?.findObjectsInBackground(block: { (objects, error) in
+                        if error == nil {
                             
-            // clean up
-self.usernameArray.removeAll(keepingCapacity: false)
-self.avaArray.removeAll(keepingCapacity: false)
+                            // clean up
+                            self.usernameArray.removeAll(keepingCapacity: false)
+                            self.avaArray.removeAll(keepingCapacity: false)
                             
-    // found related objects
-    for object in objects! {
-self.usernameArray.append(object.object(forKey: "username") as! String)
-self.avaArray.append(object.object(forKey: "ava") as! PFFile)
-    }
+                            // found related objects
+                            for object in objects! {
+                                self.usernameArray.append(object.object(forKey: "username") as! String)
+                                self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+                            }
                             
-     // reload
-        self.tableView.reloadData()
-        }
-    })
-}
-
-// clean up
-self.usernameArray.removeAll(keepingCapacity: false)
-self.avaArray.removeAll(keepingCapacity: false)
+                            // reload
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
+                
+                // clean up
+                self.usernameArray.removeAll(keepingCapacity: false)
+                self.avaArray.removeAll(keepingCapacity: false)
                 
                 // found related objects
-        for object in objects! {
-    self.usernameArray.append(object.object(forKey: "username") as! String)
-    self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+                for object in objects! {
+                    self.usernameArray.append(object.object(forKey: "username") as! String)
+                    self.avaArray.append(object.object(forKey: "ava") as! PFFile)
                 }
                 
                 // reload

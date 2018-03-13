@@ -9,14 +9,14 @@
 import UIKit
 
 class usersNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar attributes
-setNavbarAttributes()
+        setNavbarAttributes()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }

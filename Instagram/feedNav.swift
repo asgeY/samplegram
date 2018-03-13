@@ -9,14 +9,14 @@
 import UIKit
 
 class feedNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar gradient effect
-                setNavBarAttributes()
+        setNavBarAttributes()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
@@ -32,7 +32,7 @@ extension feedNav{
     
     //set navigation bar gradient effect
     fileprivate func setNavBarAttributes(){
-       
+        
         self.navigationBar.setGradientBackground(colors: [UIColor(hex: "40E0D0"),UIColor(hex: "FF8C00"),UIColor(hex: "FF0080")])
         
         // disable translucent

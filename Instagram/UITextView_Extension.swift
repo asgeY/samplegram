@@ -9,14 +9,14 @@
 import UIKit
 
 extension UITextView: UITextViewDelegate{
-   
+    
     override open var bounds: CGRect {
         didSet {
             self.resizePlaceholder()
         }
     }
     
-     var placeholder: String? {
+    var placeholder: String? {
         get {
             var placeholderText: String?
             

@@ -9,14 +9,14 @@
 import UIKit
 
 class editNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar attributes
-setNavBarAttributes()
+        setNavBarAttributes()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
@@ -25,7 +25,7 @@ setNavBarAttributes()
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }//editNav class over line
 
 //custom functions
@@ -33,8 +33,8 @@ extension editNav{
     
     //set navigation bar attributes
     fileprivate func setNavBarAttributes(){
-     
-self.navigationBar.setGradientBackground(colors: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")])
+        
+        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")])
         
         // disable translucent
         self.navigationBar.isTranslucent = false

@@ -11,12 +11,12 @@ import UIKit
 extension UIColor {
     
     //Returns: the lighter color
-     func lightColor() -> UIColor {
+    func lightColor() -> UIColor {
         return self.withAlphaComponent(0.5)
     }
     
     //Returns: the darker color
-     func darker() -> UIColor {
+    func darker() -> UIColor {
         
         var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
         
@@ -39,16 +39,16 @@ extension UIColor {
         context!.setFillColor(color.cgColor)
         context!.fill(rect)
         
-let image = UIGraphicsGetImageFromCurrentImageContext()!
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         
-UIGraphicsEndImageContext()
+        UIGraphicsEndImageContext()
         
         return image
     }
     
-   //size: the size of the image
+    //size: the size of the image
     //Returns: the image with the color specified
-     func imageWithColor(size: CGSize = CGSize(width: 60, height: 60)) -> UIImage {
+    func imageWithColor(size: CGSize = CGSize(width: 60, height: 60)) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -56,9 +56,9 @@ UIGraphicsEndImageContext()
         context!.setFillColor(self.cgColor)
         context!.fill(rect)
         
-let image = UIGraphicsGetImageFromCurrentImageContext()!
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         
-UIGraphicsEndImageContext()
+        UIGraphicsEndImageContext()
         
         return image
     }

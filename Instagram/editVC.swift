@@ -10,11 +10,11 @@ import UIKit
 import Parse
 
 class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIScrollViewDelegate{
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
-        
+    
     @IBOutlet weak var fullnameTxt: UITextField_Attributes!
-    {didSet{self.fullnameTxt.delegate = self}}
+        {didSet{self.fullnameTxt.delegate = self}}
     
     @IBOutlet weak var usernameTxt: UITextField_Attributes!
         {didSet{self.usernameTxt.delegate = self}}
@@ -22,31 +22,31 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
     @IBOutlet weak var avaImg: UIImageView!
     
     @IBOutlet weak var webTxt: UITextField_Attributes!
-    {didSet{self.webTxt.delegate = self}}
+        {didSet{self.webTxt.delegate = self}}
     
     @IBOutlet weak var bioTxt: UITextView!
     
     @IBOutlet weak var emailTxt: UITextField_Attributes!
-    {didSet{self.emailTxt.delegate = self}}
+        {didSet{self.emailTxt.delegate = self}}
     
     @IBOutlet weak var telTxt: UITextField_Attributes!
-    {didSet{self.telTxt.delegate = self}}
+        {didSet{self.telTxt.delegate = self}}
     
     @IBOutlet weak var genderTxt: UITextField_Attributes!
-
+    
     // pickerView & pickerData
-fileprivate var genderPicker : UIPickerView!
-{didSet{
-    self.genderPicker.dataSource = self
-    self.genderPicker.delegate = self
+    fileprivate var genderPicker : UIPickerView!
+    {didSet{
+        self.genderPicker.dataSource = self
+        self.genderPicker.delegate = self
+        }
     }
-}
     
     fileprivate var genders = [""]
     
     // value to hold keyboard frame size
     fileprivate var keyboard:CGRect!
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -56,28 +56,28 @@ fileprivate var genderPicker : UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    //set views layer
-    setLayer()
         
-    //declare UIPickerView instance and properities
-    setPickInstance()
+        //set views layer
+        setLayer()
         
-    //some taps
-    setTapGestures()
+        //declare UIPickerView instance and properities
+        setPickInstance()
         
-    // call information function
-    information()
+        //some taps
+        setTapGestures()
         
-    // add done button above keyboard
-    addDoneButton()
+        // call information function
+        information()
         
-    // set text view placehold
-    setTextViewPlacehold()
+        // add done button above keyboard
+        addDoneButton()
+        
+        // set text view placehold
+        setTextViewPlacehold()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
         //set up observers
         createObservers()
@@ -87,25 +87,25 @@ fileprivate var genderPicker : UIPickerView!
         super.viewWillDisappear(animated)
         
         //release observers
-deleteObservers()
+        deleteObservers()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
     
-// clicked save button
+    
+    // clicked save button
     @IBAction func save_clicked(_ sender: Any) {
-    
- guard Validate.email(emailTxt.text!).isRight else{
-    alert("Incorrect email", message: "please provide correct email address")
-return}
-  
-    guard Validate.URL(webTxt.text!).isRight else{
-    alert("Incorrect web-link", message: "please provide correct website")
-return}
+        
+        guard Validate.email(emailTxt.text!).isRight else{
+            alert("Incorrect email", message: "please provide correct email address")
+            return}
+        
+        guard Validate.URL(webTxt.text!).isRight else{
+            alert("Incorrect web-link", message: "please provide correct website")
+            return}
         
         // save filled in information
         let user = PFUser.current()!
@@ -139,7 +139,7 @@ return}
         UserDefaults.standard.synchronize()
         
         // send filled information to server
-user.saveInBackground (block: { (success, error) in
+        user.saveInBackground (block: { (success, error) in
             if success{
                 
                 // hide keyboard
@@ -155,11 +155,11 @@ user.saveInBackground (block: { (success, error) in
                 print(error!.localizedDescription)
             }
         })
-}
+    }
     
-// clicked cancel button
+    // clicked cancel button
     @IBAction func cancel_clicked(_ sender: Any) {
-       
+        
         //close the keyboard
         self.view.endEditing(true)
         
@@ -167,7 +167,7 @@ user.saveInBackground (block: { (success, error) in
     }
     
     
-
+    
 }// editVC class over line
 
 //custom functions
@@ -196,7 +196,7 @@ extension editVC{
         self.genderTxt.inputView = genderPicker
     }
     
-   //some taps
+    //some taps
     fileprivate func setTapGestures(){
         
         // tap to hide keyboard
@@ -214,13 +214,13 @@ extension editVC{
     
     //user information function
     fileprivate func information(){
-       
-     //receive profile picture
+        
+        //receive profile picture
         let ava = PFUser.current()?.object(forKey: "ava") as! PFFile
         ava.getDataInBackground { (data, error) in
             self.avaImg.image = UIImage(data: data!)
         }
-      
+        
         // receive text information
         usernameTxt.text = PFUser.current()?.username
         fullnameTxt.text = PFUser.current()?.object(forKey: "fullname") as? String
@@ -234,7 +234,7 @@ extension editVC{
     
     
     // alert message function
-  fileprivate func alert (_ error: String, message : String) {
+    fileprivate func alert (_ error: String, message : String) {
         let alert = UIAlertController(title: error, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(ok)
@@ -302,7 +302,7 @@ extension editVC{
 
 //observers selectors
 extension editVC{
-  
+    
     // func when keyboard is shown
     @objc fileprivate func keyboardWillShow(_ notification: Notification) {
         
@@ -373,7 +373,7 @@ extension editVC{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-_ = [fullnameTxt,usernameTxt,webTxt,emailTxt,telTxt].map{$0?.resignFirstResponder()
+        _ = [fullnameTxt,usernameTxt,webTxt,emailTxt,telTxt].map{$0?.resignFirstResponder()
         }
         return true
     }

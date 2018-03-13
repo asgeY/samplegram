@@ -9,15 +9,15 @@
 import UIKit
 
 class pictureCell: UICollectionViewCell {
-  
+    
     @IBOutlet weak var picImg: UIImageView!
     
     // default func
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-   // alignment
-       alignment()
+        
+        // alignment
+        alignment()
     }
 }
 

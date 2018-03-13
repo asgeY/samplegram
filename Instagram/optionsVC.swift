@@ -10,9 +10,9 @@ import UIKit
 import Parse
 
 class optionsVC: UITableViewController {
-
+    
     @IBOutlet weak var logOutCell: UITableViewCell!
-  
+    
     @IBOutlet weak var facebookImageView: UIImageView!
     
     @IBOutlet weak var contactImageView: UIImageView!
@@ -22,21 +22,21 @@ class optionsVC: UITableViewController {
         
         //configue navigation bar
         configNavigationBar()
-     
-      //set log out cell title
+        
+        //set log out cell title
         setLogOutCellTitle()
-
-     //set image view insets
+        
+        //set image view insets
         setImageViewInsets()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-   
+        
     }
-
-   
+    
+    
 }//optionsVC class over line
 
 //custom functions
@@ -49,11 +49,11 @@ extension optionsVC{
     
     fileprivate func configNavigationBar(){
         self.navigationItem.title = "Options"
-self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     fileprivate func setLogOutCellTitle(){
-    logOutCell.textLabel?.text = "Log Out Of \((PFUser.current()?.username)!)"
+        logOutCell.textLabel?.text = "Log Out Of \((PFUser.current()?.username)!)"
     }
 }
 
@@ -62,21 +62,21 @@ extension optionsVC{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 4,indexPath.row == 2
         {
-    PFUser.logOutInBackground { (error) in
+            PFUser.logOutInBackground { (error) in
                 
-    if error == nil {
+                if error == nil {
                     
-let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+                    let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
                     
-    // remove logged in user from App memory
-UserDefaults.standard.removeObject(forKey: "username")
-UserDefaults.standard.synchronize()
+                    // remove logged in user from App memory
+                    UserDefaults.standard.removeObject(forKey: "username")
+                    UserDefaults.standard.synchronize()
                     
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    appDelegate.window?.rootViewController = signIn
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = signIn
                 }
             }
         }
-    tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

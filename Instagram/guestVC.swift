@@ -13,7 +13,7 @@ var guestName = [String]()
 
 
 class guestVC: UICollectionViewController {
-
+    
     //UI objects
     fileprivate var refresher:UIRefreshControl!
     fileprivate var page = 10
@@ -24,26 +24,26 @@ class guestVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-// hold scroll direction
-         holdScrollDirection()
-
-// set refresher
-    setRefresher()
         
-// set navigationBar
-  topSetting()
- 
+        // hold scroll direction
+        holdScrollDirection()
+        
+        // set refresher
+        setRefresher()
+        
+        // set navigationBar
+        topSetting()
+        
         // call load posts function
         loadPosts()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-   
+    
+    
 }// gusetVC class over line
 
 //custom functions
@@ -58,9 +58,9 @@ extension guestVC{
     fileprivate func topSetting(){
         
         //top title
-  navigationItem.title = guestName.last?.uppercased()
+        navigationItem.title = guestName.last?.uppercased()
         
-  navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = true
         
         //new back button
         let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(back(sender:)))
@@ -71,11 +71,11 @@ extension guestVC{
         backSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(backSwipe)
     }
-  
+    
     //add refresh control
     fileprivate func setRefresher(){
         
-       refresher = UIRefreshControl()
+        refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(afterRefresher), for: .valueChanged)
         collectionView?.addSubview(refresher)
         
@@ -86,26 +86,26 @@ extension guestVC{
         // load posts
         let query = PFQuery(className: "posts")
         query.whereKey("username", equalTo: (guestName.last)!)
-query.limit = page
-query.findObjectsInBackground (block: { (objects, error)  in
-    if error == nil {
+        query.limit = page
+        query.findObjectsInBackground (block: { (objects, error)  in
+            if error == nil {
                 
-    // clean up
-self.uuidArray.removeAll(keepingCapacity: false)
-    self.picArray.removeAll(keepingCapacity: false)
+                // clean up
+                self.uuidArray.removeAll(keepingCapacity: false)
+                self.picArray.removeAll(keepingCapacity: false)
                 
-    // find related objects
-for object in objects! {
+                // find related objects
+                for object in objects! {
                     
-    // hold found information in arrays
-    self.uuidArray.append(object.value(forKey: "uuid") as! String)
-self.picArray.append(object.value(forKey: "pic") as! PFFile)
-    }
+                    // hold found information in arrays
+                    self.uuidArray.append(object.value(forKey: "uuid") as! String)
+                    self.picArray.append(object.value(forKey: "pic") as! PFFile)
+                }
                 
-self.collectionView?.reloadData()
- } else {print(error!.localizedDescription)}
-    })
-   }
+                self.collectionView?.reloadData()
+            } else {print(error!.localizedDescription)}
+        })
+    }
     
     fileprivate func loadMore(){
         
@@ -122,18 +122,18 @@ self.collectionView?.reloadData()
             query.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     
-  // clean up
-self.uuidArray.removeAll(keepingCapacity: false)
-self.picArray.removeAll(keepingCapacity: false)
+                    // clean up
+                    self.uuidArray.removeAll(keepingCapacity: false)
+                    self.picArray.removeAll(keepingCapacity: false)
                     
-        // find related objects
-    for object in objects! {
-    
-    self.uuidArray.append(object.value(forKey: "uuid") as! String)
-    self.picArray.append(object.value(forKey: "pic") as! PFFile)
-        }
-    self.collectionView?.reloadData()
-  } else {print(error?.localizedDescription ?? String())}
+                    // find related objects
+                    for object in objects! {
+                        
+                        self.uuidArray.append(object.value(forKey: "uuid") as! String)
+                        self.picArray.append(object.value(forKey: "pic") as! PFFile)
+                    }
+                    self.collectionView?.reloadData()
+                } else {print(error?.localizedDescription ?? String())}
             })
         }
     }
@@ -141,12 +141,12 @@ self.picArray.removeAll(keepingCapacity: false)
 
 //custom functions selectors
 extension guestVC{
-   
+    
     //back function
     @objc fileprivate func back(sender: UIBarButtonItem){
         
         //push back
-    self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
         
         //clean guest username or detect the last guest username from guestName array
         if !guestName.isEmpty{
@@ -154,7 +154,7 @@ extension guestVC{
         }
     }
     
-// refresh functions
+    // refresh functions
     @objc fileprivate func afterRefresher(){
         
         refresher.endRefreshing()
@@ -190,8 +190,8 @@ extension guestVC{
         // define followersVC
         let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
         
-  // navigate to it
-self.navigationController?.pushViewController(followings, animated: true)
+        // navigate to it
+        self.navigationController?.pushViewController(followings, animated: true)
     }
 }
 
@@ -203,15 +203,15 @@ extension guestVC{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-   
-   //dequeue
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! pictureCell
-
- //connect data from array to picImg object from pictureCell class
-picArray[indexPath.row].getDataInBackground { (data, error) in
-    if error == nil{
-        cell.picImg.image = UIImage(data: data!)
-    } else{print(error!.localizedDescription)}
+        
+        //dequeue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! pictureCell
+        
+        //connect data from array to picImg object from pictureCell class
+        picArray[indexPath.row].getDataInBackground { (data, error) in
+            if error == nil{
+                cell.picImg.image = UIImage(data: data!)
+            } else{print(error!.localizedDescription)}
         }
         return cell
     }
@@ -226,48 +226,48 @@ extension guestVC{
         let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
         return size
     }
-
-   //header config
+    
+    //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
-     //STEP 1. Load data of guest
-   let infoQuery = PFQuery(className: "_User")
+        //STEP 1. Load data of guest
+        let infoQuery = PFQuery(className: "_User")
         infoQuery.whereKey("username", equalTo: (guestName.last)!)
         infoQuery.findObjectsInBackground { (objects, error) in
             
-    if error == nil{
-        
-           //shown wrong user
-        if objects!.isEmpty{
-            
-             // call alert
-let alert = UIAlertController(title: "\(guestName.last!.uppercased())", message: "is not existing", preferredStyle: UIAlertControllerStyle.alert)
-let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_)  in
-_ = self.navigationController?.popViewController(animated: true)
-})
-alert.addAction(ok)
-self.present(alert, animated: true, completion: nil)
-        }
-        
-        // find related to user infomation
-        _ = objects!.map{
-            header.fullnameLbl.text = ($0.object(forKey: "fullname") as? String)?.uppercased()
-            header.bioLbl.text = $0.object(forKey: "bio") as? String
-            header.bioLbl.sizeToFit()
-            header.webTxt.text = $0.object(forKey: "web") as? String
-             header.webTxt.sizeToFit()
-            let avaFile = ($0.object(forKey: "ava") as? PFFile)!
-            avaFile.getDataInBackground(block: { (data, error) -> Void in
-                header.avaImg.image = UIImage(data: data!)
-            })
-        }
+            if error == nil{
+                
+                //shown wrong user
+                if objects!.isEmpty{
+                    
+                    // call alert
+                    let alert = UIAlertController(title: "\(guestName.last!.uppercased())", message: "is not existing", preferredStyle: UIAlertControllerStyle.alert)
+                    let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_)  in
+                        _ = self.navigationController?.popViewController(animated: true)
+                    })
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                // find related to user infomation
+                _ = objects!.map{
+                    header.fullnameLbl.text = ($0.object(forKey: "fullname") as? String)?.uppercased()
+                    header.bioLbl.text = $0.object(forKey: "bio") as? String
+                    header.bioLbl.sizeToFit()
+                    header.webTxt.text = $0.object(forKey: "web") as? String
+                    header.webTxt.sizeToFit()
+                    let avaFile = ($0.object(forKey: "ava") as? PFFile)!
+                    avaFile.getDataInBackground(block: { (data, error) -> Void in
+                        header.avaImg.image = UIImage(data: data!)
+                    })
+                }
             }
-    else{print(error!.localizedDescription)}
-       }
+            else{print(error!.localizedDescription)}
+        }
         
-    // STEP 2. Show do current user follow guest or do not
+        // STEP 2. Show do current user follow guest or do not
         let followQuery = PFQuery(className: "follow")
         followQuery.whereKey("follower", equalTo: (PFUser.current()!.username)!)
         followQuery.whereKey("following", equalTo: (guestName.last)!)
@@ -283,7 +283,7 @@ self.present(alert, animated: true, completion: nil)
             }else {
                 print(error!.localizedDescription)
             }
-
+            
         }
         
         // STEP 3. Count statistics
@@ -303,23 +303,23 @@ self.present(alert, animated: true, completion: nil)
         followers.whereKey("following", equalTo: (guestName.last)!)
         followers.countObjectsInBackground
             { (count, error)  in
-            if error == nil {
-                header.followers.text = "\(count)"
-            } else {
-                print(error!.localizedDescription)
-            }
+                if error == nil {
+                    header.followers.text = "\(count)"
+                } else {
+                    print(error!.localizedDescription)
+                }
         }
-
+        
         // count followings
         let followings = PFQuery(className: "follow")
         followings.whereKey("follower", equalTo: (guestName.last)!)
         followings.countObjectsInBackground
             { (count, error) in
-            if error == nil {
-                header.followings.text = "\(count)"
-            } else {
-                print(error!.localizedDescription)
-            }
+                if error == nil {
+                    header.followings.text = "\(count)"
+                } else {
+                    print(error!.localizedDescription)
+                }
         }
         
         // STEP 4. Implement tap gestures
@@ -337,11 +337,11 @@ self.present(alert, animated: true, completion: nil)
         
         // tap to followings label
         let followingsTap = UITapGestureRecognizer(target: self, action: #selector(_followingsTap))
-       followingsTap.numberOfTapsRequired = 1
-header.followings.isUserInteractionEnabled = true
-header.followings.addGestureRecognizer(followingsTap)
+        followingsTap.numberOfTapsRequired = 1
+        header.followings.isUserInteractionEnabled = true
+        header.followings.addGestureRecognizer(followingsTap)
         
-return header
+        return header
     }
     
 }

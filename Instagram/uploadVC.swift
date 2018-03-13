@@ -10,50 +10,50 @@ import UIKit
 import Parse
 
 class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate {
-
+    
     @IBOutlet weak var picImg: UIImageView!
     
     @IBOutlet weak var titleTxt: UITextView!
     
     @IBOutlet weak var publishBtn: UIButton_Attributes!
- 
+    
     @IBOutlet weak var removeBtn: UIButton_Attributes!
-        
+    
     @IBOutlet weak var viewAboveScrollView: UIView!
- 
+    
     @IBOutlet weak var scrollView: UIScrollView!
-    {didSet{self.scrollView.delegate = self}}
+        {didSet{self.scrollView.delegate = self}}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    // init publichBtn
+        
+        // init publichBtn
         initPublishBtn()
         
-    // hide kyeboard tap
+        // hide kyeboard tap
         tapToHideKeyboard()
         
-    // set image view layer
-       setImageViewLayer()
+        // set image view layer
+        setImageViewLayer()
         
-    // select image tap
+        // select image tap
         tapToSelectImg()
         
-    //set text view layer
+        //set text view layer
         setTextViewLayer()
         
-    // add done button above keyboard
-         addDoneButton()
+        // add done button above keyboard
+        addDoneButton()
         
-    //add placehold to text view
-         textViewPlacehold()
+        //add placehold to text view
+        textViewPlacehold()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         //create observers
-createObservers()
+        createObservers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +61,7 @@ createObservers()
         super.viewWillDisappear(true)
         
         //delete observers
-deleteObservers()
+        deleteObservers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,7 +69,7 @@ deleteObservers()
         // Dispose of any resources that can be recreated.
     }
     
-  // clicked publish button
+    // clicked publish button
     @IBAction func publishBtn_clicked(_ sender: Any) {
         
         // dissmiss keyboard
@@ -88,15 +88,15 @@ deleteObservers()
         } else {
             object["title"] = titleTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
-      
-// send pic to server after converting to FILE and comprassion
-  let imageData = UIImageJPEGRepresentation(picImg.image!, 0.5)
+        
+        // send pic to server after converting to FILE and comprassion
+        let imageData = UIImageJPEGRepresentation(picImg.image!, 0.5)
         let imageFile = PFFile(name: "post.jpg", data: imageData!)
         object["pic"] = imageFile
         
         
-// send #hashtag to server
-   let words:[String] = titleTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        // send #hashtag to server
+        let words:[String] = titleTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
         
         // define taged word
         for var word in words {
@@ -105,43 +105,43 @@ deleteObservers()
             if word.hasPrefix("#") {
                 
                 // cut symbold
-        word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
-    word = word.trimmingCharacters(in: CharacterSet.symbols)
+                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                word = word.trimmingCharacters(in: CharacterSet.symbols)
                 
-    let hashtagObj = PFObject(className: "hashtags")
-hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
-hashtagObj["by"] = PFUser.current()?.username
+                let hashtagObj = PFObject(className: "hashtags")
+                hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
+                hashtagObj["by"] = PFUser.current()?.username
                 hashtagObj["hashtag"] = word.lowercased()
                 hashtagObj["comment"] = titleTxt.text
-hashtagObj.saveInBackground(block: { (success, error) -> Void in
-    if success {
-    print("hashtag \(word) is created")
-} else { print(error!.localizedDescription)}
+                hashtagObj.saveInBackground(block: { (success, error) -> Void in
+                    if success {
+                        print("hashtag \(word) is created")
+                    } else { print(error!.localizedDescription)}
                 })
             }
         }
         
-    // finally save information
- object.saveInBackground (block: { (success, error)  in
-    if error == nil {
+        // finally save information
+        object.saveInBackground (block: { (success, error)  in
+            if error == nil {
                 
-        // send notification wiht name "uploaded"
-    NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
+                // send notification wiht name "uploaded"
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
                 
-    // switch to another ViewController at 2 index of tabbar
-    self.tabBarController!.selectedIndex = 5
+                // switch to another ViewController at 2 index of tabbar
+                self.tabBarController!.selectedIndex = 5
                 
-        // reset everything
-    self.viewDidLoad()
-self.titleTxt.text = ""
-self.picImg.image = nil
+                // reset everything
+                self.viewDidLoad()
+                self.titleTxt.text = ""
+                self.picImg.image = nil
             }
         })
     }
     
     
     @IBAction func removeBtn_clicked(_ sender: Any) {
-    self.viewDidLoad()
+        self.viewDidLoad()
     }    
 }// uploadVC class over line
 
@@ -149,13 +149,13 @@ self.picImg.image = nil
 extension uploadVC{
     
     // set text view layer
-  fileprivate func setTextViewLayer(){
-    
-  self.titleTxt.layer.borderColor = UIColor.black.cgColor
-  self.titleTxt.layer.cornerRadius = 0
-  self.titleTxt.layer.borderWidth = 1
-  self.titleTxt.backgroundColor = UIColor.white
-  
+    fileprivate func setTextViewLayer(){
+        
+        self.titleTxt.layer.borderColor = UIColor.black.cgColor
+        self.titleTxt.layer.cornerRadius = 0
+        self.titleTxt.layer.borderWidth = 1
+        self.titleTxt.backgroundColor = UIColor.white
+        
     }
     
     // set image view layer
@@ -166,22 +166,22 @@ extension uploadVC{
         self.picImg.layer.borderWidth = 0
         self.picImg.clipsToBounds = true
     }
-
-   // init publichBtn
-fileprivate func initPublishBtn(){
-    self.publishBtn.isEnabled = false
-    self.publishBtn.backgroundColor = UIColor.lightGray
-}
+    
+    // init publichBtn
+    fileprivate func initPublishBtn(){
+        self.publishBtn.isEnabled = false
+        self.publishBtn.backgroundColor = UIColor.lightGray
+    }
     
     // hide kyeboard tap
-fileprivate func tapToHideKeyboard(){
-    let hideTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.hideKeyboardTap))
-    hideTap.numberOfTapsRequired = 1
-    self.viewAboveScrollView.isUserInteractionEnabled = true
-    self.viewAboveScrollView.addGestureRecognizer(hideTap)
-}
-   
-     // select image tap
+    fileprivate func tapToHideKeyboard(){
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.hideKeyboardTap))
+        hideTap.numberOfTapsRequired = 1
+        self.viewAboveScrollView.isUserInteractionEnabled = true
+        self.viewAboveScrollView.addGestureRecognizer(hideTap)
+    }
+    
+    // select image tap
     fileprivate func tapToSelectImg(){
         let picTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.selectImg))
         picTap.numberOfTapsRequired = 1
@@ -192,7 +192,7 @@ fileprivate func tapToHideKeyboard(){
     // add done button above keyboard
     fileprivate func addDoneButton(){
         
-         let toolBar = UIToolbar()
+        let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -206,7 +206,7 @@ fileprivate func tapToHideKeyboard(){
     
     //add placehold to text view
     fileprivate func textViewPlacehold(){
-    titleTxt.placeholder = "Write or say something..."
+        titleTxt.placeholder = "Write or say something..."
     }
 }
 
@@ -241,7 +241,7 @@ extension uploadVC{
     //delete observers
     fileprivate func deleteObservers(){
         
-       NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

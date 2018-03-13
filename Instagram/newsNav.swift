@@ -9,14 +9,14 @@
 import UIKit
 
 class newsNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar attributes
-            setNavBarAtrributes()
+        setNavBarAtrributes()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,5 +39,5 @@ extension newsNav{
         // disable translucent
         self.navigationBar.isTranslucent = false
     }
-
+    
 }

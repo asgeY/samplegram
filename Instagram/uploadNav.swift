@@ -9,14 +9,14 @@
 import UIKit
 
 class uploadNav: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //set navigation bar attributes
-setNavbarAttributes()
+        setNavbarAttributes()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
@@ -32,7 +32,7 @@ extension uploadNav{
     
     //set navigation bar attributes
     fileprivate func setNavbarAttributes(){
-      
+        
         self.navigationBar.setGradientBackground(colors: [UIColor(hex: "77A1D3"),UIColor(hex: "79CBCA"),UIColor(hex: "E684AE")])
         
         // disable translucent

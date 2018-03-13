@@ -19,12 +19,12 @@ typealias CropViewControllerToolbarPosition = TOCropViewControllerToolbarPositio
 typealias CropViewCroppingStyle = TOCropViewCroppingStyle
 
 @objc protocol CropViewControllerDelegate:NSObjectProtocol{
-   
+    
     @objc optional func cropViewController(_ cropViewController: CropViewController, didCropImageToRect rect: CGRect, angle: Int)
     
-     @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int)
+    @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int)
     
-     @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int)
+    @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int)
     
     @objc optional func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool)
 }
@@ -32,7 +32,7 @@ typealias CropViewCroppingStyle = TOCropViewCroppingStyle
 
 class CropViewController: UIViewController,TOCropViewControllerDelegate {
     
-      var image: UIImage {
+    var image: UIImage {
         return self.toCropViewController.image }
     
     var delegate: CropViewControllerDelegate? {
@@ -165,7 +165,7 @@ class CropViewController: UIViewController,TOCropViewControllerDelegate {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-    return toCropViewController.preferredStatusBarStyle
+        return toCropViewController.preferredStatusBarStyle
     }
     
     init(image: UIImage) {
@@ -187,7 +187,7 @@ class CropViewController: UIViewController,TOCropViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-// Defer adding the view until we're about to be presented
+        // Defer adding the view until we're about to be presented
         if toCropViewController.view.superview == nil {
             view.addSubview(toCropViewController.view)
         }
@@ -206,18 +206,18 @@ class CropViewController: UIViewController,TOCropViewControllerDelegate {
         
         return UIRectEdge.all
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
 //custom funcitons
@@ -232,26 +232,26 @@ extension CropViewController{
     }
     
     func presentAnimatedFrom(_ viewController: UIViewController, fromView view: UIView?, fromFrame frame: CGRect,setup: (() -> (Void))?, completion: (() -> (Void))?)
-{toCropViewController.presentAnimatedFrom(viewController, view: view, frame: frame, setup: setup, completion: completion)
+    {toCropViewController.presentAnimatedFrom(viewController, view: view, frame: frame, setup: setup, completion: completion)
     }
     
     func presentAnimatedFrom(_ viewController: UIViewController, fromImage image: UIImage?,fromView: UIView?, fromFrame: CGRect, angle: Int, toImageFrame toFrame: CGRect,setup: (() -> (Void))?, completion:(() -> (Void))?)
-{toCropViewController.presentAnimatedFrom(viewController, fromImage: image, fromView: fromView,fromFrame: fromFrame, angle: angle, toFrame: toFrame,setup: setup, completion: completion)
+    {toCropViewController.presentAnimatedFrom(viewController, fromImage: image, fromView: fromView,fromFrame: fromFrame, angle: angle, toFrame: toFrame,setup: setup, completion: completion)
     }
     
     func dismissAnimatedFrom(_ viewController: UIViewController, toView: UIView?, toFrame: CGRect,setup: (() -> (Void))?, completion:(() -> (Void))?)
-{toCropViewController.dismissAnimatedFrom(viewController, toView: toView, toFrame: toFrame, setup: setup, completion: completion)
+    {toCropViewController.dismissAnimatedFrom(viewController, toView: toView, toFrame: toFrame, setup: setup, completion: completion)
     }
     
     func dismissAnimatedFrom(_ viewController: UIViewController, withCroppedImage croppedImage: UIImage?, toView: UIView?,toFrame: CGRect, setup: (() -> (Void))?, completion:(() -> (Void))?)
-{toCropViewController.dismissAnimatedFrom(viewController, croppedImage: croppedImage, toView: toView,toFrame: toFrame, setup: setup, completion: completion)
+    {toCropViewController.dismissAnimatedFrom(viewController, croppedImage: croppedImage, toView: toView,toFrame: toFrame, setup: setup, completion: completion)
     }
-
+    
     fileprivate func setUpCropController() {
         addChildViewController(toCropViewController)
         transitioningDelegate = (toCropViewController as! UIViewControllerTransitioningDelegate)
         toCropViewController.delegate = self
-toCropViewController.didMove(toParentViewController: self)
+        toCropViewController.didMove(toParentViewController: self)
     }
     
     fileprivate func setUpDelegateHandlers() {
@@ -265,25 +265,25 @@ toCropViewController.didMove(toParentViewController: self)
         
         if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didCropImageToRect:angle:))) {
             self.onDidCropImageToRect = {rect, angle in
-    delegate.cropViewController!(self, didCropImageToRect: rect, angle: angle)
+                delegate.cropViewController!(self, didCropImageToRect: rect, angle: angle)
             }
         }
         
         if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didCropToImage:withRect:angle:))) {
             self.onDidCropToRect = {image, rect, angle in
-delegate.cropViewController!(self, didCropToImage: image, withRect: rect, angle: angle)
+                delegate.cropViewController!(self, didCropToImage: image, withRect: rect, angle: angle)
             }
         }
         
-    if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didCropToCircularImage:withRect:angle:))) {
+        if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didCropToCircularImage:withRect:angle:))) {
             self.onDidCropToCircleImage = {image, rect, angle in
-delegate.cropViewController!(self, didCropToCircularImage: image, withRect: rect, angle: angle)
+                delegate.cropViewController!(self, didCropToCircularImage: image, withRect: rect, angle: angle)
             }
         }
         
-if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didFinishCancelled:))) {
-self.onDidFinishCancelled = { finished in
-delegate.cropViewController!(self, didFinishCancelled: finished)
+        if delegate.responds(to: #selector(CropViewControllerDelegate.cropViewController(_:didFinishCancelled:))) {
+            self.onDidFinishCancelled = { finished in
+                delegate.cropViewController!(self, didFinishCancelled: finished)
             }
         }
     }
