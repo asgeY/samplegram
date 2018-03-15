@@ -101,6 +101,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate,goBackDelegate {
                 })
                 self.resetBtn.isEnabled = true
                 self.cancelBtn.isEnabled = true
+                self.dismiss(animated: true, completion: nil)
             }
             else {
                 sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
@@ -108,6 +109,11 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate,goBackDelegate {
                     self.resetBtn.isEnabled = true
                     self.cancelBtn.isEnabled = true
                 })
+                
+                let alertController = UIAlertController.init(title: "Sorry", message: error as? String, preferredStyle: .alert)
+                let alertAction = UIAlertAction.init(title: "Back", style: .cancel, handler: nil)
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true, completion: nil)
                 print(error ?? "")
             }
         }

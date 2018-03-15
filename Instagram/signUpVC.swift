@@ -19,7 +19,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet var allTextFieldsInScreen: [UITextField_Attributes]!
         {didSet{_ = self.allTextFieldsInScreen.map{$0.delegate = self
-            $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
+            $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height: 30)
             $0.rightViewMode = .unlessEditing
             }
         }

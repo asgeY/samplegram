@@ -655,6 +655,12 @@
                                                     <constraint firstAttribute="width" constant="55" id="HXl-5i-t8S"/>
                                                 </constraints>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long press to open setting cell" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrE-oj-Y4Y">
+                                                <rect key="frame" x="18" y="45" width="117" height="90"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -671,6 +677,7 @@
                                             <constraint firstItem="lcp-x5-8lK" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="5xa-WJ-0b6"/>
                                             <constraint firstItem="his-sz-ds2" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="69A-2r-Lki"/>
                                             <constraint firstItem="Fdt-HX-ujy" firstAttribute="top" secondItem="ztf-dO-4mg" secondAttribute="bottom" id="6FD-Uh-iLd"/>
+                                            <constraint firstItem="PrE-oj-Y4Y" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="7Ev-Ct-COM"/>
                                             <constraint firstItem="dLz-cu-79r" firstAttribute="leading" secondItem="8sM-0o-UvK" secondAttribute="trailing" constant="5" id="8hh-Ou-bgq"/>
                                             <constraint firstItem="iwK-CB-Y6N" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="8yf-ww-Q6c"/>
                                             <constraint firstItem="tAt-iK-tSp" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="9R3-zZ-nE6"/>
@@ -719,6 +726,7 @@
                                             <constraint firstItem="UkF-uR-UCu" firstAttribute="height" secondItem="Tmv-A5-tRX" secondAttribute="height" id="dKA-Rw-cPh"/>
                                             <constraint firstItem="lcp-x5-8lK" firstAttribute="bottom" secondItem="OIm-RQ-sRr" secondAttribute="bottom" id="dfH-cf-Sp7"/>
                                             <constraint firstItem="iwK-CB-Y6N" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="eI9-nv-19R"/>
+                                            <constraint firstItem="eji-CT-g3K" firstAttribute="leading" secondItem="PrE-oj-Y4Y" secondAttribute="trailing" constant="8" id="fCA-Ws-ZHJ"/>
                                             <constraint firstItem="6Pj-uA-VrE" firstAttribute="leading" secondItem="fwD-S0-cPT" secondAttribute="leading" id="fm9-09-OXl"/>
                                             <constraint firstItem="UkF-uR-UCu" firstAttribute="bottom" secondItem="Tmv-A5-tRX" secondAttribute="bottom" id="g8C-n7-sCY"/>
                                             <constraint firstItem="ckG-Kc-bnc" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="gBP-og-yme"/>
@@ -726,6 +734,7 @@
                                             <constraint firstItem="ztf-dO-4mg" firstAttribute="trailing" secondItem="his-sz-ds2" secondAttribute="trailing" id="iG2-Xd-yYk"/>
                                             <constraint firstItem="Fdt-HX-ujy" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="iM0-Se-Ia7"/>
                                             <constraint firstItem="dLz-cu-79r" firstAttribute="height" secondItem="8sM-0o-UvK" secondAttribute="height" id="k3v-D4-KIh"/>
+                                            <constraint firstItem="PrE-oj-Y4Y" firstAttribute="height" secondItem="eji-CT-g3K" secondAttribute="height" id="k6S-2u-wTe"/>
                                             <constraint firstItem="n1M-0g-KQW" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="kdt-Kt-G69"/>
                                             <constraint firstItem="6Pj-uA-VrE" firstAttribute="trailing" secondItem="fwD-S0-cPT" secondAttribute="trailing" id="l4X-KT-YxH"/>
                                             <constraint firstItem="gcb-gF-WqY" firstAttribute="leading" secondItem="7M2-hr-x8B" secondAttribute="leadingMargin" id="lcY-pR-D8M"/>
@@ -740,6 +749,7 @@
                                             <constraint firstItem="ckG-Kc-bnc" firstAttribute="trailing" secondItem="7M2-hr-x8B" secondAttribute="trailingMargin" id="v5S-JJ-YY8"/>
                                             <constraint firstItem="ztf-dO-4mg" firstAttribute="top" secondItem="his-sz-ds2" secondAttribute="bottom" id="vK6-8m-P8u"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="09p-Oi-kyp" secondAttribute="trailing" id="vQ2-B9-uBO"/>
+                                            <constraint firstItem="PrE-oj-Y4Y" firstAttribute="bottom" secondItem="eji-CT-g3K" secondAttribute="bottom" id="vmX-IS-WrB"/>
                                             <constraint firstItem="n1M-0g-KQW" firstAttribute="top" secondItem="NhH-01-Fuf" secondAttribute="bottom" id="wEL-f4-GxC"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="UkF-uR-UCu" secondAttribute="trailing" id="wb0-1n-GEI"/>
                                             <constraint firstItem="fb9-n5-2eO" firstAttribute="top" secondItem="lej-tB-mnN" secondAttribute="bottom" id="zey-Cf-a2K"/>
@@ -810,7 +820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbT-iI-lVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6806" y="-1527"/>
+            <point key="canvasLocation" x="6805.6000000000004" y="-1527.3399014778327"/>
         </scene>
         <!--Reset PasswordVC-->
         <scene sceneID="V10-e7-Dvs">

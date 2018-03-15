@@ -99,6 +99,11 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
     // clicked save button
     @IBAction func save_clicked(_ sender: Any) {
     
+        guard !((fullnameTxt.text?.isEmpty)!) && !((usernameTxt.text?.isEmpty)!) && !((emailTxt.text?.isEmpty)!) && !((telTxt.text?.isEmpty)!) && !((genderTxt.text?.isEmpty)!) else {
+            alert("Can't be nil except bio", message: "please fill them")
+            return
+        }
+        
         guard Validate.email(emailTxt.text!).isRight else{
             alert("Incorrect email", message: "please provide correct email address")
             return}
