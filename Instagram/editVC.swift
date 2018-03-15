@@ -98,7 +98,7 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
     
     // clicked save button
     @IBAction func save_clicked(_ sender: Any) {
-        
+    
         guard Validate.email(emailTxt.text!).isRight else{
             alert("Incorrect email", message: "please provide correct email address")
             return}
@@ -149,8 +149,7 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
                 self.dismiss(animated: true, completion: nil)
                 
                 // send notification to homeVC to be reloaded
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "reload"), object: nil)
-                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "reload"), object: nil)                
             } else {
                 print(error!.localizedDescription)
             }

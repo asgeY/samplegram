@@ -461,7 +461,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     else {
         self.toolbarSnapshotView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
     }
-    [self.view addSubview:self.toolbarSnapshotView];
+    [self.view addSubview: self.toolbarSnapshotView];
 
     // Set up the toolbar frame to be just off t
     CGRect frame = [self frameForToolbarWithVerticalLayout:UIInterfaceOrientationIsPortrait(toInterfaceOrientation)];

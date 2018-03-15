@@ -771,7 +771,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="avaImg" destination="eji-CT-g3K" id="7oy-4c-nhE"/>
+                        <outlet property="avaImgView" destination="eji-CT-g3K" id="FYl-bh-7Hm"/>
                         <outlet property="cancelBtn" destination="iwK-CB-Y6N" id="Ez4-vf-Y7E"/>
                         <outlet property="gradientImgView" destination="y7b-JY-gY6" id="y8M-qw-moA"/>
                         <outlet property="signUpBtn" destination="bx3-Z0-lZC" id="Vue-WD-2MF"/>
@@ -1861,6 +1861,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="M6N-hu-HPF"/>
                                                 </constraints>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                             </textView>

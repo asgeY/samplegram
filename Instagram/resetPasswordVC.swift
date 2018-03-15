@@ -29,9 +29,8 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate,goBackDelegate {
     
     fileprivate var currentTextField: UITextField?
     
-    fileprivate var currentColorArrayIndex = -1
-    
     fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
+    fileprivate var currentColorArrayIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,8 +153,7 @@ extension resetPasswordVC {
     
     //recursively run animatedBackground()
     fileprivate func animatedBackground(){
-        
-        currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
+       currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
         UIView.transition(with: gradientImg, duration: 2, options: [.transitionCrossDissolve], animations: {
             self.gradientImg.firstColor = self.colorArray[self.currentColorArrayIndex].color1
             self.gradientImg.secondColor = self.colorArray[self.currentColorArrayIndex].color2

@@ -19,7 +19,7 @@ class tabbarVC: UITabBarController {
     fileprivate var storedImageViewArr:[UIImageView?] = []
     
     private var times = [Int].init(repeating: 0, count: 5)
-    private var tempTimes = [Int].init(repeating: 0, count: 5)
+    //private var tempTimes = [Int].init(repeating: 0, count: 5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,7 +180,7 @@ extension tabbarVC{
         
         if times[item.tag] == 0{
             setPath(at: item.tag)
-            times = tempTimes
+            times = [Int].init(repeating: 0, count: 5)
             times[item.tag] += 1;return
         }}
 }

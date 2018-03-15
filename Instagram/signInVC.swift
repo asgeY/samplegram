@@ -28,9 +28,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var signInBtnHeight: NSLayoutConstraint!
     
-    fileprivate var currentColorArrayIndex = -1
-    
     fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
+    fileprivate var currentColorArrayIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,13 +95,11 @@ class signInVC: UIViewController,UITextFieldDelegate{
                 //remeber user or save in App memory did the user login or not
                 UserDefaults.standard.set(user?.username, forKey: "username")
                 UserDefaults.standard.synchronize()
-                
                 sender.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.login()
                 })
             }else{
-                
                 sender.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
                     [unowned self] in
                     
@@ -169,7 +166,6 @@ extension signInVC{
     }
     
     fileprivate func animatedBackground(){
-        
         currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
         UIView.transition(with: gradientBackground, duration: 2, options: [.transitionCrossDissolve], animations: {
             self.gradientBackground.firstColor = self.colorArray[self.currentColorArrayIndex].color1

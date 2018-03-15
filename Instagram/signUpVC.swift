@@ -6,17 +6,6 @@
 //  Copyright © 2017 Mac. All rights reserved.
 //
 
-
-/**
- if click textfield, then other textfields can't click
- if someone text has no changed after end touch, all textfields can be touched
- if someone text has changed after end touch, all textfields can't be touched, then checkout if it matches all, if it matches all, the one can be touched
- */
-
-
-
-
-
 import UIKit
 import Parse
 
@@ -26,13 +15,15 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var gradientImgView: UIImageViewX!
     
-    @IBOutlet weak var avaImg: UIImageView!
+    @IBOutlet weak var avaImgView: UIImageView!
     
     @IBOutlet var allTextFieldsInScreen: [UITextField_Attributes]!
         {didSet{_ = self.allTextFieldsInScreen.map{$0.delegate = self
             $0.rightView?.frame = CGRect(x: 0, y: 0, width: 30 , height:30)
             $0.rightViewMode = .unlessEditing
-            }}}
+            }
+        }
+    }
     
     @IBOutlet var allCountTip: [UILabel]!
         {didSet{
@@ -41,7 +32,8 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                 $0.layer.borderWidth = 3}}}
     
     @IBOutlet var allTipLabelsInScreen: [UILabel]!
-        {didSet{_ = self.allTipLabelsInScreen.map{$0.textColor = .red}}}
+        {didSet{_ = self.allTipLabelsInScreen.map{$0.textColor = .red}
+        }}
     
     @IBOutlet weak var signUpBtn: TransitionButton!
     @IBOutlet weak var cancelBtn: UIButton_Attributes!{
@@ -55,33 +47,15 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     var croppedRect = CGRect.zero
     var croppedAngle = 0
     
-    //background gradient colors array index
-    fileprivate var currentColorArrayIndex = -1
-    
     //input curosr shown textfield
     fileprivate var currentTextField:UITextField!
     
     //background gradient colors tuple type array
     fileprivate var colorArray:[(color1:UIColor,color2:UIColor)] = []
-    
-    //record tip text when tip limit
-    fileprivate var tempString = ""
-    
-    //record temporary limited text
-    fileprivate var tempCount = 0
+    fileprivate var currentColorArrayIndex = -1
     
     //if mark image show , get true, if not,false
     fileprivate var tempMarkArr = [Bool].init(repeating: false, count: 7)
-    
-    //pick image from phone library
-    fileprivate let imagePicker = UIImagePickerController()
-    
-    //loading animation root layer
-    fileprivate let rootLayer:CALayer = {
-        let rootLayer = CALayer()
-        rootLayer.backgroundColor = UIColor.black.cgColor
-        return rootLayer
-    }()
     
     //loading view on textfield right view
     fileprivate let views = UIView()
@@ -92,11 +66,20 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     //shown text when input same textfield again
     fileprivate var tempText = ""
     
-    //profile setting button
-    fileprivate var profileSettingBtn = dropDownBtn()
-    
-    //loading animation effect layer
-    fileprivate let replicatorLayer:CAReplicatorLayer = {
+    // check if it is be taken animation
+   fileprivate let rootLayer:CALayer = {
+        let rootLayer = CALayer()
+        rootLayer.backgroundColor = UIColor.black.cgColor
+        return rootLayer
+    }()
+   fileprivate let circle:CALayer = {
+        let circle = CALayer()
+        circle.frame = CGRect(origin: CGPoint.zero,size: CGSize(width: 7, height: 7))
+        circle.backgroundColor = UIColor.blue.cgColor
+        circle.cornerRadius = 5
+        return circle
+    }()
+   fileprivate let replicatorLayer:CAReplicatorLayer = {
         let replicatorLayer = CAReplicatorLayer()
         replicatorLayer.frame = CGRect(x: -22, y: -5, width: 20, height: 20)
         replicatorLayer.borderColor = UIColor.clear.cgColor
@@ -106,18 +89,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         replicatorLayer.instanceTransform = CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(9), 0, 0, 1)
         return replicatorLayer
     }()
-    
-    //loading animation layer look
-    fileprivate let circle:CALayer = {
-        let circle = CALayer()
-        circle.frame = CGRect(origin: CGPoint.zero,size: CGSize(width: 7, height: 7))
-        circle.backgroundColor = UIColor.blue.cgColor
-        circle.cornerRadius = 5
-        return circle
-    }()
-    
-    //loading shrink effect animation
-    fileprivate let shrinkAnimation:CABasicAnimation = {
+  fileprivate  let shrinkAnimation:CABasicAnimation = {
         let shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
         shrinkAnimation.fromValue = 1
         shrinkAnimation.toValue = 0.1
@@ -204,7 +176,7 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         user["gender"] = ""
         
         //convert our image for sending to server
-        guard let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else
+        guard let avaData = UIImageJPEGRepresentation(avaImgView.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else
         {return}
         user["ava"] = avaFile
         
@@ -242,6 +214,7 @@ extension signUpVC {
     
     fileprivate func configueProfileSettingBtn(){
         
+        var profileSettingBtn = dropDownBtn()
         profileSettingBtn = dropDownBtn.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         profileSettingBtn.translatesAutoresizingMaskIntoConstraints = false
         profileSettingBtn.dropView.tapDelegate = self
@@ -249,8 +222,8 @@ extension signUpVC {
         
         profileSettingBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
         profileSettingBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        profileSettingBtn.bottomAnchor.constraint(equalTo: avaImg.bottomAnchor).isActive = true
-        profileSettingBtn.leftAnchor.constraint(equalTo: avaImg.rightAnchor, constant: 10).isActive = true
+        profileSettingBtn.bottomAnchor.constraint(equalTo: avaImgView.bottomAnchor).isActive = true
+        profileSettingBtn.leftAnchor.constraint(equalTo: avaImgView.rightAnchor, constant: 10).isActive = true
         
         profileSettingBtn.dropView.dropDownOptions = ["Choose from photo library","Reset to default"]
     }
@@ -261,14 +234,10 @@ extension signUpVC {
     }
     
     fileprivate  func setAvaImgLayer(){
-        
-        //round ava
-        avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
-        
-        //clip image
-        avaImg.clipsToBounds = true
-        avaImg.layer.borderWidth = 3
-        avaImg.layer.borderColor = UIColor.white.cgColor
+        avaImgView.layer.cornerRadius = avaImgView.frame.size.width / 2
+        avaImgView.clipsToBounds = true
+        avaImgView.layer.borderWidth = 3
+        avaImgView.layer.borderColor = UIColor.white.cgColor
     }
     
     //add gradient colors on buttons
@@ -283,8 +252,8 @@ extension signUpVC {
     fileprivate func declareSelectedImage(){
         let avaTap = UITapGestureRecognizer(target: self, action: #selector(didTapImageView))
         avaTap.numberOfTapsRequired = 1
-        avaImg.isUserInteractionEnabled = true
-        avaImg.addGestureRecognizer(avaTap)
+        avaImgView.isUserInteractionEnabled = true
+        avaImgView.addGestureRecognizer(avaTap)
     }
     
     //set image color set
@@ -294,7 +263,6 @@ extension signUpVC {
     
     //recursively run animatedBackground()
     fileprivate func animatedBackground(){
-        
         currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
         UIView.transition(with: gradientImgView, duration: 2, options: [.transitionCrossDissolve], animations: {
             self.gradientImgView.firstColor = self.colorArray[self.currentColorArrayIndex].color1
@@ -302,9 +270,8 @@ extension signUpVC {
     }
     
     fileprivate func setCountTip(with someoneCount:UILabel,someoneLimitCount:UILabel){
-        
-        //currentTextField.rightViewMode = .never
-        tempCount = (currentTextField.text?.count)!
+       let tempCount = (currentTextField.text?.count)!
+       var tempString = ""
         if tempCount == 0{
             someoneCount.textColor = UIColor.red
         }else{
@@ -319,8 +286,7 @@ extension signUpVC {
     }
     
     fileprivate func progressIndicator(){
-        
-        replicatorLayer.addSublayer(circle)
+    replicatorLayer.addSublayer(circle)
         circle.removeAllAnimations()
         circle.add(shrinkAnimation, forKey: nil)
         replicatorLayer.instanceDelay = shrinkAnimation.duration / CFTimeInterval(9)
@@ -329,7 +295,6 @@ extension signUpVC {
     }
     
     fileprivate func createCheckTargets(){
-        
         _ = allTextFieldsInScreen.map{
             $0.addTarget(self, action: #selector(checkText(sender:)), for: .editingChanged)
         }
@@ -347,7 +312,6 @@ extension signUpVC {
     }
     
     fileprivate func checkIfMatchRegex(with index: Int, and text: String) {
-        
         allTextFieldsInScreen[index].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
         tempMarkArr[index] = false
         allTipLabelsInScreen[index].text = text
@@ -355,7 +319,6 @@ extension signUpVC {
     }
     
     fileprivate func checkIfSameInput(){
-        
         if allTextFieldsInScreen[3].text != allTextFieldsInScreen[2].text{
             allTextFieldsInScreen[3].rightView = UIImageView.init(image: #imageLiteral(resourceName: "wrong"))
             tempMarkArr[3] = false
@@ -392,9 +355,7 @@ extension signUpVC {
     }
     
     func updateImageViewWithImage(_ image: UIImage, fromCropViewController cropViewController: CropViewController) {
-        
-        avaImg.image = image
-        //self.avaImg.isHidden = false
+        avaImgView.image = image
         cropViewController.dismiss(animated: true, completion: nil)
     }
 }
@@ -409,21 +370,22 @@ extension signUpVC{
     @objc func didTapImageView() {
         
         // When tapping the image view, restore the image to the previous cropping state
-        let viewFrame = view.convert(avaImg.frame, to: self.view)
+        let viewFrame = view.convert(avaImgView.frame, to: self.view)
         
-        if avaImg.image == #imageLiteral(resourceName: "profile"){
-            let cropViewControllers = CropViewController(croppingStyle:.circular, image: #imageLiteral(resourceName: "profile"))
-            cropViewControllers.delegate = self
-            cropViewControllers.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromView: avaImg,fromFrame: viewFrame,angle: self.croppedAngle,toImageFrame: self.croppedRect,setup:
-                { self.avaImg.isHidden = false },completion: nil)
+        if self.image == #imageLiteral(resourceName: "profile") {
+            let cropViewController = CropViewController(croppingStyle:.circular, image: self.image!)
+            cropViewController.delegate = self
+            cropViewController.presentAnimatedFrom(self, fromImage: self.avaImgView.image,fromView: avaImgView, fromFrame: viewFrame, angle: self.croppedAngle, toImageFrame: self.croppedRect, setup:
+                { self.avaImgView.isHidden = false }, completion: nil)
         }else {
             let cropViewController = CropViewController(croppingStyle:.circular, image: self.image!)
             cropViewController.delegate = self
-            cropViewController.presentAnimatedFrom(self,fromImage: self.avaImg.image,fromView: avaImg,fromFrame: viewFrame,angle: self.croppedAngle,toImageFrame: self.croppedRect,setup:
-                { self.avaImg.isHidden = false },completion: nil)}
+            cropViewController.presentAnimatedFrom(self, fromImage: self.avaImgView.image,fromView: avaImgView, fromFrame: viewFrame, angle: self.croppedAngle, toImageFrame: self.croppedRect, setup:
+                { self.avaImgView.isHidden = false }, completion: nil)
+        }
     }
     
-    @objc fileprivate func checkText(sender:UITextField){
+    @objc fileprivate func checkText(sender: UITextField){
         isChanged = true
     }
 }
@@ -445,14 +407,14 @@ extension signUpVC{
 //observers selectors
 extension signUpVC{
     
-    @objc fileprivate func isCountWith7(_:Notification){
+    @objc fileprivate func isCountWith7(_: Notification){
         
         if (tempMarkArr.filter{$0 == true}).count == 7{
             signUpBtn.isEnabled = true}
         else {signUpBtn.isEnabled = false}
     }
     
-    @objc fileprivate func setCountTip(_:Notification){
+    @objc fileprivate func setCountTip(_: Notification){
         
         _ = [10,20,30,40,70].enumerated().map{ (offset,element) in
             
@@ -585,7 +547,6 @@ extension signUpVC{
     func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         self.croppedRect = cropRect
         self.croppedAngle = angle
-        
         updateImageViewWithImage(image, fromCropViewController: cropViewController)
     }
 }
@@ -594,6 +555,8 @@ extension signUpVC{
 extension signUpVC{
     
     func tapToPhotoLibrary() {
+        avaImgView.isUserInteractionEnabled = true
+        let imagePicker = UIImagePickerController()
         imagePicker.modalPresentationStyle = .popover
         imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
         imagePicker.sourceType = .photoLibrary
@@ -603,8 +566,11 @@ extension signUpVC{
     }
     
     func tapToReset() {
-        avaImg.image = #imageLiteral(resourceName: "profile")
-    }
+        croppedRect = CGRect.zero
+        croppedAngle = 0
+        self.image = #imageLiteral(resourceName: "profile")
+        avaImgView.image = self.image
+      }
 }
 
 //goBackDelegate
