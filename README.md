@@ -7,7 +7,8 @@
 ![xxx](https://img.shields.io/badge/Server--Side-Parse-ff69b4.svg?style=flat-square) 
 ![xxx](https://img.shields.io/badge/database-MongoDB-0096FF.svg?style=flat-square)   
 <br />
-A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPhone X** without landscape direction. 
+A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPhone X** without landscape direction.   
+This app is still in development.
 <br />
 ------
 - # [Access](#access)
