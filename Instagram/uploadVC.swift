@@ -52,6 +52,7 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
+        
         //create observers
         createObservers()
     }
@@ -129,7 +130,7 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
                 
                 // switch to another ViewController at 2 index of tabbar
-                self.tabBarController!.selectedIndex = 5
+                self.tabBarController!.selectedIndex = 4
                 
                 // reset everything
                 self.viewDidLoad()

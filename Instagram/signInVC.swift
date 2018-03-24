@@ -225,7 +225,6 @@ extension signInVC{
     @objc fileprivate func keyboardDidShow(argu: Notification){
         
         let info = argu.userInfo! as NSDictionary
-        
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let keyboardY = self.view.frame.size.height - keyboardSize.height
         

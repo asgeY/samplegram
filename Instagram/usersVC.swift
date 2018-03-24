@@ -185,6 +185,8 @@ extension usersVC{
             }
         })
         
+  self.view.endEditing(true)
+        
         return true
     }
     

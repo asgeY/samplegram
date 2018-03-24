@@ -149,7 +149,7 @@ extension postCell{
         // create large like gray heart
         let likePic = UIImageView(image: #imageLiteral(resourceName: "unlike"))
         likePic.frame.size.width = picImg.frame.size.width / 1.5
-        likePic.frame.size.height = picImg.frame.size.width / 1.5
+        likePic.frame.size.height = likePic.frame.size.width
         likePic.center = picImg.center
         likePic.alpha = 0.8
         self.addSubview(likePic)

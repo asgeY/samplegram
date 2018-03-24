@@ -555,7 +555,6 @@ extension signUpVC{
 extension signUpVC{
     
     func tapToPhotoLibrary() {
-        avaImgView.isUserInteractionEnabled = true
         let imagePicker = UIImagePickerController()
         imagePicker.modalPresentationStyle = .popover
         imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
