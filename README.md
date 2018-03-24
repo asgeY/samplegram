@@ -10,7 +10,7 @@
 A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPhone X** without landscape direction.   
 This app is still in development.
 <br />
-------
+<br />
 - # [Instruction](#instruction)
 - # [Screenshot](#screenshot)
    - [Login Page Part](#login) 
