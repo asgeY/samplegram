@@ -32,7 +32,7 @@ This app is still in development.
 <h4 id = "login">Login Page Part</span>
 <br />
 <br />
-<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433"><img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif.gif" width="200" height="433"> 
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif" width="200" height="433"> 
 
 
 <h4 id = "feed">Feed Page Part</span>
