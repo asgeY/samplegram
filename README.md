@@ -19,13 +19,35 @@ This app is still in development.
    - [Upload Page Part](#upload)
    - [News Page Part](#news)
    - [Home Page Part](#home)
- - # [The Third Party](#party)
+- # [The Third Party](#party)
 ------
 <br />
 <br />
 
-## <span id = "instruction">Istruction</span>
+## <span id = "party">The Third Party</span>
+**This simple app use RxSwift module. So if you have no installed CocoaPods before, you had to install it.**  
+<br />
+**CocoaPods** is a dependency manager for Cocoa projects. You can install it with the following command:
+```shell
+$ gem install cocoapods
+```
+To integrate **RxSwift** into this Xcode project using CocoaPods, specify it in your Podfile:
+```shell
+platform :ios, '10.0'
+use_frameworks!
+target '<Your Target Name>' do
+    pod 'RxSwift'
+end
+```
+Then, run the following command:
+```shell
+$ pod install
+```
 
+## <span id = "instruction">Instruction</span>
+This app use Parse server to save and load and user info.  
+Sign in and up both will save user in UserDefault because AppDelegate class will check which page user should go if the app dosn't exist in backend.  
+To see more detail in source code.
 
 ## <span id = "screenshot">Screenshot</span>
 <br />
@@ -61,24 +83,6 @@ This app is still in development.
 <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home4.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/log%20out.gif" width="200" height="433">
 <br />
 <br />
-## <span id = "party">The Third Party</span>
-**This simple app use RxSwift module. So if you have no installed CocoaPods before, you had to install it.**  
-<br />
-**CocoaPods** is a dependency manager for Cocoa projects. You can install it with the following command:
-```shell
-$ gem install cocoapods
-```
-To integrate **RxSwift** into this Xcode project using CocoaPods, specify it in your Podfile:
-```shell
-platform :ios, '10.0'
-use_frameworks!
-target '<Your Target Name>' do
-    pod 'RxSwift'
-end
-```
-Then, run the following command:
-```shell
-$ pod install
-```
+
   
 
