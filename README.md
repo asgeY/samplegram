@@ -33,18 +33,34 @@ This app is still in development.
 <br />
 <br />
 <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx4.gif" width="200" height="433"> 
-
-
+<br />
+<br />
 <h4 id = "feed">Feed Page Part</span>
-
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/feed1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/feed2.gif" width="200" height="433"> 
+<br />
+<br />
 <h4 id = "users">Users Page Part</span>
-
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/User%20Part.gif" width="200" height="433">
+<br />
+<br />
 <h4 id = "upload">Upload Page Part</span>
-
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload2.gif" width="200" height="433">
 <h4 id = "news">News Page Part</span>
-
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/Notification.gif" width="200" height="433">
+<br />
+<br />
 <h4 id = "home">Home Page Part</span>
-
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home4.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/log%20out.gif" width="200" height="433">
+<br />
+<br />
 ## <span id = "party">The Third Party</span>
 **This simple app use RxSwift module. So if you have no installed CocoaPods before, you had to install it.**  
 <br />
