@@ -13,8 +13,7 @@ This app is still in development.
 ------
 - # [Access](#access)
 - # [Instruction](#instruction)
-   - [Login Page Part](#login)
-   ![image](https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif)  
+   <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif">  
    - [Feed Page Part](#feed)
    - [Users Page Part](#users)
    - [Upload Page Part](#upload)
