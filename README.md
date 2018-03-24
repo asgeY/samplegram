@@ -20,7 +20,6 @@ This app is still in development.
    - [News Page Part](#news)
    - [Home Page Part](#home)
 - # [The Third Party](#party)
-------
 <br />
 <br />
 
