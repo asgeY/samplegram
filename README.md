@@ -64,6 +64,8 @@ To see more detail in source code.
 <br />
 <br />
 <h4 id = "users">Users Page Part</span>
+<br />
+<br />
 <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/User%20Part.gif" width="200" height="433">
 <br />
 <br />
@@ -71,6 +73,8 @@ To see more detail in source code.
 <br />
 <br />
 <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload2.gif" width="200" height="433">
+<br />
+<br />
 <h4 id = "news">News Page Part</span>
 <br />
 <br />
@@ -81,8 +85,7 @@ To see more detail in source code.
 <br />
 <br />
 <img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home4.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/log%20out.gif" width="200" height="433">
-<br />
-<br />
+
 
   
 
