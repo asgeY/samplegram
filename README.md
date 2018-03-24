@@ -11,9 +11,9 @@ A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPh
 This app is still in development.
 <br />
 ------
-- # [Access](#access)
 - # [Instruction](#instruction)
-   - [Login Page Part](#login)
+- # [Screenshot](#screenshot)
+   - [Login Page Part](#login) 
    - [Feed Page Part](#feed)
    - [Users Page Part](#users)
    - [Upload Page Part](#upload)
@@ -24,13 +24,15 @@ This app is still in development.
 <br />
 <br />
 
-## <span id = "access">Access</span>
+## <span id = "instruction">Istruction</span>
 
 
-## <span id = "instruction">Instruction</span>
+## <span id = "screenshot">Screenshot</span>
 <br />
 <h4 id = "login">Login Page Part</span>
-
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif" width="200" height="433"> 
 
 
 <h4 id = "feed">Feed Page Part</span>
@@ -51,9 +53,9 @@ This app is still in development.
 $ gem install cocoapods
 ```
 To integrate **RxSwift** into this Xcode project using CocoaPods, specify it in your Podfile:
+```shell
 platform :ios, '10.0'
 use_frameworks!
-```shell
 target '<Your Target Name>' do
     pod 'RxSwift'
 end
