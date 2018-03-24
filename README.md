@@ -43,14 +43,13 @@ Then, run the following command:
 ```shell
 $ pod install
 ```
-
+<br />
 ## <span id = "instruction">Instruction</span>
-This app use Parse server to save and load and user info.  
+This app use Parse server to save and load user info.  
 Sign in and up both will save user in UserDefault because AppDelegate class will check which page user should go if the app dosn't exist in backend.  
 To see more detail in source code.
-
-## <span id = "screenshot">Screenshot</span>
 <br />
+## <span id = "screenshot">Screenshot</span>
 <h4 id = "login">Login Page Part</span>
 <br />
 <br />
