@@ -11,8 +11,8 @@ A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPh
 This app is still in development.
 <br />
 ------
-- # [Access](#access)
 - # [Instruction](#instruction)
+- # [Screenshot](#screenshot)
    - [Login Page Part](#login) 
    - [Feed Page Part](#feed)
    - [Users Page Part](#users)
@@ -24,10 +24,10 @@ This app is still in development.
 <br />
 <br />
 
-## <span id = "access">Access</span>
+## <span id = "instruction">Istruction</span>
 
 
-## <span id = "instruction">Instruction</span>
+## <span id = "screenshot">Screenshot</span>
 <br />
 <h4 id = "login">Login Page Part</span>
 <br />
