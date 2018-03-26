@@ -76,7 +76,7 @@ To see more detail in source code.
 <h4 id = "news">News Page Part</span>
 <br />
 <br />
-<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/Notification.gif" width="200" height="433">
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/Notification.gif" width="200" height="433">&nbsp<img src="https://github.com/Imputes/Instagram/blob/master/Gif/notification1.gif" width="200" height="433">
 <br />
 <br />
 <h4 id = "home">Home Page Part</span>
