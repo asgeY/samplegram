@@ -10,7 +10,7 @@
 A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPhone X** without landscape direction.   
 This app is still in development.
 <br />
-------
+<br />
 - # [Instruction](#instruction)
 - # [Screenshot](#screenshot)
    - [Login Page Part](#login) 
@@ -19,31 +19,9 @@ This app is still in development.
    - [Upload Page Part](#upload)
    - [News Page Part](#news)
    - [Home Page Part](#home)
- - # [The Third Party](#party)
-------
+- # [The Third Party](#party)
 <br />
 <br />
-
-## <span id = "instruction">Istruction</span>
-
-
-## <span id = "screenshot">Screenshot</span>
-<br />
-<h4 id = "login">Login Page Part</span>
-<br />
-<br />
-<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif" width="200" height="433"> 
-
-
-<h4 id = "feed">Feed Page Part</span>
-
-<h4 id = "users">Users Page Part</span>
-
-<h4 id = "upload">Upload Page Part</span>
-
-<h4 id = "news">News Page Part</span>
-
-<h4 id = "home">Home Page Part</span>
 
 ## <span id = "party">The Third Party</span>
 **This simple app use RxSwift module. So if you have no installed CocoaPods before, you had to install it.**  
@@ -63,6 +41,49 @@ end
 Then, run the following command:
 ```shell
 $ pod install
-```
+```  
+  
+## <span id = "instruction">Instruction</span>
+This app use Parse server to save and load user info.  
+Sign in and up both will save user in UserDefault because AppDelegate class will check which page user should go if the app dosn't exist in backend.  
+To see more detail in source code.  
+
+## <span id = "screenshot">Screenshot</span>
+<h4 id = "login">Login Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/xx4.gif" width="200" height="433"> 
+<br />
+<br />
+<h4 id = "feed">Feed Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/feed1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/feed2.gif" width="200" height="433"> 
+<br />
+<br />
+<h4 id = "users">Users Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/User%20Part.gif" width="200" height="433">
+<br />
+<br />
+<h4 id = "upload">Upload Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/upload2.gif" width="200" height="433">
+<br />
+<br />
+<h4 id = "news">News Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/Notification.gif" width="200" height="433">
+<br />
+<br />
+<h4 id = "home">Home Page Part</span>
+<br />
+<br />
+<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home1.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home2.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home3.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/home4.gif" width="200" height="433">&nbsp<img src ="https://github.com/Imputes/Instagram/blob/master/Gif/log%20out.gif" width="200" height="433">
+
+
   
 
