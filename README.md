@@ -1,6 +1,4 @@
-![image](https://user-images.githubusercontent.com/12896162/37324908-8a0ca7ea-26c6-11e8-86cf-d4697f34cab3.png)   
-<br />
-<br />
+
 ![xxx](https://travis-ci.org/Imputes/Instagram.svg?branch=master&style=flat-square)
 ![xxx](https://img.shields.io/badge/language-Swift%204.X-orange.svg?style=flat-square)
 ![xxx](https://img.shields.io/badge/platform-iOS%2011.X-48196e.svg?style=flat-square)
@@ -8,7 +6,6 @@
 ![xxx](https://img.shields.io/badge/database-MongoDB-0096FF.svg?style=flat-square)   
 <br />
 A native and simple imitating Instagram iOS app. It must run in **iPhone 8 - iPhone X** without landscape direction.   
-
 <br />
 <br />
 - # [Instruction](#instruction)
